@@ -5,7 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 node_modules/
-bundle.js
+bundle.js*
 bundle.js.map
 .byebug_history
 .DS_Store
