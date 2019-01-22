@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+ h1 {
+  font-family: 'Satisfy', cursive;
+  font-size: 40px;
+ }
