@@ -4,18 +4,18 @@ class Api::UsersController < ApplicationController
     
     if @user.save
       login(@user)
-      render :show
+      render "api/posts/feed"
     else
       render json: ["Email, username, and password required."], status: 422
     end
   end   
 
   def show
-    @user = User.find_by(params[:id])
+    @user = User.find_by(session_token: session[:session_token])
   end
 
   def edit
-    @user = User.find_by(params[:id])
+    @user = User.find_by(session_token: session[:session_token])
   end
 
   def update
