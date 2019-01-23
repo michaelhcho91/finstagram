@@ -1,11 +1,12 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Posts.where()
+    @posts = Posts.with_attached_photo
     render :feed
   end
   
   def create
     @post = Post.new(post_params)
+    @post.poster_id = current_user.id
 
     if @post.save
       render :feed
@@ -37,6 +38,6 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:image_url, :caption)
+    params.require(:post).permit(:caption)
   end
 end

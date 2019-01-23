@@ -87,11 +87,11 @@
   list-style: none;
   color: red;
   font-size: 14px;
+  margin-bottom: 15px;
 }
 
 .session-image {
   margin-top: 50px;
-  /* margin-left: 50px; */
 }
 
 .session-button {
@@ -105,8 +105,64 @@
   color: white;
   cursor: pointer;
   margin-top: 6px;
+  border: none;
+}
+
+.session-button:disabled {
+  background-color: #B8DFFA;
+}
+
+.session-button:disabled:hover {
+  cursor: default;
 }
 
 .session-button.demo {
   margin-bottom: 20px;
+}
+
+.footer-container {
+  text-transform: uppercase;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  padding-bottom: 50px;
+  margin-top: 200px;
+}
+
+.session-footer ul {
+  list-style: none;
+  max-width: 935px;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  color: #183477;
+  font-size: 13px;
+  font-weight: 550;
+  max-width: 100%;
+}
+
+.footer-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-list li {
+  margin-right: 20px;
+}
+
+.footer-copyright {
+  color: #999999;
+  font-size: 12px;
+  margin-left: 100px;
+}
+
+.footer-list a {
+  text-decoration: none;
+  color: #183477;
+}
+
+.footer-list a:visited{
+  text-decoration: none;
 }

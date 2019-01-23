@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
+import Footer from "../splash/footer";
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", email: "", password: "" };
+    this.state = { email: "", name: "", username: "", password: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
   }
@@ -56,7 +57,7 @@ class SessionForm extends React.Component {
               <input onChange={this.update("username")} id="username" type="text" placeholder="Username" value={this.state.username} />
               <input onChange={this.update("password")} id="password" type="password" placeholder="Password" value={this.state.password} />
 
-              <button className="session-button" type="submit" >{this.props.formType}</button>
+              <button className="session-button" type="submit" disabled={!this.state.username} >{this.props.formType}</button>
               <button className="session-button demo" onClick={this.demoLogin}>Demo</button>
               <ul>{errors}</ul>
             </form>
@@ -90,6 +91,7 @@ class SessionForm extends React.Component {
             {link}
           </div>
         </div>
+        <Footer />
       </>
     )
   }

@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
   end   
 
   def show
-    @user = User.find_by(session_token: session[:session_token])
+    @user = User.find_by(params[:id]).includes(:posts)
   end
 
   def edit

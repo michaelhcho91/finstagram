@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "../splash/footer";
 
 class Splash extends React.Component {
   constructor(props) {
@@ -42,11 +43,13 @@ class Splash extends React.Component {
 
     let splash;
     if (this.props.currentUser) {
+      const posts = this.props.currentUser.posts.map( (post, idx) => {
+        return <img src={post.photoUrl} key={idx} />
+      })
       splash = <>
-                  <h3>{this.props.currentUser.username}</h3>
-                  <br/>
-                  <h4>{this.props.currentUser.name}</h4>
-                  <br/>
+                  <h4>Welcome, {this.props.currentUser.name}</h4>
+                  <h3>Logged in as {this.props.currentUser.username}</h3>
+                  {/* {posts} */}
                   <button onClick={this.props.logout}>Logout</button>
                 </>
     } else {
@@ -78,6 +81,7 @@ class Splash extends React.Component {
     return (
       <>
         {splash}
+        <Footer />
       </>
     )
   }
