@@ -32,5 +32,10 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, font, img, ol, ul, li, form
 }
 
 body {
-  background-color: #FAF7F5;
+  background-color: #FAFAFA;
+}
+
+.master-container {
+  display: flex;
+  justify-content: center;
 }

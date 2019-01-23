@@ -7,7 +7,7 @@ import { AuthRoute } from "../util/route_util";
 
 const App = () => {
   return (
-    <div>
+    <div className="master-container" >
       <header>
 
       </header>

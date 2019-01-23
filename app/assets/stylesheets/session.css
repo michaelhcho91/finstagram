@@ -1,0 +1,112 @@
+.session-form h1 {
+  font-family: 'Satisfy', cursive;
+  font-size: 45px;
+  color: #262626;
+  font-weight: 595;
+  margin-bottom: 10px;
+}
+
+.session-form h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #999999;
+  height: 90px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.session-container {
+  background-color: #FAFAFA;
+  display: flex;
+  max-width: 935px;
+  justify-content: center;
+}
+ 
+.session-right {
+  background-color: #FAFAFA;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin-left: 25px;
+  margin-right: 25px;
+  width: 348px;
+}
+
+.session-redirect {
+  border: 1px solid #E9E9E8;
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  width: 335px;
+  padding: 5px;
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
+.session-link {
+  text-decoration: none;
+  color: #409AF2;
+}
+
+.session-link:visited {
+  text-decoration: none;
+}
+
+.session-form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  border: 1px solid #E9E9E8;
+  margin-top: 50px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.session-form p {
+  color: #999999;
+  font-size: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.session-form input {
+  padding: 10px;
+  font-size: 12px;
+  background-color: #FAFAFA;
+  border-radius: 3px;
+  border: 1px solid #E9E9E8;
+  margin-bottom: 7px;
+}
+
+.session-form ul li {
+  list-style: none;
+  color: red;
+  font-size: 14px;
+}
+
+.session-image {
+  margin-top: 50px;
+  /* margin-left: 50px; */
+}
+
+.session-button {
+  display: inline-block;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  background-color: #3F97EF;
+  color: white;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.session-button.demo {
+  margin-bottom: 20px;
+}

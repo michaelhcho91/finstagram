@@ -45,74 +45,51 @@ class SessionForm extends React.Component {
 
     let link;
     let form;
-    const footer = <footer className="container footer">
-                    <nav>
-                      <ul>
-                        <li>Github</li>
-                        <li>LinkedIn</li>
-                        <li>Michael</li>
-                        <li>Cho</li>
-                      </ul>
-                    </nav>
-                    <span>&copy; 2019 Finstagram</span>
-                  </footer>
     if (this.props.formType === "Log In") {
-      link = <div>
-              <span>Don't have an account? </span>
-              <Link to={`/signup`} >Sign Up</Link>
+      link = <div className="session-redirect" >
+              <span>Don't have an account? <Link to={`/signup`} >Sign Up</Link></span>
             </div>
 
-      form = <form onSubmit={this.handleSubmit}>
-              <label htmlFor="username">Username:
-                <input onChange={this.update("username")} name="username" type="text" value={this.state.username} />
-              </label>
+      form = <form className="session-form" onSubmit={this.handleSubmit}>
+              <h1>Finstagram</h1>
 
-              <label htmlFor="password">Password: 
-                <input onChange={this.update("password")} name="password" type="password" value={this.state.password} />
-              </label>
+              <input onChange={this.update("username")} id="username" type="text" placeholder="Username" value={this.state.username} />
+              <input onChange={this.update("password")} id="password" type="password" placeholder="Password" value={this.state.password} />
 
-              <input type="submit" value={this.props.formType} />
+              <button className="session-button" type="submit" >{this.props.formType}</button>
+              <button className="session-button demo" onClick={this.demoLogin}>Demo</button>
               <ul>{errors}</ul>
-              <button onClick={this.demoLogin}>Demo</button>
             </form>
     } else {
-      link = <div>
-              <span>Have an account? </span>
-              <Link to={`/login`} >Log In</Link>
+      link = <div className="session-redirect" >
+              <span>Have an account? <Link to={`/login`} >Log In</Link></span>
             </div>
             
-      form = <form onSubmit={this.handleSubmit}>
+      form = <form className="session-form" onSubmit={this.handleSubmit}>
+                <h1>Finstagram</h1>
                 <h2>Sign up to see photos from your friends.</h2>
 
-                <label htmlFor="email">Email:
-                  <input onChange={this.update("email")} id="email" type="text" value={this.state.email} />
-                </label>
+                <input onChange={this.update("email")} id="email" type="text" placeholder="Email" value={this.state.email} />
+                <input onChange={this.update("name")} id="name" type="text" placeholder="Full Name" value={this.state.name} />
+                <input onChange={this.update("username")} id="username" type="text" placeholder="Username" value={this.state.username} />
+                <input onChange={this.update("password")} id="password" type="password" placeholder="Password" value={this.state.password} />
 
-                <label htmlFor="name">Name:
-                  <input onChange={this.update("name")} id="name" type="text" value={this.state.name} />
-                </label>
-
-                <label htmlFor="username">Username:
-                  <input onChange={this.update("username")} id="username" type="text" value={this.state.username} />
-                </label>
-
-                <label htmlFor="password">Password:
-                  <input onChange={this.update("password")} id="password" type="password" value={this.state.password} />
-                </label>
-
-                <input type="submit" value={this.props.formType} />
+                <button className="session-button" type="submit" >{this.props.formType}</button>
+                <button className="session-button demo" onClick={this.demoLogin}>Demo</button>
                 <ul>{errors}</ul>
-                <button onClick={this.demoLogin}>Demo</button>
 
-                <p>By signing up, you agree to our Terms, Data Policy and Cookies Policy.</p>
+                <p>By signing up, you agree to our <strong>Terms</strong>, <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.</p>
               </form>
     }
     
     return (
       <>
-        {form}
-        {link}
-        {footer}
+        <div className="session-container" >
+          <div className="session-right" >
+            {form}
+            {link}
+          </div>
+        </div>
       </>
     )
   }

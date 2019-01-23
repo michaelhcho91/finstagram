@@ -50,40 +50,35 @@ class Splash extends React.Component {
                   <button onClick={this.props.logout}>Logout</button>
                 </>
     } else {
-      splash = <div className="splash-container">
-                  <img className="splash-image" src="/assets/images/white-iphone.png" alt=""/>
-                  <div className="splash-right">
-                    <form className="splash-form" onSubmit={this.handleSubmit}>
+      splash = <div className="session-container">
+                  <img className="session-image" src={window.splashImage} />
+                  <div className="session-right">
+                    <form className="session-form" onSubmit={this.handleSubmit}>
                       <h1>Finstagram</h1>
                       <h2>Sign up to see photos from your friends.</h2>
 
                       <input onChange={this.update("email")} id="email" type="text" placeholder="Email" value={this.state.email} />
-                      <br />
                       <input onChange={this.update("name")} id="name" type="text" placeholder="Full Name" value={this.state.name} />
-                      <br />
                       <input onChange={this.update("username")} id="username" type="text" placeholder="Username" value={this.state.username} />
-                      <br />
                       <input onChange={this.update("password")} id="password" type="password" placeholder="Password" value={this.state.password} />
-                      <br />
-                      <button className="splash-button" type="submit" >{this.props.formType}</button>
-                      <br />
-                      <button className="splash-button" onClick={this.demoLogin}>Demo</button>
+
+                      <button className="session-button" type="submit" >{this.props.formType}</button>
+                      <button className="session-button demo" onClick={this.demoLogin}>Demo</button>
                       <ul>{errors}</ul>
                         
-                      <p>By signing up, you agree to our <strong>Terms, Data Policy</strong> and <strong>Cookies Policy.</strong></p>
+                      <p>By signing up, you agree to our <strong>Terms</strong>, <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.</p>
                     </form>
-                    <div className="splash-redirect">
-                      <span>Have an account? </span>
-                      <Link onClick={this.dismiss} to={`/login`} >Log In</Link>
+                    <div className="session-redirect">
+                      <span>Have an account? <Link className="session-link" to={`/login`}>Log In</Link></span>
                     </div>
                   </div>
                 </div>
     }
 
     return (
-      <div>
+      <>
         {splash}
-      </div>
+      </>
     )
   }
 }
