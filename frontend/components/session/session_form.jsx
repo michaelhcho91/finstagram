@@ -47,7 +47,7 @@ class SessionForm extends React.Component {
     let form;
     if (this.props.formType === "Log In") {
       link = <div className="session-redirect" >
-              <span>Don't have an account? <Link to={`/signup`} >Sign Up</Link></span>
+              <span>Don't have an account? <Link className="session-link" to={`/signup`} >Sign Up</Link></span>
             </div>
 
       form = <form className="session-form" onSubmit={this.handleSubmit}>
@@ -62,7 +62,7 @@ class SessionForm extends React.Component {
             </form>
     } else {
       link = <div className="session-redirect" >
-              <span>Have an account? <Link to={`/login`} >Log In</Link></span>
+              <span>Have an account? <Link className="session-link" to={`/login`} >Log In</Link></span>
             </div>
             
       form = <form className="session-form" onSubmit={this.handleSubmit}>
