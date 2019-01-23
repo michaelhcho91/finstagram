@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div>
       <header>
-        <h1>Finstagram</h1>
+
       </header>
 
       <Switch>

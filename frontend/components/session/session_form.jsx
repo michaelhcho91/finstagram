@@ -45,6 +45,17 @@ class SessionForm extends React.Component {
 
     let link;
     let form;
+    const footer = <footer className="container footer">
+                    <nav>
+                      <ul>
+                        <li>Github</li>
+                        <li>LinkedIn</li>
+                        <li>Michael</li>
+                        <li>Cho</li>
+                      </ul>
+                    </nav>
+                    <span>&copy; 2019 Finstagram</span>
+                  </footer>
     if (this.props.formType === "Log In") {
       link = <div>
               <span>Don't have an account? </span>
@@ -55,11 +66,11 @@ class SessionForm extends React.Component {
               <label htmlFor="username">Username:
                 <input onChange={this.update("username")} name="username" type="text" value={this.state.username} />
               </label>
-                <br />
+
               <label htmlFor="password">Password: 
                 <input onChange={this.update("password")} name="password" type="password" value={this.state.password} />
               </label>
-                <br />
+
               <input type="submit" value={this.props.formType} />
               <ul>{errors}</ul>
               <button onClick={this.demoLogin}>Demo</button>
@@ -71,27 +82,29 @@ class SessionForm extends React.Component {
             </div>
             
       form = <form onSubmit={this.handleSubmit}>
-                <span>Sign up to see photos from your friends.</span>
-                  <br />
+                <h2>Sign up to see photos from your friends.</h2>
+
                 <label htmlFor="email">Email:
                   <input onChange={this.update("email")} id="email" type="text" value={this.state.email} />
                 </label>
-                  <br />
+
                 <label htmlFor="name">Name:
                   <input onChange={this.update("name")} id="name" type="text" value={this.state.name} />
                 </label>
-                  <br />
+
                 <label htmlFor="username">Username:
                   <input onChange={this.update("username")} id="username" type="text" value={this.state.username} />
                 </label>
-                  <br />
+
                 <label htmlFor="password">Password:
                   <input onChange={this.update("password")} id="password" type="password" value={this.state.password} />
                 </label>
-                  <br />
+
                 <input type="submit" value={this.props.formType} />
                 <ul>{errors}</ul>
                 <button onClick={this.demoLogin}>Demo</button>
+
+                <p>By signing up, you agree to our Terms, Data Policy and Cookies Policy.</p>
               </form>
     }
     
@@ -99,6 +112,7 @@ class SessionForm extends React.Component {
       <>
         {form}
         {link}
+        {footer}
       </>
     )
   }

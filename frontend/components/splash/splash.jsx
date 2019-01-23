@@ -40,9 +40,9 @@ class Splash extends React.Component {
       })
     }
 
-    let greeting;
+    let splash;
     if (this.props.currentUser) {
-      greeting = <>
+      splash = <>
                   <h3>{this.props.currentUser.username}</h3>
                   <br/>
                   <h4>{this.props.currentUser.name}</h4>
@@ -50,43 +50,39 @@ class Splash extends React.Component {
                   <button onClick={this.props.logout}>Logout</button>
                 </>
     } else {
-      greeting = <>
-                  <form onSubmit={this.handleSubmit}>
-                    <span>Sign up to see photos from your friends.</span>
+      splash = <div className="splash-container">
+                  <img className="splash-image" src="/assets/images/white-iphone.png" alt=""/>
+                  <div className="splash-right">
+                    <form className="splash-form" onSubmit={this.handleSubmit}>
+                      <h1>Finstagram</h1>
+                      <h2>Sign up to see photos from your friends.</h2>
+
+                      <input onChange={this.update("email")} id="email" type="text" placeholder="Email" value={this.state.email} />
                       <br />
-                    <label htmlFor="email">Email:
-                      <input onChange={this.update("email")} id="email" type="text" value={this.state.email} />
-                    </label>
+                      <input onChange={this.update("name")} id="name" type="text" placeholder="Full Name" value={this.state.name} />
                       <br />
-                    <label htmlFor="name">Name:
-                      <input onChange={this.update("name")} id="name" type="text" value={this.state.name} />
-                    </label>
+                      <input onChange={this.update("username")} id="username" type="text" placeholder="Username" value={this.state.username} />
                       <br />
-                    <label htmlFor="username">Username:
-                      <input onChange={this.update("username")} id="username" type="text" value={this.state.username} />
-                    </label>
+                      <input onChange={this.update("password")} id="password" type="password" placeholder="Password" value={this.state.password} />
                       <br />
-                    <label htmlFor="password">Password:
-                      <input onChange={this.update("password")} id="password" type="password" value={this.state.password} />
-                    </label>
+                      <button className="splash-button" type="submit" >{this.props.formType}</button>
                       <br />
-                    <input type="submit" value={this.props.formType} />
-                    <ul>{errors}</ul>
-                    <button onClick={this.demoLogin}>Demo</button>
-                      <br />
-                    <span>By signing up, you agree to our Terms, Data Policy and Cookies Policy.</span>
-                  </form>
-                    <br />
-                  <div>
-                    <span>Have an account? </span>
-                    <Link onClick={this.dismiss} to={`/login`} >Log In</Link>
+                      <button className="splash-button" onClick={this.demoLogin}>Demo</button>
+                      <ul>{errors}</ul>
+                        
+                      <p>By signing up, you agree to our <strong>Terms, Data Policy</strong> and <strong>Cookies Policy.</strong></p>
+                    </form>
+                    <div className="splash-redirect">
+                      <span>Have an account? </span>
+                      <Link onClick={this.dismiss} to={`/login`} >Log In</Link>
+                    </div>
                   </div>
-                </>
+                </div>
     }
 
     return (
       <div>
-        {greeting}
+        {splash}
       </div>
     )
   }
