@@ -43,13 +43,9 @@ class Splash extends React.Component {
 
     let splash;
     if (this.props.currentUser) {
-      const posts = this.props.currentUser.posts.map( (post, idx) => {
-        return <img src={post.photoUrl} key={idx} />
-      })
       splash = <>
                   <h4>Welcome, {this.props.currentUser.name}</h4>
                   <h3>Logged in as {this.props.currentUser.username}</h3>
-                  {/* {posts} */}
                   <button onClick={this.props.logout}>Logout</button>
                 </>
     } else {

@@ -15,15 +15,15 @@
  */
 
 html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, font, img, ol, ul, li, form, caption {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-weight: inherit;
-    font-style: inherit;
-    font-size: 100%;
-    font-family: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
 }
  
 * {
@@ -31,12 +31,22 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, font, img, ol, ul, li, form
   font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
+main {
+  height: 100%;
+}
+
 body {
   background-color: #FAFAFA;
+  height: 100%;
 }
 
 .master-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }

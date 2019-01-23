@@ -20,6 +20,8 @@
   display: flex;
   max-width: 935px;
   justify-content: center;
+  height: 100%;
+  margin-bottom: 100px;
 }
  
 .session-right {
@@ -31,6 +33,7 @@
   margin-left: 25px;
   margin-right: 25px;
   width: 348px;
+  max-height: 709px;
 }
 
 .session-redirect {
@@ -69,9 +72,9 @@
 
 .session-form p {
   color: #999999;
-  font-size: 15px;
-  margin-left: 10px;
-  margin-right: 10px;
+  font-size: 14px;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 .session-form input {
@@ -92,6 +95,7 @@
 
 .session-image {
   margin-top: 50px;
+  max-height: 659px;
 }
 
 .session-button {
@@ -123,10 +127,8 @@
 .footer-container {
   text-transform: uppercase;
   width: 100%;
-  bottom: 0;
   text-align: center;
   padding-bottom: 50px;
-  margin-top: 200px;
 }
 
 .session-footer ul {
