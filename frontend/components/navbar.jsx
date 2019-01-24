@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class Navbar extends React.Component {
-  // const upload_icon = require("../../app/assets/images/icons/upload_icon.png");
-
   render() {
     return (
       <nav className="nav-container">
