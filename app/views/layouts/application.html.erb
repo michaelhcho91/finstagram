@@ -8,12 +8,15 @@
     <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="https://www.google.com/s2/favicons?domain=www.instagram.com">
     
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
     
-    <script type="text/javascript">
-        window.splashImage = "<%= image_url('session/splash_image.png') %>"
-   </script>
+    <script type="text/javascript">window.splashImage = "<%= image_url("session/splash_image.png") %>"</script>
+    <script type="text/javascript">window.favicon = "<%= image_url("icons/favicon.png") %>"</script>
+    <script type="text/javascript">window.feed_icon = "<%= image_url("icons/feed_icon.png") %>"</script>
+    <script type="text/javascript">window.heart_icon = "<%= image_url("icons/heart_icon.png") %>"</script>
+    <script type="text/javascript">window.profile_icon = "<%= image_url("icons/profile_icon.png") %>"</script>
+    <script type="text/javascript">window.upload_icon = "<%= image_url("icons/upload_icon.png") %>"</script>
   </head>
 
   <body>
