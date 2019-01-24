@@ -31,17 +31,9 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, font, img, ol, ul, li, form
   font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
-html {
-  height: 100%;
-}
-
-main {
-  height: 100%;
-}
-
 body {
   background-color: #FAFAFA;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .master-container {
