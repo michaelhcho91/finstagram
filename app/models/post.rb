@@ -11,5 +11,5 @@
 
 class Post < ApplicationRecord
   has_one_attached :photo
-  has_one :poster, foreign_key: :poster_id, class_name: :User
+  belongs_to :poster, foreign_key: :poster_id, class_name: :User
 end

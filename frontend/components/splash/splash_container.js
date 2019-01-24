@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Splash from "./splash";
-import { logout, login, signup, clearErrors } from "../../actions/session_action";
+import { logout, login, signup, clearErrors } from "../../actions/session_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {

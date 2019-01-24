@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import Footer from "../splash/footer";
+import SignupForm from "../session/signup_form";
 
 class Splash extends React.Component {
   constructor(props) {
@@ -43,35 +44,15 @@ class Splash extends React.Component {
 
     let splash;
     if (this.props.currentUser) {
-      splash = <>
-                  <h4>Welcome, {this.props.currentUser.name}</h4>
-                  <h3>Logged in as {this.props.currentUser.username}</h3>
-                  <button onClick={this.props.logout}>Logout</button>
-                </>
+      splash = <Redirect to={`/feed`} />
     } else {
-      splash = <div className="session-container">
-                  <img className="session-image" src={window.splashImage} />
-                  <div className="session-right">
-                    <form className="session-form" onSubmit={this.handleSubmit}>
-                      <h1>Finstagram</h1>
-                      <h2>Sign up to see photos from your friends.</h2>
-
-                      <input onChange={this.update("email")} id="email" type="text" placeholder="Email" value={this.state.email} />
-                      <input onChange={this.update("name")} id="name" type="text" placeholder="Full Name" value={this.state.name} />
-                      <input onChange={this.update("username")} id="username" type="text" placeholder="Username" value={this.state.username} />
-                      <input onChange={this.update("password")} id="password" type="password" placeholder="Password" value={this.state.password} />
-
-                      <button className="session-button" type="submit" >{this.props.formType}</button>
-                      <button className="session-button demo" onClick={this.demoLogin}>Demo</button>
-                      <ul>{errors}</ul>
-                        
-                      <p>By signing up, you agree to our <strong>Terms</strong>, <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.</p>
-                    </form>
-                    <div className="session-redirect">
-                      <span>Have an account? <Link className="session-link" to={`/login`}>Log In</Link></span>
-                    </div>
-                  </div>
-                </div>
+      splash = <SignupForm 
+                  handleSubmit={this.handleSubmit}
+                  update={this.update}
+                  demoLogin={this.demoLogin}
+                  state={this.state}
+                  formType={this.props.formType}
+                  errors={this.props.errors} />
     }
 
     return (

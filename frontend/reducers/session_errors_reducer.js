@@ -1,5 +1,5 @@
 import { merge } from "lodash";
-import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS, CLEAR_ERRORS } from "../actions/session_action";
+import { RECEIVE_CURRENT_USER, RECEIVE_ERRORS, CLEAR_ERRORS } from "../actions/session_actions";
 
 const sessionErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);

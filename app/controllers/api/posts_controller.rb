@@ -1,6 +1,6 @@
 class Api::PostsController < ApplicationController
   def index
-    @posts = Posts.with_attached_photo
+    @posts = Post.all.with_attached_photo
     render :feed
   end
   
