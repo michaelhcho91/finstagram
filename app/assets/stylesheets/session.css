@@ -1,9 +1,13 @@
-.session-form h1 {
+.session-h1 {
   font-family: 'Satisfy', cursive;
   font-size: 45px;
   color: #262626;
   font-weight: 595;
   margin-bottom: 10px;
+}
+
+.session-h1.login {
+  /* margin-bottom: 10px; */
 }
 
 .session-form h2 {
@@ -33,7 +37,7 @@
   margin-left: 25px;
   margin-right: 25px;
   width: 348px;
-  max-height: 709px;
+  height: 709px;
 }
 
 .session-redirect {
@@ -74,8 +78,9 @@
   max-width: 350px;
   border: 1px solid #E9E9E8;
   margin-top: 50px;
-  padding: 40px;
-  box-sizing: border-box;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 40px;
 }
 
 .session-form p {

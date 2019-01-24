@@ -49,7 +49,7 @@ class Splash extends React.Component {
                 <img className="session-image" src={window.splashImage} />
                 <div className="session-right">
                   <form className="session-form" onSubmit={this.handleSubmit}>
-                    <h1>Finstagram</h1>
+                    <h1 className="session-h1">Finstagram</h1>
                     <h2>Sign up to see photos from your friends.</h2>
 
                     <input required onChange={this.update("email")} type="text" placeholder="Email" value={this.state.email} />

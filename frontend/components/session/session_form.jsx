@@ -48,8 +48,8 @@ class SessionForm extends React.Component {
     if (this.props.formType === "Log In") {
       form = <div className="session-container">
               <div className="session-right">
-                <form className="session-form" onSubmit={this.handleSubmit}>
-                  <h1>Finstagram</h1>
+                <form className="session-form login" onSubmit={this.handleSubmit}>
+                  <h1 className="session-h1 login">Finstagram</h1>
 
                   <input required onChange={this.update("username")} type="text" placeholder="Username" value={this.state.username} />
                   <input onChange={this.update("password")} type="password" placeholder="Password" value={this.state.password} />
@@ -67,7 +67,7 @@ class SessionForm extends React.Component {
       form = <div className="session-container">
               <div className="session-right">
                 <form className="session-form" onSubmit={this.handleSubmit}>
-                  <h1>Finstagram</h1>
+                  <h1 className="session-h1">Finstagram</h1>
                   <h2>Sign up to see photos from your friends.</h2>
 
                   <input required onChange={this.update("email")} type="text" placeholder="Email" value={this.state.email} />

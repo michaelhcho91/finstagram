@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
+  has_one_attached :photo
   has_many :posts, foreign_key: :poster_id, class_name: :Post
 
   def self.find_by_credentials(username, password)

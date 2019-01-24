@@ -12,10 +12,12 @@ class PostIndex extends React.Component {
     });
 
     return (
-      <ul>
-        {posts}
-        <button onClick={this.props.logout}>Logout</button>
-      </ul>  
+      <>
+        <ul>
+          {posts}
+          <button onClick={this.props.logout}>Logout</button>
+        </ul>  
+      </>
     )
   }
 }
