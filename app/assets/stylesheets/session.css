@@ -21,7 +21,7 @@
   max-width: 935px;
   justify-content: center;
   height: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
 }
  
 .session-right {
@@ -48,6 +48,14 @@
   padding: 5px;
   padding-top: 26px;
   padding-bottom: 26px;
+}
+
+.session-redirect.login {
+  margin-bottom: 244px;
+}
+
+.session-redirect.signup {
+  margin-bottom: 18px;
 }
 
 .session-link {
