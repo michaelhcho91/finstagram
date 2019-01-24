@@ -1,12 +1,11 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Footer from "../splash/footer";
-import SignupForm from "../session/signup_form";
 
 class Splash extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { email: "", name: "", username: "", password: "", isFormShown: true };
+    this.state = { email: "", name: "", username: "", password: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
   }
@@ -46,13 +45,29 @@ class Splash extends React.Component {
     if (this.props.currentUser) {
       splash = <Redirect to={`/feed`} />
     } else {
-      splash = <SignupForm 
-                  handleSubmit={this.handleSubmit}
-                  update={this.update}
-                  demoLogin={this.demoLogin}
-                  state={this.state}
-                  formType={this.props.formType}
-                  errors={this.props.errors} />
+      splash = <div className="session-container">
+                <img className="session-image" src={window.splashImage} />
+                <div className="session-right">
+                  <form className="session-form" onSubmit={this.handleSubmit}>
+                    <h1>Finstagram</h1>
+                    <h2>Sign up to see photos from your friends.</h2>
+
+                    <input required onChange={this.update("email")} type="text" placeholder="Email" value={this.state.email} />
+                    <input onChange={this.update("name")} type="text" placeholder="Full Name" value={this.state.name} />
+                    <input required onChange={this.update("username")} type="text" placeholder="Username" value={this.state.username} />
+                    <input required onChange={this.update("password")} type="password" placeholder="Password" value={this.state.password} />
+
+                    <button className="session-button" type="submit" >{this.props.formType}</button>
+                    <button className="session-button demo" onClick={this.demoLogin}>Demo</button>
+                    <ul>{errors}</ul>
+
+                    <p>By signing up, you agree to our <strong>Terms</strong>, <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.</p>
+                  </form>
+                  <div className="session-redirect">
+                    <span>Have an account? <Link className="session-link" to={`/login`}>Log In</Link></span>
+                  </div>
+                </div>
+              </div>
     }
 
     return (
