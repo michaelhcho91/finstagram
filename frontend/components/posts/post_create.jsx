@@ -26,7 +26,7 @@ class PostCreate extends React.Component {
     formData.append("post[caption]", this.state.caption);
     formData.append("post[photo]", this.state.photoFile);
 
-    // this.props.createPost(formData).then(this.props.closeModal);
+    this.props.createPost(formData).then(this.props.closeModal);
   }
 
   handleFile(event) {
@@ -38,7 +38,7 @@ class PostCreate extends React.Component {
       <form onSubmit={this.handleSubmit} className="post-create-form">
         <input onChange={this.handleFile} type="file"/>
         <input onChange={this.update("caption")} type="text" placeholder="Caption"/>
-        <input type="submit" value="Not Yet" />
+        <input type="submit" value="Create Post" />
       </form>
     )
   }
