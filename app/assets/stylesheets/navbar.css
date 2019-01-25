@@ -36,7 +36,7 @@
 }
 
 .nav-left-items div {
-  padding-right: 16px;
+  padding-right: 15px;
 }
 
 .nav-logo {
@@ -59,17 +59,26 @@
 }
 
 .nav-right-items a {
-  padding-left: 25px;
+  padding-left: 26px;
+}
+
+.icon-profile {
+  margin-left: 1px;
+}
+
+.nav-search {
+  align-content: center;  
 }
 
 .nav-search input {
-  width: 215px;
-  height: 25px;
+  width: 212px;
+  height: 24px;
   text-align: center;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 150;
   border-radius: 3px;
   border-style: solid;
   border: 1px solid #DBDBDB;
-  background-color: white;
+  background-color: #FAFAFA;
+  margin-right: 28px;
 }
