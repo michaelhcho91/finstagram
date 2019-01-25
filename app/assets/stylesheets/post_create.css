@@ -1,0 +1,64 @@
+.post-create-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.post-create-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 998px;
+  background-color: white;
+  padding: 25px 0;
+  border: 1px solid #DBDBDB;
+}
+
+.post-create-h2 {
+  font-size: 30px;
+  margin-bottom: 35px;
+}
+
+.post-preview {
+  max-height: 404px;
+  padding: 10px;
+}
+
+.post-file-input {
+  width: 75px;
+  margin-bottom: 35px;
+}
+
+.post-caption-input {
+  background-color: #FAFAFA;
+  border-radius: 3px;
+  border-style: solid;
+  border: 1px solid #DBDBDB;
+  padding-left: 10px;
+  height: 30px;
+  width: 200px;
+  font-size: 12px;
+  margin-bottom: 35px;
+}
+
+.post-create-submit {
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  background-color: #3F97EF;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+.post-create-submit:disabled {
+  background-color: #B8DFFA;
+}
+
+.post-create-submit:disabled:hover {
+  cursor: default;
+}

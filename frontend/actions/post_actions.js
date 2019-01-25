@@ -42,7 +42,8 @@ export const clearErrors = () => {
 
 export const fetchPosts = () => (dispatch) => {
   return PostApiUtil.fetchPosts().
-    then(posts => dispatch(receivePosts(posts)));
+    then((posts => dispatch(receivePosts(posts))),
+      (errors => dispatch(receiveErrors(errors))));
 };
 
 export const createPost = (post) => (dispatch) => {

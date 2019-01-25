@@ -5,11 +5,12 @@ class Api::PostsController < ApplicationController
   end
   
   def create
-    post = Post.new(post_params)
-    post.poster_id = current_user.id
+    debugger
+    @post = Post.new(post_params)
+    @post.poster_id = current_user.id
 
-    if post.save
-      render :feed
+    if @post.save
+      render :show
     else
       render json: post.errors.full_messages, status: 422
     end
@@ -25,13 +26,15 @@ class Api::PostsController < ApplicationController
     if @post.update(post_params)
       render :feed
     else
-      render json: @post.errors.full_messages
+      render json: @post.errors.full_messages, status: 422 
     end
   end
 
   def destroy
     post = Post.find(params[:id])
+    debugger
     post.destroy
+    
     render :feed
   end
 

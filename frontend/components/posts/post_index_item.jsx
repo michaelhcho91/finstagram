@@ -2,20 +2,20 @@ import React from "react";
 
 class PostIndexItem extends React.Component {
   render() {
-    const { user, post } = this.props;
+    const { user, post, deletePost } = this.props;
   
-    let userHeader;
+    let postHeader;
     if (user) {
-      userHeader = <>
+      postHeader = <>
         <img src={user.photoUrl} />
         Username: {user.username}
       </>
-    } else userHeader = null;
-    
+    } else postHeader = null;
+
     return (
       <li>
         <div className="post-container">
-          {userHeader}
+          {postHeader}
           <img src={post.photoUrl} />
           Caption: {post.caption}
         </div>

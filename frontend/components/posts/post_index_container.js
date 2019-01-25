@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import PostIndex from "./post_index";
-import { fetchPosts } from "../../actions/post_actions";
+import { fetchPosts, deletePost } from "../../actions/post_actions";
 import { logout } from "../../actions/session_actions";
 import { fetchUsers } from "../../actions/user_actions";
 

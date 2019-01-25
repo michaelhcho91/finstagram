@@ -14,8 +14,8 @@ class Splash extends React.Component {
     this.props.clearErrors();
   }
 
-  demoLogin(event) {
-    event.preventDefault();
+  demoLogin(e) {
+    e.preventDefault();
     this.props.login({
       username: "demo",
       password: "password"
@@ -23,13 +23,13 @@ class Splash extends React.Component {
   }
 
   update(field) {
-    return (event) => {
-      this.setState({ [field]: event.currentTarget.value });
+    return (e) => {
+      this.setState({ [field]: e.currentTarget.value });
     };
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit(e) {
+    e.preventDefault();
     this.props.processForm(this.state);
   }
   

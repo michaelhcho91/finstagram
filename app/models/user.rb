@@ -8,7 +8,6 @@
 #  session_token   :string           not null
 #  name            :string
 #  email           :string           not null
-#  image_url       :text
 #  bio             :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
