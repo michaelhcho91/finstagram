@@ -14,7 +14,7 @@ class Navbar extends React.Component {
             </li>
             <li className="nav-search">
               {/* <img className="search-icon" src={window.search_icon} /> */}
-              <input type="text" autocapitalize="none" placeholder="Search"/>
+              <input type="text" placeholder="Search"/>
             </li>
             <li className="nav-right-items">
               <Link to={`/`} className="icon-upload"><img src={window.upload_icon}/></Link>
