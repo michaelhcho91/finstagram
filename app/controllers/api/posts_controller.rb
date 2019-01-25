@@ -5,7 +5,6 @@ class Api::PostsController < ApplicationController
   end
   
   def create
-    debugger
     @post = Post.new(post_params)
     @post.poster_id = current_user.id
 
@@ -32,7 +31,6 @@ class Api::PostsController < ApplicationController
 
   def destroy
     post = Post.find(params[:id])
-    debugger
     post.destroy
     
     render :feed
