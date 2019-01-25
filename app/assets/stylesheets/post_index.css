@@ -1,5 +1,22 @@
-.posts-container {
+.post-index-section {
   margin-top: 130px;
   width: 1010px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.posts-list-left {
+  display: flex;
+  flex-direction: column;
+  max-width: 935px;
+}
+
+.posts-list {
   list-style: none;
+}
+
+.post-container {
+  max-width: 617px;
 }

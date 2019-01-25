@@ -19,4 +19,3 @@ user4 = User.create({ username: "grace", email: "grace@email.com", password: "pa
 Post.create({ poster_id: user1.id, caption: "post 1 test" })
 Post.create({ poster_id: user2.id, caption: "post 2 test" })
 Post.create({ poster_id: user3.id, caption: "post 3 test" })
-Post.create({ poster_id: user4.id, caption: "post 4 test" })

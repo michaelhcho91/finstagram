@@ -5,13 +5,13 @@ class Api::PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(post_params)
-    @post.poster_id = current_user.id
+    post = Post.new(post_params)
+    post.poster_id = current_user.id
 
-    if @post.save
+    if post.save
       render :feed
     else
-      render json: ["Upload an image."], status: 422
+      render json: post.errors.full_messages, status: 422
     end
   end
   
@@ -38,6 +38,6 @@ class Api::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:caption)
+    params.require(:post).permit(:caption, :photo)
   end
 end
