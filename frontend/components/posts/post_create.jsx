@@ -67,9 +67,10 @@ class PostCreate extends React.Component {
       <div className="post-create-container">
         <form className="post-create-form" onSubmit={this.handleSubmit} className="post-create-form">
           <h2 className="post-create-h2">Upload an image!</h2>
-          <input className="post-caption-input" onChange={this.update("caption")} type="text" placeholder="Write a caption..."/>
-          <input className="post-file-input" onChange={this.handleFile} type="file"/>
-          <button className="post-create-submit" disabled={!photoFile} type="submit" value="Share" />
+          <textarea className="post-caption-input" onChange={this.update("caption")} type="text" placeholder="Write a caption..."/>
+          <input className="post-file-input" id="file-selector" onChange={this.handleFile} type="file"/>
+          <label className="post-file-input-label" htmlFor="file-selector">Choose File</label>
+          <button className="post-create-submit" disabled={!photoFile} type="submit">Share</button>
         </form>
 
         {preview}
