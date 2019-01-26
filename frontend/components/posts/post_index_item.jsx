@@ -7,9 +7,9 @@ class PostIndexItem extends React.Component {
     let postHeader;
     if (user) {
       postHeader = <>
-        <img src={user.photoUrl} />
-        Username: {user.username}
-      </>
+                    <img src={user.photoUrl} />
+                    Username: {user.username}
+                  </>
     } else postHeader = null;
 
     return (

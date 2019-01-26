@@ -30,15 +30,15 @@ class PostCreate extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
+
+    const { caption, photoFile } = this.state;
+    const { createPost, closeModal } = this.props;
     
     const formData = new FormData();
-    formData.append("post[caption]", this.state.caption);
-    
-    if (this.state.photoFile) {
-      formData.append("post[photo]", this.state.photoFile);
-    }
+    formData.append("post[caption]", caption);
+    if (photoFile) formData.append("post[photo]", photoFile);
 
-    this.props.createPost(formData).then(this.props.closeModal());
+    createPost(formData).then(closeModal());
   }
 
   handleFile(e) {
@@ -46,16 +46,21 @@ class PostCreate extends React.Component {
     const fileReader = new FileReader();
     
     fileReader.onloadend = () => {
-      this.setState({ photoFile: file, photoUrl: fileReader.result });
+      this.setState({
+        photoFile: file,
+        photoUrl: fileReader.result
+      });
     };
     
     if (file) fileReader.readAsDataURL(file);
   }
   
   render() {
+    const { photoUrl, photoFile } = this.state;
+    
     let preview;
-    if (this.state.photoUrl) {
-      preview = <img className="post-preview" src={this.state.photoUrl} />
+    if (photoUrl) {
+      preview = <img className="post-preview" src={photoUrl} />
     } else preview = <div className="post-preview"/>
     
     return (
@@ -64,7 +69,7 @@ class PostCreate extends React.Component {
           <h2 className="post-create-h2">Upload an image!</h2>
           <input className="post-caption-input" onChange={this.update("caption")} type="text" placeholder="Write a caption..."/>
           <input className="post-file-input" onChange={this.handleFile} type="file"/>
-          <button className="post-create-submit" disabled={!this.state.photoFile} type="submit" value="Share" />
+          <button className="post-create-submit" disabled={!photoFile} type="submit" value="Share" />
         </form>
 
         {preview}
@@ -73,10 +78,10 @@ class PostCreate extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    closeModal: () => dispatch(closeModal()),
     createPost: (post) => dispatch(createPost(post)),
+    closeModal: () => dispatch(closeModal()),
     clearErrors: () => dispatch(clearErrors()),
     fetchPosts: () => dispatch(fetchPosts())
   };

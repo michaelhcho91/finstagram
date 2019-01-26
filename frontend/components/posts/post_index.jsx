@@ -10,10 +10,12 @@ class PostIndex extends React.Component {
   }
 
   render() {
-    const posts = this.props.posts.map( (post, idx) => {
+    const { posts, users, logout } = this.props;
+    
+    const postsList = posts.map( (post, idx) => {
       return <PostIndexItem key={idx} 
                             post={post} 
-                            user={this.props.users[post.posterId]} />
+                            user={users[post.posterId]} />
     });
 
     return (
@@ -21,10 +23,10 @@ class PostIndex extends React.Component {
         <NavbarContainer />
 
         <section className="post-index-section">
-          <button onClick={this.props.logout}>Logout</button>
+          <button onClick={logout}>Logout</button>
           <div className="posts-list-left">
             <ul className="posts-list">
-              {posts}
+              {postsList}
             </ul>  
           </div>
         </section>

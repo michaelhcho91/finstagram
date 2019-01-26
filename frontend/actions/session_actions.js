@@ -33,14 +33,20 @@ export const clearErrors = () => {
 
 export const signup = (user) => (dispatch) => {
   return SessionApiUtil.signup(user).
-    then((user => dispatch(receiveCurrentUser(user))),
-      (errors => dispatch(receiveErrors(errors))));
+    then((user => {
+      return dispatch(receiveCurrentUser(user));
+    }), (errors => {
+      return dispatch(receiveErrors(errors));
+    }));
 };
 
 export const login = (user) => (dispatch) => {
   return SessionApiUtil.login(user).
-    then((user => dispatch(receiveCurrentUser(user))),
-      (errors => dispatch(receiveErrors(errors))));
+    then((user => {
+      return dispatch(receiveCurrentUser(user));
+    }), (errors => {
+      return dispatch(receiveErrors(errors));
+    }));
 };
 
 export const logout = () => (dispatch) => {

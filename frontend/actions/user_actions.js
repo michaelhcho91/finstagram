@@ -42,6 +42,9 @@ export const fetchUsers = () => (dispatch) => {
 
 export const updateUser = (user) => (dispatch) => {
   return UserApiUtil.updateUser(user).
-    then((user => dispatch(receiveCurrentUser(user))),
-      (errors => dispatch(receiveErrors(errors))));
+    then((user => {
+      return dispatch(receiveCurrentUser(user));
+    }), (errors => {
+      return dispatch(receiveErrors(errors));
+    }));
 };

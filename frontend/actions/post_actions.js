@@ -42,20 +42,29 @@ export const clearErrors = () => {
 
 export const fetchPosts = () => (dispatch) => {
   return PostApiUtil.fetchPosts().
-    then((posts => dispatch(receivePosts(posts))),
-      (errors => dispatch(receiveErrors(errors))));
+    then((posts => {
+      return dispatch(receivePosts(posts));
+    }), (errors => {
+      return dispatch(receiveErrors(errors));
+    }));
 };
 
 export const createPost = (post) => (dispatch) => {
   return PostApiUtil.createPost(post).
-    then((post => dispatch(receivePost(post))),
-      (errors => dispatch(receiveErrors(errors))));
+    then((post => {
+      return dispatch(receivePost(post));
+    }), (errors => {
+      return dispatch(receiveErrors(errors));
+    }));
 };
 
 export const updatePost = (post) => (dispatch) => {
   return PostApiUtil.updatePost(post).
-    then((post => dispatch(receivePost(post))),
-      (errors => dispatch(receiveErrors(errors))));
+    then((post => {
+      return dispatch(receivePost(post));
+    }), (errors => {
+      return dispatch(receiveErrors(errors));
+    }));
 };
 
 export const deletePost = (postId) => (dispatch) => {

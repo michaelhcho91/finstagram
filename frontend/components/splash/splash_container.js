@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import Splash from "./splash";
 import { logout, login, signup, clearErrors } from "../../actions/session_actions";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
     errors: state.errors.session,
@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
     login: (user) => dispatch(login(user)),

@@ -10,6 +10,7 @@ const Footer = () => {
             <li><a href="https://www.linkedin.com/in/michael-cho-48a820146" target="_blank">LinkedIn</a></li>
             <li><a href="https://www.instagram.com/" target="_blank">Instagram</a></li>
           </ul>
+          
           <span className="footer-copyright" >&copy; 2019 finstagram</span>
         </nav>
       </div>

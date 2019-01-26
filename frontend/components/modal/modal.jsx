@@ -3,10 +3,12 @@ import PostCreate from "../posts/post_create";
 
 class Modal extends React.Component {
   render() {
-    if (!this.props.modal) return null;
+    const { modal, closeModal } = this.props;
+
+    if (!modal) return null;
 
     let component;
-    switch (this.props.modal) {
+    switch (modal) {
       case "create":
         component = <PostCreate />;
         break;
@@ -15,7 +17,7 @@ class Modal extends React.Component {
     }
 
     return (
-      <div className="modal-background" onClick={this.props.closeModal}>
+      <div className="modal-background" onClick={closeModal}>
         <div className="modal-child" onClick={e => e.stopPropagation()}>
           {component}
         </div>
