@@ -1,27 +1,28 @@
-.nav-container ul li {
+.nav-container-short ul li {
   list-style: none;
 }
 
-.nav-container {
+.nav-container-short {
   position: fixed;
   top: 0;
   z-index: 1;
   background-color: #fff;
-  height: 77px;
+  height: 52px;
   width: 100%;
   border-bottom: 1px solid #DBDBDB;
   transition: .2s ease-in-out;
 }
 
-.nav-list-container {
+.nav-list-container-short {
   display: flex;
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 1010px;
-  padding: 26px 20px;
+  padding: 0 20px;
+  margin-top: 13px;
 }
 
-.nav-list {
+.nav-list-short {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -30,48 +31,24 @@
   width: 100%;
 }
 
-.nav-left-items {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.nav-left-items div {
-  padding-right: 15px;
-}
-
-.nav-logo {
-  font-family: 'Satisfy', cursive;
-  font-size: 26px;
-  text-decoration: none;
-  color: #262626;
-  font-weight: 300;
-}
-
-.nav-divider {
-  height: 28px;
-  max-width: 1px;
-  border-left: 1px solid #262626;
-}
-
-.nav-right-items {
+.nav-right-items-short {
   display: flex;
   align-items: center;
 }
 
-.nav-right-items a {
+.nav-right-items-short a {
   padding-left: 26px;
 }
 
-.icon-profile {
+.icon-profile-short {
   margin-left: 1px;
 }
 
-.nav-search {
+.nav-search-short {
   align-content: center;  
 }
 
-.nav-search input {
+.nav-search-short input {
   width: 212px;
   height: 24px;
   text-align: center;
@@ -81,5 +58,5 @@
   border-style: solid;
   border: 1px solid #DBDBDB;
   background-color: #FAFAFA;
-  margin-right: 28px;
+  margin-left: 133px;
 }
