@@ -4,6 +4,7 @@ import SplashContainer from "./splash/splash_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import PostIndexContainer from "./posts/post_index_container";
+import UserProfileContainer from "./user/user_profile_container";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
         <ProtectedRoute path="/feed" component={PostIndexContainer} />
+        <ProtectedRoute path="/profile" component={UserProfileContainer} />
         <Route path="/" component={SplashContainer} />
       </Switch>
     </div>

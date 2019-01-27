@@ -21,7 +21,7 @@ class PostIndex extends React.Component {
       if (this.state.currentScrollHeight !== newScrollHeight) {
         this.setState({ currentScrollHeight: newScrollHeight });
       }
-    }
+    };
   }
   
   render() {
@@ -34,7 +34,7 @@ class PostIndex extends React.Component {
     });
 
     let navbar;
-    if (this.state.currentScrollHeight <= 100) {
+    if (this.state.currentScrollHeight <= 90) {
       navbar = <NavbarContainer />
     } else {
       navbar = <NavbarShort />

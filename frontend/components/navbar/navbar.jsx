@@ -23,7 +23,7 @@ class Navbar extends React.Component {
             <li className="nav-right-items">
               <Link to={`/`} className="icon-upload"><img onClick={this.props.openModal} src={window.upload_icon}/></Link>
               <Link to={`/`} className="icon-heart"><img src={window.heart_icon}/></Link>
-              <Link to={`/`} className="icon-profile"><img src={window.profile_icon}/></Link>
+              <Link to={`/profile`} className="icon-profile"><img src={window.profile_icon}/></Link>
             </li>
           </ul>
         </div>
