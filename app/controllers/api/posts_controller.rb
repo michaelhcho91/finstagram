@@ -1,7 +1,7 @@
 class Api::PostsController < ApplicationController
   def index
     @posts = Post.all.with_attached_photo
-    render :feed
+    render :index
   end
   
   def create
@@ -23,16 +23,16 @@ class Api::PostsController < ApplicationController
     @post = Post.find_by(params[:id])
     
     if @post.update(post_params)
-      render :feed
+      render :index
     else
       render json: @post.errors.full_messages, status: 422 
     end
   end
 
   def destroy
-    post = Post.find(params[:id])
+    post = Post.find_by(params[:id])
     post.destroy
-    render :feed
+    render :index
   end
 
   private
