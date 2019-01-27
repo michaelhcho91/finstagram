@@ -46,7 +46,9 @@ class UserProfile extends React.Component {
           <div className="user-profile">
             <header className="user-profile-info">
               <div className="profile-pic">
-                <img src={this.props.currentUser.photoUrl}/>
+                <Link to={"/profile"}>
+                  <img src={"https://instagram.fist4-1.fna.fbcdn.net/vp/73635c4dfa64bcdde42f5c2ec53639b4/5CDDD9F1/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fist4-1.fna.fbcdn.net"}/>
+                </Link>
               </div>
 
               <section className="profile-info">
@@ -69,9 +71,16 @@ class UserProfile extends React.Component {
               </section>
             </header>
 
-
             <ul className="user-posts">
-              {postsList}
+              <li className="user-post"><div>asdf</div></li>
+              <li className="user-post"><div>asdf</div></li>
+              <li className="user-post"><div>asdf</div></li>
+              <li className="user-post"><div>asdf</div></li>
+              <li className="user-post"><div>asdf</div></li>
+              <li className="user-post"><div>asdf</div></li>
+              <li className="user-post"><div>asdf</div></li>
+              <li className="user-post"><div>asdf</div></li>
+              <li className="user-post"><div>asdf</div></li>
             </ul>
           </div>
         </main>

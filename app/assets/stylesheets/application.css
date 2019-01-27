@@ -28,6 +28,7 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, font, img, ol, ul, li, form
  
 * {
   font-family: 'proxima-nova', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  /* border: 1px solid red; */
 }
 
 body {

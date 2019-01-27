@@ -45,7 +45,6 @@ class PostIndex extends React.Component {
         {navbar}
 
         <section className="post-index-section">
-          <button className="session-button" onClick={logout}>Logout</button>
           <div className="posts-list-left">
             <ul className="posts-list">
               {postsList}
