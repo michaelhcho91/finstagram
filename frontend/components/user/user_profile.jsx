@@ -8,7 +8,14 @@ class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     
-    this.state = { currentScrollHeight: null };
+    this.state = {
+      currentScrollHeight: null,
+      id: this.props.currentUser.id,
+      photoFile: null
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
   
   componentDidMount() {
@@ -21,6 +28,32 @@ class UserProfile extends React.Component {
         this.setState({ currentScrollHeight: newScrollHeight });
       }
     };
+  }
+  
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const { photoFile } = this.state;
+
+    const formData = new FormData();
+    if (photoFile) {
+      formData.append("user[photo]", photoFile);
+    }
+  }
+  
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+      this.setState({
+        photoFile: file,
+      });
+    };
+
+    const form = document.getElementById("profile-form");
+
+    form.dispatchEvent(new Event("submit"));
   }
   
   render() {
@@ -46,9 +79,12 @@ class UserProfile extends React.Component {
           <div className="user-profile">
             <header className="user-profile-info">
               <div className="profile-pic">
-                <Link to={"/profile"}>
-                  <img src={"https://instagram.fist4-1.fna.fbcdn.net/vp/73635c4dfa64bcdde42f5c2ec53639b4/5CDDD9F1/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fist4-1.fna.fbcdn.net"}/>
-                </Link>
+                <form id="profile-form" onSubmit={this.handleSubmit}>
+                  <input className="profile-file-input" id="profile-file-input" type="file" onChange={this.handleFile}/>
+                  <label htmlFor="profile-file-input">
+                    <img src={this.props.currentUser.photoUrl}/>
+                  </label>
+                </form>
               </div>
 
               <section className="profile-info">

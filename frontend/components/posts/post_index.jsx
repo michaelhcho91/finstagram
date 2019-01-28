@@ -25,7 +25,7 @@ class PostIndex extends React.Component {
   }
   
   render() {
-    const { posts, users, currentUser, createComment, deletePost, deleteComment } = this.props;
+    const { posts, users, currentUser, createComment, deletePost, deleteComment, history } = this.props;
     
     const postsList = posts.map( (post, idx) => {
 
@@ -35,7 +35,8 @@ class PostIndex extends React.Component {
                             currentUser={currentUser}
                             createComment={createComment}
                             deletePost={deletePost}
-                            deleteComment={deleteComment} />
+                            deleteComment={deleteComment}
+                            history={history} />
     });
 
     let navbar;

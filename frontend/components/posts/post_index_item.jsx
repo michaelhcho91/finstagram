@@ -12,21 +12,30 @@ class PostIndexItem extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete() {
+    this.props.deletePost(this.state.post_id);
   }
   
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.createComment(this.state);
+
   }
 
   render() {
     const { user, post } = this.props;
 
-    const postHeader = <>
-                        <img className="post-profile-pic" src={user.photoUrl} />
-                        <div>{user.username}</div>
-                      </>
+    let postHeader;
+    if (user) {
+      postHeader = <>
+                    <img className="post-profile-pic" src={user.photoUrl} />
+                    <div>{user.username}</div>
+                    <button className="delete-icon" onClick={this.handleDelete}><img src={window.delete_icon}/></button>
+                  </>
+    } else postHeader = null;
 
     return (
       <li>
@@ -68,7 +77,7 @@ class PostIndexItem extends React.Component {
               <div>
                 <form onSubmit={this.handleSubmit} className="post-comment-form">
                   <textarea id={`comment-${post.id}`} placeholder="Add a comment..."></textarea>
-                  <input type="submit" disabled/>
+                  <button className="submit-comment-icon" onClick={this.handleSubmit}><img src={window.submit_icon}/></button>
                 </form>
               </div>
             </section>

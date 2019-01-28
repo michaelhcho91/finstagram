@@ -42,6 +42,25 @@ img {
   margin-left: 12px;
 }
 
+.delete-icon {
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  border: none;
+  margin-left: 470px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.submit-comment-icon {
+  width: 40px;
+  margin-top: -5px;
+  margin-right: -9px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 .post-profile-pic {
   width: 30px;
   height: 30px;

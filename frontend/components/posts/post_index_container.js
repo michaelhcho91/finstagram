@@ -3,6 +3,7 @@ import PostIndex from "./post_index";
 import { fetchPosts, deletePost } from "../../actions/post_actions";
 import { fetchUsers } from "../../actions/user_actions";
 import { createComment, deleteComment } from "../../actions/comment_actions";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state) => {
   return {
@@ -22,4 +23,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostIndex));
