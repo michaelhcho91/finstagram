@@ -22,7 +22,7 @@ class PostIndexItem extends React.Component {
 
   render() {
     const { user, post } = this.props;
-  
+
     const postHeader = <>
                         <img className="post-profile-pic" src={user.photoUrl} />
                         <div>{user.username}</div>
