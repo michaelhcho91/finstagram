@@ -25,12 +25,14 @@ class PostIndex extends React.Component {
   }
   
   render() {
-    const { posts, users, logout } = this.props;
+    const { posts, users, currentUser, createComment } = this.props;
     
     const postsList = posts.map( (post, idx) => {
-      return <PostIndexItem key={idx} 
-                            post={post} 
-                            user={users[post.posterId]} />
+      return <PostIndexItem key={idx}
+                            post={post}
+                            user={users[post.posterId]}
+                            currentUser={currentUser}
+                            createComment={createComment} />
     });
 
     let navbar;

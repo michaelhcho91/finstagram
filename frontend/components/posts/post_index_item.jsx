@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 class PostIndexItem extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       body: "",
-      // commenter_id: this.props.user.id,
-      // post_id: this.props.post.id
+      commenter_id: this.props.currentUser.id,
+      post_id: this.props.post.id
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
