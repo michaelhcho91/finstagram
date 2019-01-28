@@ -78,5 +78,8 @@
   height: 302px;
   width: 302px;
   margin-bottom: 14px;
-  background-color: navy;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
 }

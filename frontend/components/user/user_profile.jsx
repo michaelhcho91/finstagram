@@ -27,7 +27,7 @@ class UserProfile extends React.Component {
     let postsList;
     if (this.props.posts) {
       postsList = this.props.posts.map( (post, idx) => {
-        return <li key={idx}><img src={post.photoUrl} /></li>
+        return <li className="user-post" key={idx}><img src={post.photoUrl} /></li>
       })
     } else postsList = null;
     
@@ -72,15 +72,7 @@ class UserProfile extends React.Component {
             </header>
 
             <ul className="user-posts">
-              <li className="user-post"><div>asdf</div></li>
-              <li className="user-post"><div>asdf</div></li>
-              <li className="user-post"><div>asdf</div></li>
-              <li className="user-post"><div>asdf</div></li>
-              <li className="user-post"><div>asdf</div></li>
-              <li className="user-post"><div>asdf</div></li>
-              <li className="user-post"><div>asdf</div></li>
-              <li className="user-post"><div>asdf</div></li>
-              <li className="user-post"><div>asdf</div></li>
+              {postsList}
             </ul>
           </div>
         </main>
