@@ -6,8 +6,8 @@ import { createComment, deleteComment } from "../../actions/comment_actions";
 
 const mapStateToProps = (state) => {
   return {
-    posts: Object.values(state.entities.posts),
-    users: Object.values(state.entities.users),
+    posts: Object.values(state.entities.posts).reverse(),
+    users: state.entities.users,
     currentUser: state.entities.users[state.session.id]
   };
 };

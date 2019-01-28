@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import UserProfile from "./user_profile";
 import { fetchPosts } from "../../actions/post_actions";
 import { logout } from "../../actions/session_actions";
+import { updateUser } from "../../actions/user_actions";
 
 const mapStateToProps = (state) => {
   return {

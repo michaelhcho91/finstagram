@@ -56,17 +56,20 @@ class UserProfile extends React.Component {
                   <h1>{this.props.currentUser.username}</h1>
 
                   <div>
-                    <button onClick={this.props.logout}>Logout</button>
-                    <button disabled>cog</button>
+                    <button className="logout-button" onClick={this.props.logout}>Logout</button>
                   </div>
                 </div>
 
                 <div>
                   <ul className="user-post-follow-list">
-                    <li>post count</li>
-                    <li>follower count</li>
-                    <li>following count</li>
+                    <li>0 posts</li>
+                    <li>0 followers</li>
+                    <li>0 following</li>
                   </ul>
+                  <div>
+                    <h1 className="profile-name">{this.props.currentUser.name}</h1>
+                    <span>{this.props.currentUser.bio}</span>
+                  </div>
                 </div>
               </section>
             </header>

@@ -23,20 +23,16 @@ class PostIndexItem extends React.Component {
   render() {
     const { user, post } = this.props;
   
-    let postHeader;
-    if (user) {
-      postHeader = <>
-                    <img src={user.photoUrl} />
-                    {user.username}
-                  </>
-    } else postHeader = null;
+    const postHeader = <>
+                        <img className="post-profile-pic" src={user.photoUrl} />
+                        <div>{user.username}</div>
+                      </>
 
     return (
       <li>
         <article className="post-container">
           <header className="post-header">
-            <img className="post-profile-pic" src={"https://instagram.fist4-1.fna.fbcdn.net/vp/73635c4dfa64bcdde42f5c2ec53639b4/5CDDD9F1/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fist4-1.fna.fbcdn.net"} />
-            <div>{postHeader}</div>
+            {postHeader}
           </header>
 
           <div className="post-photo">

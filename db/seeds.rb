@@ -11,7 +11,7 @@ Post.destroy_all
 
 User.create({ username: "demo", email: "demo@demo.com", password: "password", name: "Demo User"})
 
-user1 = User.create({ username: "michael", email: "michael@email.com", password: "password"})
-user2 = User.create({ username: "richard", email: "richard@email.com", password: "password"})
-user3 = User.create({ username: "uriah", email: "uriah@email.com", password: "password"})
-user4 = User.create({ username: "grace", email: "grace@email.com", password: "password"})
+user1 = User.create({ username: "michael", name: "", email: "michael@email.com", password: "password" })
+user2 = User.create({ username: "richard", name: "", email: "richard@email.com", password: "password" })
+user3 = User.create({ username: "uriah", name: "", email: "uriah@email.com", password: "password" })
+user4 = User.create({ username: "grace", name: "", email: "grace@email.com", password: "password" })

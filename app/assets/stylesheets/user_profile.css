@@ -47,18 +47,33 @@
 
 .username-cog {
   display: flex;
+  align-items: center;
   margin-bottom: 20px;
 }
 
+.logout-button {
+  background-color: transparent;
+  color: #262626;
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 5px 10px;
+}
+
 .username-cog h1 {
-  font-weight: 300;
+  font-weight: 350;
   font-size: 28px;
   line-height: 32px;
+  margin-right: 20px;
 }
 
 .user-post-follow-list {
   display: flex;
   list-style: none;
+  margin-bottom: 20px;
 }
 
 .user-post-follow-list li {
@@ -66,20 +81,31 @@
   font-size: 16px;
 }
 
+.profile-name {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
 .user-posts {
   width: 935px;
   display: flex;
-  flex-wrap: wrap;
   list-style: none;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 14px;
 }
 
 .user-post {
-  height: 302px;
-  width: 302px;
-  margin-bottom: 14px;
-  display: flex;
+  max-height: 302px;
+  max-width: 302px;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
   background-color: white;
+}
+
+.user-post img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
