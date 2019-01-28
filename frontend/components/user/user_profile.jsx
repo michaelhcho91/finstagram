@@ -57,7 +57,7 @@ class UserProfile extends React.Component {
 
                   <div>
                     <button onClick={this.props.logout}>Logout</button>
-                    <button>cog</button>
+                    <button disabled>cog</button>
                   </div>
                 </div>
 

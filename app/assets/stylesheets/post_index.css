@@ -8,6 +8,7 @@
 
 img {
   max-width: 100%;
+  /* min-height: 100%; */
 }
 
 .posts-list-left {
@@ -48,8 +49,7 @@ img {
 }
 
 .post-photo {
-  background-color: navy;
-  height: 400px;
+  min-height: 100%;
 }
 
 .below-photo {

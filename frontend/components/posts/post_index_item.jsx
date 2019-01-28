@@ -20,16 +20,14 @@ class PostIndexItem extends React.Component {
     this.props.createComment(this.state);
   }
 
-
-  
   render() {
-    const { user, post, deletePost } = this.props;
+    const { user, post } = this.props;
   
     let postHeader;
     if (user) {
       postHeader = <>
                     <img src={user.photoUrl} />
-                    Username: {user.username}
+                    {user.username}
                   </>
     } else postHeader = null;
 
@@ -38,7 +36,7 @@ class PostIndexItem extends React.Component {
         <article className="post-container">
           <header className="post-header">
             <img className="post-profile-pic" src={"https://instagram.fist4-1.fna.fbcdn.net/vp/73635c4dfa64bcdde42f5c2ec53639b4/5CDDD9F1/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?_nc_ht=instagram.fist4-1.fna.fbcdn.net"} />
-            <div>user username</div>
+            <div>{postHeader}</div>
           </header>
 
           <div className="post-photo">
@@ -59,7 +57,7 @@ class PostIndexItem extends React.Component {
             </div>
 
             <div>
-              Caption: {post.caption}
+              {post.caption}
               <ul className="post-comments-list">
                 <li>comments</li>
                 <li>comments</li>
@@ -74,7 +72,7 @@ class PostIndexItem extends React.Component {
               <div>
                 <form onSubmit={this.handleSubmit} className="post-comment-form">
                   <textarea id={`comment-${post.id}`} placeholder="Add a comment..."></textarea>
-                  <input type="submit" />
+                  <input type="submit" disabled/>
                 </form>
               </div>
             </section>

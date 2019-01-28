@@ -16,11 +16,11 @@ class Api::PostsController < ApplicationController
   end
   
   def edit
-    @post = Post.find_by(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find_by(params[:id])
+    @post = Post.find(params[:id])
     
     if @post.update(post_params)
       render :index
@@ -30,7 +30,7 @@ class Api::PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find_by(params[:id])
+    post = Post.find(params[:id])
     post.destroy
     render :index
   end

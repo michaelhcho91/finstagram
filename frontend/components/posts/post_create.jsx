@@ -10,6 +10,7 @@ class PostCreate extends React.Component {
 
     this.state = {
       caption: "",
+      poster_id: this.props.currentUser.id,
       photoFile: null,
       photoUrl: null
     };
@@ -79,6 +80,12 @@ class PostCreate extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.entities.users[state.session.id]
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     createPost: (post) => dispatch(createPost(post)),
@@ -88,4 +95,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(PostCreate)
+export default connect(mapStateToProps, mapDispatchToProps)(PostCreate)
