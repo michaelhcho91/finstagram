@@ -8,7 +8,7 @@ class UserProfileItem extends React.Component {
   }
 
   handleClick() {
-    this.props.openModal("postView");
+
   }
 
   render() {
