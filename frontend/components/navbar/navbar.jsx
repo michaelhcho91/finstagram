@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 import ModalContainer from "../modal/modal_container";
 
 class Navbar extends React.Component {  
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick() {
+    this.props.openModal("create");
+  }
+  
   render() {
     return (
       <nav className="nav-container">
@@ -21,7 +31,7 @@ class Navbar extends React.Component {
             </li>
             
             <li className="nav-right-items">
-              <img className="icon-upload" onClick={this.props.openModal} src={window.upload_icon}/>
+              <img className="icon-upload" onClick={this.handleClick} src={window.upload_icon}/>
               <Link to={"/"} className="icon-heart"><img src={window.heart_icon}/></Link>
               <Link to={"/profile"} className="icon-profile"><img src={window.profile_icon}/></Link>
             </li>

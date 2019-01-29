@@ -116,3 +116,7 @@
   height: 100%;
   width: 100%;
 }
+
+.user-post:hover {
+  cursor: pointer;
+}

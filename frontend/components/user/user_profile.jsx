@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Footer from "../splash/footer";
 import NavbarContainer from "../navbar/navbar_container";
 import NavbarShort from "../navbar/navbar_short";
+import ModalContainer from "../modal/modal_container";
+import UserProfileItem from "./user_profile_item";
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -63,11 +64,13 @@ class UserProfile extends React.Component {
     if (this.props.posts) {
       myPosts = this.props.posts.filter(post => post.posterId === this.props.currentUser.id);
       postsList = myPosts.map( (post, idx) => {
-        return <li className="user-post" key={idx}><img src={post.photoUrl} /></li>
-      })
+        return <UserProfileItem post={post} key={idx} openModal={this.props.openModal}/>
+      });
     } else postsList = null;
 
     const postCount = myPosts.length;
+    let postOrPosts = "posts";
+    if (postCount === 1) postOrPosts = "post";
     
     let navbar;
     if (this.state.currentScrollHeight <= 90) {
@@ -79,6 +82,7 @@ class UserProfile extends React.Component {
     return (
       <>
         {navbar}
+        <ModalContainer />
       
         <main className="user-profile-container">
           <div className="user-profile">
@@ -103,7 +107,7 @@ class UserProfile extends React.Component {
 
                 <div>
                   <ul className="user-post-follow-list">
-                    <li>{postCount} posts</li>
+                    <li>{postCount} {postOrPosts}</li>
                     <li>0 followers</li>
                     <li>0 following</li>
                   </ul>
