@@ -86,5 +86,5 @@ export const timeSince = (date) => {
     intervalType += "s";
   }
 
-  return interval + intervalType;
+  return interval + intervalType + " ago";
 };
