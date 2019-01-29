@@ -78,12 +78,13 @@ img {
 }
 
 .delete-icon {
-  width: 28px;
-  height: 28px;
+  width: 37px;
+  height: 37px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  margin-left: 485px;
+  margin-left: 480px;
+  z-index: 1;
 }
 
 .post-comment-icon:hover {
