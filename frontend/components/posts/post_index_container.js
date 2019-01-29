@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
     createComment: (comment) => dispatch(createComment(comment)),
     deletePost: (postId) => dispatch(deletePost(postId)),
     deleteComment: (commentId) => dispatch(deleteComment(commentId)),
-    openEditting: (editting) => dispatch(openEditting(true)),
+    openEditting: (postId) => dispatch(openEditting(postId)),
     closeEditting: () => dispatch(closeEditting())
   };
 };

@@ -26,14 +26,14 @@ class PostIndexItem extends React.Component {
   }
 
   render() {
-    const { user, post } = this.props;
+    const { user, post, currentUser } = this.props;
     const createdAt = timeSince(post.created_at);
 
     let postCaption;
-    if (this.props.captionEditting) {
+    if (this.props.captionEditting === post.id) {
       postCaption = <PostCaptionEdit post={post} closeEditting={this.props.closeEditting} />
     } else {
-      postCaption = <PostCaption post={post} openEditting={this.props.openEditting}/>
+      postCaption = <PostCaption currentUser={currentUser} post={post} openEditting={this.props.openEditting}/>
     }
     
     let postHeader;
@@ -44,6 +44,11 @@ class PostIndexItem extends React.Component {
                   </>
     } else postHeader = null;
 
+    let deleteButton;
+    if (post.posterId === currentUser.id) {
+      deleteButton = <button className="delete-icon" onClick={this.handleDelete}><img src={window.delete_icon} /></button>
+    } else deleteButton = null;
+    
     return (
       <li>
         <article className="post-container">
@@ -65,7 +70,7 @@ class PostIndexItem extends React.Component {
                   <label className="post-comment-icon" htmlFor={`comment-${post.id}`} ><img src={window.comment_icon} /></label>
                 </span>
                 <span>
-                  <button className="delete-icon" onClick={this.handleDelete}><img src={window.delete_icon} /></button>
+                  {deleteButton}
                 </span>
               </section>
               <section className="post-likes">23,894,575 likes</section>

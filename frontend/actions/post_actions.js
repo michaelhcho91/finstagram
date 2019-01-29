@@ -42,10 +42,10 @@ export const clearErrors = () => {
   };
 };
 
-export const openEditting = (editting) => {
+export const openEditting = (postId) => {
   return {
     type: OPEN_EDITTING,
-    editting
+    postId
   };
 };
 
