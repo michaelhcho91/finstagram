@@ -42,16 +42,6 @@ img {
   margin-left: 12px;
 }
 
-.delete-icon {
-  width: 28px;
-  height: 28px;
-  background-color: transparent;
-  border: none;
-  margin-left: 470px;
-  margin-top: 5px;
-  cursor: pointer;
-}
-
 .submit-comment-icon {
   width: 40px;
   margin-top: -5px;
@@ -83,15 +73,24 @@ img {
   align-items: center;
 }
 
-.post-icon-container span {
+.heart-icon {
   margin-right: 12px;
+}
+
+.delete-icon {
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 485px;
 }
 
 .post-comment-icon:hover {
   cursor: pointer;
 }
 
-.post-like {
+.post-likes {
   height: 18px;
   padding-bottom: 5px;
 }

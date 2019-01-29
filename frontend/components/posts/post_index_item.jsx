@@ -41,7 +41,6 @@ class PostIndexItem extends React.Component {
       postHeader = <>
                     <img className="post-profile-pic" src={user.photoUrl} />
                     <div>{user.username}</div>
-                    <button className="delete-icon" onClick={this.handleDelete}><img src={window.delete_icon}/></button>
                   </>
     } else postHeader = null;
 
@@ -60,13 +59,16 @@ class PostIndexItem extends React.Component {
             <div>
               <section className="post-icon-container">
                 <span>
-                  <Link to={"/feed"} ><img src={window.heart_icon} /></Link>
+                  <Link className="heart-icon" to={"/feed"} ><img src={window.heart_icon} /></Link>
                 </span>
                 <span>
                   <label className="post-comment-icon" htmlFor={`comment-${post.id}`} ><img src={window.comment_icon} /></label>
                 </span>
+                <span>
+                  <button className="delete-icon" onClick={this.handleDelete}><img src={window.delete_icon} /></button>
+                </span>
               </section>
-              <section className="post-like">23,894,575 likes</section>
+              <section className="post-likes">23,894,575 likes</section>
             </div>
 
             <div>
