@@ -5,6 +5,8 @@ export const RECEIVE_POST = "RECEIVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const OPEN_EDITTING = "OPEN_EDITTING";
+export const CLOSE_EDITTING = "CLOSE_EDITTING";
 
 const receivePosts = (posts) => {
   return {
@@ -40,6 +42,19 @@ export const clearErrors = () => {
   };
 };
 
+export const openEditting = (editting) => {
+  return {
+    type: OPEN_EDITTING,
+    editting
+  };
+};
+
+export const closeEditting = () => {
+  return {
+    type: CLOSE_EDITTING
+  };
+};
+
 export const fetchPosts = () => (dispatch) => {
   return PostApiUtil.fetchPosts().
     then((posts => {
@@ -69,5 +84,7 @@ export const updatePost = (post) => (dispatch) => {
 
 export const deletePost = (postId) => (dispatch) => {
   return PostApiUtil.deletePost(postId).
-    then(() => dispatch(removePost(postId)));
+    then(() => {
+      return dispatch(removePost(postId));
+    });
 };

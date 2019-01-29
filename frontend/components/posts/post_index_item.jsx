@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { timeSince } from "../../util/date_util";
+import PostCaption from "./post_caption";
+import PostCaptionEdit from "./post_caption_edit";
 
 class PostIndexItem extends React.Component {
   constructor(props) {
@@ -7,8 +10,7 @@ class PostIndexItem extends React.Component {
 
     this.state = {
       body: "",
-      commenter_id: this.props.currentUser.id,
-      post_id: this.props.post.id
+      commenter_id: this.props.currentUser.id
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,18 +18,24 @@ class PostIndexItem extends React.Component {
   }
 
   handleDelete() {
-    this.props.deletePost(this.state.post_id);
+    this.props.deletePost(this.props.post.id);
   }
   
   handleSubmit(e) {
     e.preventDefault();
-
-
   }
 
   render() {
     const { user, post } = this.props;
+    const createdAt = timeSince(post.created_at);
 
+    let postCaption;
+    if (this.props.captionEditting) {
+      postCaption = <PostCaptionEdit post={post} closeEditting={this.props.closeEditting} />
+    } else {
+      postCaption = <PostCaption post={post} openEditting={this.props.openEditting}/>
+    }
+    
     let postHeader;
     if (user) {
       postHeader = <>
@@ -58,20 +66,18 @@ class PostIndexItem extends React.Component {
                   <label className="post-comment-icon" htmlFor={`comment-${post.id}`} ><img src={window.comment_icon} /></label>
                 </span>
               </section>
-              <section className="post-like">like count</section>
+              <section className="post-like">23,894,575 likes</section>
             </div>
 
             <div>
-              {post.caption}
+              {postCaption}
               <ul className="post-comments-list">
-                <li>comments</li>
-                <li>comments</li>
-                <li>comments</li>
-                <li>comments</li>
+                <li>cool post!</li>
+                <li>nice</li>
               </ul>
             </div>
 
-            <div className="post-time">post created at</div>
+            <div className="post-time">{createdAt}</div>
 
             <section className="post-comment-form-container">
               <div>

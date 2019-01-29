@@ -96,7 +96,6 @@
 
 .user-posts {
   width: 935px;
-  display: flex;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -104,8 +103,8 @@
 }
 
 .user-post {
-  max-height: 302px;
-  max-width: 302px;
+  height: 302px;
+  width: 302px;
   overflow: hidden;
   justify-content: center;
   align-items: center;
