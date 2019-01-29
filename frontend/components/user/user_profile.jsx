@@ -19,6 +19,7 @@ class UserProfile extends React.Component {
   }
   
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.fetchPosts();
     this.setState({ currentScrollHeight: window.scrollY });
 

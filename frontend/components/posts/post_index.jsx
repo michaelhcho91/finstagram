@@ -12,6 +12,7 @@ class PostIndex extends React.Component {
   }
   
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.fetchPosts();
     this.props.fetchUsers();
     this.setState({ currentScrollHeight: window.scrollY });
@@ -39,7 +40,6 @@ class PostIndex extends React.Component {
     } = this.props;
 
     const postsList = posts.map( (post, idx) => {
-
       return <PostIndexItem key={idx}
                             post={post}
                             user={users[post.posterId]}

@@ -44,6 +44,10 @@
   margin-left: 1px;
 }
 
+.icon-upload-short:hover {
+  cursor: pointer;
+}
+
 .nav-search-short {
   align-content: center;  
 }

@@ -21,7 +21,7 @@ class NavbarShort extends React.Component {
             </li>
 
             <li className="nav-right-items-short">
-              <Link to={`/`} className="icon-upload-short"><img onClick={this.props.openModal} src={window.upload_icon} /></Link>
+              <img className="icon-upload-short" onClick={this.props.openModal} src={window.upload_icon} />
               <Link to={`/`} className="icon-heart-short"><img src={window.heart_icon} /></Link>
               <Link to={`/profile`} className="icon-profile-short"><img src={window.profile_icon} /></Link>
             </li>

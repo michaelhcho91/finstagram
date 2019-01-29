@@ -67,6 +67,10 @@
   margin-left: 1px;
 }
 
+.icon-upload:hover {
+  cursor: pointer;
+}
+
 .nav-search {
   align-content: center;  
 }

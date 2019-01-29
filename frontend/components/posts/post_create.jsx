@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { createPost } from "../../actions/post_actions";
 import { closeModal } from "../../actions/modal_actions";
 import { clearErrors, fetchPosts } from "../../actions/post_actions";
@@ -39,7 +40,8 @@ class PostCreate extends React.Component {
     formData.append("post[caption]", caption);
     if (photoFile) formData.append("post[photo]", photoFile);
 
-    createPost(formData).then(closeModal());
+    createPost(formData).then(closeModal()).
+      then(this.props.history.push("/"));
   }
 
   handleFile(e) {
@@ -95,4 +97,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostCreate)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostCreate));
