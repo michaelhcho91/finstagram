@@ -58,9 +58,11 @@ class UserProfile extends React.Component {
   
   render() {
     let postsList;
+    let myPosts;
 
     if (this.props.posts) {
-      postsList = this.props.posts.map( (post, idx) => {
+      myPosts = this.props.posts.filter(post => post.posterId === this.props.currentUser.id);
+      postsList = myPosts.map( (post, idx) => {
         return <li className="user-post" key={idx}><img src={post.photoUrl} /></li>
       })
     } else postsList = null;
