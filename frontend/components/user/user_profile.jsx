@@ -59,13 +59,14 @@ class UserProfile extends React.Component {
   render() {
     let postsList;
     let myPosts;
-
     if (this.props.posts) {
       myPosts = this.props.posts.filter(post => post.posterId === this.props.currentUser.id);
       postsList = myPosts.map( (post, idx) => {
         return <li className="user-post" key={idx}><img src={post.photoUrl} /></li>
       })
     } else postsList = null;
+
+    const postCount = myPosts.length;
     
     let navbar;
     if (this.state.currentScrollHeight <= 90) {
@@ -101,7 +102,7 @@ class UserProfile extends React.Component {
 
                 <div>
                   <ul className="user-post-follow-list">
-                    <li>0 posts</li>
+                    <li>{postCount} posts</li>
                     <li>0 followers</li>
                     <li>0 following</li>
                   </ul>
