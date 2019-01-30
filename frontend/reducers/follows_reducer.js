@@ -6,11 +6,20 @@ const followsReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_FOLLOW:
-      return merge({}, oldState, { [action.follow.follower_id]: action.follow });
+      return merge(
+        {},
+        oldState,
+        { [action.follow.follower_id]: action.follow }
+      );
+
     case REMOVE_FOLLOW:
-      let newState = merge({}, oldState);
+      let newState = merge(
+        {},
+        oldState
+      );
       delete newState[action.followId];
       return newState;
+      
     default:
       return oldState;
   }

@@ -7,13 +7,14 @@ class UserIndex extends React.Component {
   }
 
   render() {
-    const users = this.props.users.map( (user, idx) => {
+    const { users } = this.props;
+    const usersList = users.map( (user, idx) => {
       return <UserIndexItem key={idx} user={user} />
     });
 
     return (
       <ul>
-        {users}
+        {usersList}
       </ul>
     )
   }

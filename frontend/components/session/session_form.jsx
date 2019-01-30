@@ -42,7 +42,10 @@ class SessionForm extends React.Component {
   }
   
   render() {
-    const { currentUser, formType, errors } = this.props;
+    const {
+      formType,
+      errors
+    } = this.props;
 
     let errorsList;
     if (errors.length !== 0) {
@@ -71,7 +74,12 @@ class SessionForm extends React.Component {
               </div>
             </>
     } else {
-      const { email, name, username, password } = this.state;
+      const {
+        email,
+        name,
+        username,
+        password
+      } = this.state;
 
       form = <>
               <form className="session-form" onSubmit={this.handleSubmit}>

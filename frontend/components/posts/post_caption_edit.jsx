@@ -22,17 +22,25 @@ class PostCaptionEdit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const {
+      updatePost,
+      post,
+      closeEditting,
+      closeModal
+    } = this.props;
 
-    this.props.updatePost(merge({}, this.props.post, this.state)).
-      then(this.props.closeEditting()).
-      then(this.props.closeModal());
+    updatePost(merge({}, post, this.state)).
+      then(closeEditting()).
+        then(closeModal());
   }
   
   render() {
+    const { caption } = this.state;
+    
     return (
       <>
         <form className="caption-edit-form" onSubmit={this.handleSubmit}>
-          <input className="caption-edit-input" onChange={this.update("caption")} value={this.state.caption} />
+          <input className="caption-edit-input" onChange={this.update("caption")} value={caption} />
           <button className="caption-edit-submit"><img src={window.submit_icon}/></button>
         </form>
       </>

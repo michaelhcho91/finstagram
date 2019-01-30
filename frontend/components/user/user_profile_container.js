@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import UserProfile from "./user_profile";
-import { fetchPosts, openEditting, closeEditting, deletePost } from "../../actions/post_actions";
+import { fetchPosts } from "../../actions/post_actions";
 import { logout } from "../../actions/session_actions";
 import { updateUser } from "../../actions/user_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";

@@ -8,11 +8,19 @@ class PostCaption extends React.Component {
   }
   
   handleClick() {
-    this.props.openEditting(this.props.post.id);
+    const {
+      openEditting,
+      post
+    } = this.props;
+    
+    openEditting(post.id);
   }
   
   render() {
-    const { currentUser, post } = this.props;
+    const {
+      currentUser,
+      post
+    } = this.props;
     
     let editButton;
     if (post.posterId === currentUser.id) {

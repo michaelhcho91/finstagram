@@ -1,9 +1,12 @@
 json.extract! @post, :id, :caption, :created_at
 json.posterId @post.poster_id
-if @post.photo.attached?
-  json.photoUrl url_for(@post.photo)
+json.photoUrl url_for(@post.photo)
+
+if @post.likers
+  json.likerIds @post.likers.pluck(:id)
+else
+  json.likerIds []
 end
-json.likerIds @post.likers.pluck(:id)
 
 json.comments do
   @post.comments.each do |comment|

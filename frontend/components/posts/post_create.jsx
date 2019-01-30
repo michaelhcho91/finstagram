@@ -32,46 +32,55 @@ class PostCreate extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    // debugger
-    const { caption, photoFile } = this.state;
-    const { createPost, closeModal } = this.props;
+    
+    const {
+      caption,
+      photoFile
+    } = this.state;
+
+    const {
+      createPost,
+      closeModal,
+      history
+    } = this.props;
     
     const formData = new FormData();
     formData.append("post[caption]", caption);
     if (photoFile) formData.append("post[photo]", photoFile);
 
-    createPost(formData).then(closeModal()).
-      then(this.props.history.push("/"));
+    createPost(formData).
+      then(closeModal()).
+        then(history.push("/"));
   }
 
   handleFile(e) {
     const file = e.currentTarget.files[0];
     const fileReader = new FileReader();
-    // debugger
+
     fileReader.onloadend = () => {
-      // debugger
+
       this.setState({
         photoFile: file,
         photoUrl: fileReader.result
       });
     };
-    // debugger
+
     if (file) fileReader.readAsDataURL(file);
   }
   
   render() {
-    const { photoUrl, photoFile } = this.state;
-    // debugger
-    // let preview;
-    // const preview = photoUrl ? (<img className="post-preview" src={photoUrl} />) : (<div className="post-preview" />);
-    // if (photoUrl) {
-    //   debugger
-    //   preview = <img className="post-preview" src={photoUrl} />
-    // } else {
-    //   debugger
-    //   preview = <div className="post-preview"/>
-    // }
-    // debugger
+    const {
+      photoUrl,
+      photoFile
+    } = this.state;
+
+    let preview;
+    if (photoUrl) {
+      preview = <img className="post-preview" src={photoUrl} />
+    } else {
+      preview = <div className="post-preview"/>
+    };
+    
     return (
       <div className="post-create-container">
         <form className="post-create-form" onSubmit={this.handleSubmit} className="post-create-form">
@@ -82,7 +91,7 @@ class PostCreate extends React.Component {
           <button className="post-create-submit" disabled={!photoFile} type="submit">Share</button>
         </form>
 
-        {photoUrl ? (<img className="post-preview" src={photoUrl} />) : (<div className="post-preview" />)}
+        {preview}
       </div>
     )
   }

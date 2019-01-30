@@ -42,7 +42,11 @@ class Splash extends React.Component {
   }
   
   render() {
-    const { currentUser, formType, errors } = this.props;
+    const {
+      currentUser,
+      formType,
+      errors
+    } = this.props;
     
     let errorsList;
     if (errors.length !== 0) {

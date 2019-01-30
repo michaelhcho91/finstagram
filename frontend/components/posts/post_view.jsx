@@ -3,7 +3,6 @@ import { timeSince } from "../../util/date_util";
 import PostCaption from "../posts/post_caption";
 import PostCaptionEdit from "../posts/post_caption_edit";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { openEditting, closeEditting, deletePost } from "../../actions/post_actions";
 
 class PostView extends React.Component {
@@ -15,8 +14,13 @@ class PostView extends React.Component {
   }
 
   handleDelete() {
-    this.props.deletePost(this.props.post.id).
-      then(this.props.closeModal());
+    const {
+      deletePost,
+      post,
+      closeModal
+    } = this.props;
+    
+    deletePost(post.id).then(closeModal());
   }
 
   handleSubmit(e) {

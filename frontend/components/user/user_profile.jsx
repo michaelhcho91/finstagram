@@ -19,13 +19,16 @@ class UserProfile extends React.Component {
   }
   
   componentDidMount() {
+    const { fetchPosts } = this.props;
+    const { currentScrollHeight } = this.state;
+    
     window.scrollTo(0, 0);
-    this.props.fetchPosts();
+    fetchPosts();
     this.setState({ currentScrollHeight: window.scrollY });
 
     window.onscroll = () => {
       const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
-      if (this.state.currentScrollHeight !== newScrollHeight) {
+      if (currentScrollHeight !== newScrollHeight) {
         this.setState({ currentScrollHeight: newScrollHeight });
       }
     };
@@ -58,14 +61,21 @@ class UserProfile extends React.Component {
   }
   
   render() {
+    const {
+      posts,
+      currentUser,
+      openModal,
+      logout
+    } = this.props;
+    
     let postsList;
     let myPosts;
-    if (this.props.posts) {
-      myPosts = this.props.posts.filter(post => post.posterId === this.props.currentUser.id);
+    if (posts) {
+      myPosts = posts.filter(post => post.posterId === currentUser.id);
       postsList = myPosts.map( (post, idx) => {
         return <UserProfileItem post={post} 
                                 key={idx}
-                                openModal={this.props.openModal} />
+                                openModal={openModal} />
       });
     } else postsList = null;
 
@@ -91,17 +101,17 @@ class UserProfile extends React.Component {
                 <form id="profile-form" onSubmit={this.handleSubmit}>
                   <input className="profile-file-input" id="profile-file-input" type="file" onChange={this.handleFile}/>
                   <label htmlFor="profile-file-input">
-                    <img src={this.props.currentUser.photoUrl}/>
+                    <img src={currentUser.photoUrl}/>
                   </label>
                 </form>
               </div>
 
               <section className="profile-info">
                 <div className="username-cog">
-                  <h1>{this.props.currentUser.username}</h1>
+                  <h1>{currentUser.username}</h1>
 
                   <div>
-                    <button className="logout-button" onClick={this.props.logout}>Logout</button>
+                    <button className="logout-button" onClick={logout}>Logout</button>
                   </div>
                 </div>
 
@@ -112,8 +122,8 @@ class UserProfile extends React.Component {
                     <li>0 following</li>
                   </ul>
                   <div>
-                    <h1 className="profile-name">{this.props.currentUser.name}</h1>
-                    <span>{this.props.currentUser.bio}</span>
+                    <h1 className="profile-name">{currentUser.name}</h1>
+                    <span>{currentUser.bio}</span>
                   </div>
                 </div>
               </section>

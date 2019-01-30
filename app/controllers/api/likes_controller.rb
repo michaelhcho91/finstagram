@@ -7,8 +7,8 @@ class Api::LikesController < ApplicationController
   end
 
   def destroy
-    like = Like.where(liker_id: current_user.id).where(post_id: params[:id])[0]
-    like.destroy
+    @like = Like.where(liker_id: current_user.id).where(post_id: params[:id])[0]
+    @like.destroy
     render :show
   end
 

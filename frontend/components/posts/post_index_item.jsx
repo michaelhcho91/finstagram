@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { timeSince } from "../../util/date_util";
 import PostCaption from "./post_caption";
 import PostCaptionEdit from "./post_caption_edit";
@@ -18,7 +17,12 @@ class PostIndexItem extends React.Component {
   }
 
   handleDelete() {
-    this.props.deletePost(this.props.post.id);
+    const {
+      deletePost,
+      post
+    } = this.props;
+
+    deletePost(post.id);
   }
   
   handleSubmit(e) {

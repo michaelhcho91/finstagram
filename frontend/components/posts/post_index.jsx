@@ -11,21 +11,27 @@ class PostIndex extends React.Component {
   }
   
   componentDidMount() {
+    const {
+      fetchUsers,
+      fetchPosts
+    } = this.props;
+    const { currentScrollHeight } = this.state;
+    
     window.scrollTo(0, 0);
-    this.props.fetchUsers();
-    this.props.fetchPosts();
+    fetchUsers();
+    fetchPosts();
     this.setState({ currentScrollHeight: window.scrollY });
     
     window.onscroll = () => {
       const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
-      if (this.state.currentScrollHeight !== newScrollHeight) {
+      if (currentScrollHeight !== newScrollHeight) {
         this.setState({ currentScrollHeight: newScrollHeight });
       }
     };
   }
   
   render() {
-
+    const { currentScrollHeight } = this.state;
     const {
       posts,
       users,
@@ -53,7 +59,7 @@ class PostIndex extends React.Component {
     });
 
     let navbar;
-    if (this.state.currentScrollHeight <= 90) {
+    if (currentScrollHeight <= 90) {
       navbar = <NavbarContainer />
     } else {
       navbar = <NavbarShort />

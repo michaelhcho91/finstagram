@@ -6,8 +6,10 @@ const captionEdittingReducer = (oldState = null, action) => {
   switch (action.type) {
     case OPEN_EDITTING:
       return action.postId;
+      
     case CLOSE_EDITTING:
       return null;
+      
     default:
       return oldState;
   }
