@@ -21,7 +21,7 @@
   max-width: 935px;
   justify-content: center;
   height: 100%;
-  margin-bottom: 200px;
+  margin-bottom: 170px;
 }
  
 .session-right {
@@ -132,49 +132,4 @@
 
 .session-button.demo {
   margin-bottom: 20px;
-}
-
-.footer-container {
-  text-transform: uppercase;
-  width: 100%;
-  text-align: center;
-  padding-bottom: 50px;
-}
-
-.session-footer ul {
-  list-style: none;
-  max-width: 935px;
-}
-
-.footer-nav {
-  display: flex;
-  justify-content: center;
-  color: #183477;
-  font-size: 13px;
-  font-weight: 550;
-  max-width: 100%;
-}
-
-.footer-list {
-  display: flex;
-  flex-direction: row;
-}
-
-.footer-list li {
-  margin-right: 20px;
-}
-
-.footer-copyright {
-  color: #999999;
-  font-size: 12px;
-  margin-left: 100px;
-}
-
-.footer-list a {
-  text-decoration: none;
-  color: #183477;
-}
-
-.footer-list a:visited{
-  text-decoration: none;
 }

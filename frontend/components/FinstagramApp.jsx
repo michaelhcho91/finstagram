@@ -6,22 +6,23 @@ import SignupFormContainer from "./session/signup_form_container";
 import PostIndexContainer from "./posts/post_index_container";
 import UserProfileContainer from "./user/user_profile_container";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
+import Footer from "./splash/footer";
 
 const App = () => {
   return (
-    <div className="master-container" >
-      <header>
+    <>
+      <div className="master-container" >
+        <Switch>
+          <AuthRoute path="/login" component={LoginFormContainer} />
+          <AuthRoute path="/signup" component={SignupFormContainer} />
+          <ProtectedRoute path="/feed" component={PostIndexContainer} />
+          <ProtectedRoute path="/profile" component={UserProfileContainer} />
+          <Route path="/" component={SplashContainer} />
+        </Switch>
 
-      </header>
-
-      <Switch>
-        <AuthRoute path="/login" component={LoginFormContainer} />
-        <AuthRoute path="/signup" component={SignupFormContainer} />
-        <ProtectedRoute path="/feed" component={PostIndexContainer} />
-        <ProtectedRoute path="/profile" component={UserProfileContainer} />
-        <Route path="/" component={SplashContainer} />
-      </Switch>
-    </div>
+      </div>
+      <Footer />
+    </>
   )
 }
 

@@ -2,7 +2,6 @@ import React from "react";
 import Footer from "../splash/footer";
 import NavbarContainer from "../navbar/navbar_container";
 import NavbarShort from "../navbar/navbar_short";
-import ModalContainer from "../modal/modal_container";
 import UserProfileItem from "./user_profile_item";
 
 class UserProfile extends React.Component {
@@ -125,8 +124,6 @@ class UserProfile extends React.Component {
             </ul>
           </div>
         </main>
-
-        <Footer />
       </>
     )
   }

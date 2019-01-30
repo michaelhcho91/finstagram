@@ -87,7 +87,6 @@ class Splash extends React.Component {
     return (
       <>
         {splash}
-        <Footer />
       </>
     )
   }
