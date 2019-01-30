@@ -12,14 +12,15 @@ class PostCaption extends React.Component {
   }
   
   render() {
+    const { currentUser, post } = this.props;
+    
     let editButton;
-
-    if (this.props.post.posterId === this.props.currentUser.id) {
+    if (post.posterId === currentUser.id) {
       editButton = <button onClick={this.handleClick} className="caption-edit-icon"><img src={window.edit_icon} /></button>
     } else editButton = null;
     return (
       <>
-        {this.props.post.caption}
+        <span>{post.caption}</span>
         {editButton}
       </>
     )

@@ -40,6 +40,14 @@
   margin-left: 26px;
 }
 
+.icon-heart-short {
+  margin-left: 26px;
+}
+
+.icon-heart-short:hover {
+  cursor: pointer;
+}
+
 .icon-profile-short {
   margin-left: 1px;
 }

@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    openModal: (modal) => dispatch(openModal("create")),
+    openModal: (type, options) => dispatch(openModal(type, options)),
     closeModal: () => dispatch(closeModal())
   };
 };

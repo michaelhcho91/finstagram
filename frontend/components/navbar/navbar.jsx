@@ -10,7 +10,7 @@ class Navbar extends React.Component {
   }
   
   handleClick() {
-    this.props.openModal("create");
+    this.props.openModal("create", null);
   }
   
   render() {
@@ -32,7 +32,7 @@ class Navbar extends React.Component {
             
             <li className="nav-right-items">
               <img className="icon-upload" onClick={this.handleClick} src={window.upload_icon}/>
-              <Link to={"/"} className="icon-heart"><img src={window.heart_icon}/></Link>
+              <img className="icon-heart" src={window.heart_icon}/>
               <Link to={"/profile"} className="icon-profile"><img src={window.profile_icon}/></Link>
             </li>
           </ul>

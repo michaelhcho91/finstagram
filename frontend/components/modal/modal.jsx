@@ -1,16 +1,23 @@
 import React from "react";
 import PostCreate from "../posts/post_create";
+import PostView from "../posts/post_view";
 
 class Modal extends React.Component {
   render() {
-    const { modal, closeModal } = this.props;
+    const {
+      modal,
+      closeModal
+    } = this.props;
 
     if (!modal) return null;
 
     let component;
-    switch (modal) {
+    switch (modal.type) {
       case "create":
         component = <PostCreate />;
+        break;
+      case "postView":
+        component = <PostView post={modal.options} closeModal={closeModal} />;
         break;
       default:
         return null;

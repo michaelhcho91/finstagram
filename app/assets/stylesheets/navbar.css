@@ -67,6 +67,14 @@
   margin-left: 1px;
 }
 
+.icon-heart {
+  margin-left: 26px;
+}
+
+.icon-heart:hover {
+  cursor: pointer;
+}
+
 .icon-upload:hover {
   cursor: pointer;
 }

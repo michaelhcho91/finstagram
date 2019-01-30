@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import React from "react";
 import { updatePost } from "../../actions/post_actions";
+import { closeModal } from "../../actions/modal_actions";
 import { merge } from "lodash";
 
 class PostCaptionEdit extends React.Component {
@@ -23,7 +24,8 @@ class PostCaptionEdit extends React.Component {
     e.preventDefault();
 
     this.props.updatePost(merge({}, this.props.post, this.state)).
-      then(this.props.closeEditting());
+      then(this.props.closeEditting()).
+      then(this.props.closeModal());
   }
   
   render() {
@@ -40,7 +42,8 @@ class PostCaptionEdit extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updatePost: (post) => dispatch(updatePost(post))
+    updatePost: (post) => dispatch(updatePost(post)),
+    closeModal: () => dispatch(closeModal())
   };
 };
 

@@ -8,7 +8,10 @@
 
 img {
   max-width: 100%;
-  /* min-height: 100%; */
+}
+
+.post-photo img {
+  max-width: 100%;
 }
 
 .posts-list-left {
@@ -77,6 +80,10 @@ img {
   margin-right: 12px;
 }
 
+.heart-icon:hover {
+  cursor: pointer;
+}
+
 .delete-icon {
   width: 35px;
   height: 35px;
@@ -111,7 +118,8 @@ img {
 
 .caption-edit-input {
   resize: none;
-  width: 583px;
+  /* width: 583px; */
+  width: 100%;
   min-height: 18px;
   font-size: 14px;
   border: 0;

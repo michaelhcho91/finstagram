@@ -64,7 +64,9 @@ class UserProfile extends React.Component {
     if (this.props.posts) {
       myPosts = this.props.posts.filter(post => post.posterId === this.props.currentUser.id);
       postsList = myPosts.map( (post, idx) => {
-        return <UserProfileItem post={post} key={idx} openModal={this.props.openModal}/>
+        return <UserProfileItem post={post} 
+                                key={idx}
+                                openModal={this.props.openModal} />
       });
     } else postsList = null;
 
@@ -82,7 +84,6 @@ class UserProfile extends React.Component {
     return (
       <>
         {navbar}
-        <ModalContainer />
       
         <main className="user-profile-container">
           <div className="user-profile">

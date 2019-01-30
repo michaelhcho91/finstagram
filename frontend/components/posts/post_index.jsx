@@ -2,7 +2,6 @@ import React from "react";
 import PostIndexItem from "./post_index_item";
 import NavbarContainer from "../navbar/navbar_container";
 import NavbarShort from "../navbar/navbar_short";
-import UserIndexContainer from "../user/user_index_container";
 
 class PostIndex extends React.Component {
   constructor(props) {
@@ -13,8 +12,8 @@ class PostIndex extends React.Component {
   
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.props.fetchPosts();
     this.props.fetchUsers();
+    this.props.fetchPosts();
     this.setState({ currentScrollHeight: window.scrollY });
     
     window.onscroll = () => {
@@ -34,12 +33,13 @@ class PostIndex extends React.Component {
       createComment,
       deletePost,
       deleteComment,
-      captionEditting,
       openEditting,
-      closeEditting
+      closeEditting,
+      captionEditting
     } = this.props;
 
-    const postsList = posts.map( (post, idx) => {
+    let postsList;
+    postsList = posts.map( (post, idx) => {
       return <PostIndexItem key={idx}
                             post={post}
                             user={users[post.posterId]}
@@ -47,9 +47,9 @@ class PostIndex extends React.Component {
                             createComment={createComment}
                             deletePost={deletePost}
                             deleteComment={deleteComment}
-                            captionEditting={captionEditting}
                             openEditting={openEditting}
-                            closeEditting={closeEditting} />
+                            closeEditting={closeEditting}
+                            captionEditting={captionEditting} />
     });
 
     let navbar;

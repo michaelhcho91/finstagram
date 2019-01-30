@@ -26,14 +26,23 @@ class PostIndexItem extends React.Component {
   }
 
   render() {
-    const { user, post, currentUser } = this.props;
+    const {
+      user,
+      post,
+      currentUser,
+      captionEditting,
+      closeEditting,
+      openEditting
+    } = this.props;
+
     const createdAt = timeSince(post.created_at);
 
     let postCaption;
-    if (this.props.captionEditting === post.id) {
-      postCaption = <PostCaptionEdit post={post} closeEditting={this.props.closeEditting} />
+
+    if (captionEditting === post.id) {
+      postCaption = <PostCaptionEdit post={post} user={user} closeEditting={closeEditting} />
     } else {
-      postCaption = <PostCaption currentUser={currentUser} post={post} openEditting={this.props.openEditting}/>
+      postCaption = <PostCaption currentUser={currentUser} post={post} openEditting={openEditting}/>
     }
     
     let postHeader;
@@ -64,7 +73,7 @@ class PostIndexItem extends React.Component {
             <div>
               <section className="post-icon-container">
                 <span>
-                  <Link className="heart-icon" to={"/feed"} ><img src={window.heart_icon} /></Link>
+                  <img className="heart-icon" src={window.heart_icon} />
                 </span>
                 <span>
                   <label className="post-comment-icon" htmlFor={`comment-${post.id}`} ><img src={window.comment_icon} /></label>

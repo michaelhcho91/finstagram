@@ -1,6 +1,136 @@
 .post-view-container {
-  height: 500px;
-  width: 500px;
+  height: 700px;
+  width: 1000px;
   background-color: white;
+  display: flex;
 }
 
+.photo-side {
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 600px;
+}
+
+.photo-side img {
+  max-height: 700px;
+}
+
+.post-view-right {
+  min-width: 400px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-view-header {
+  height: 36px;
+  padding: 16px;
+  display: flex;
+  background-color: white;
+  align-items: center;
+  border-bottom: 1px solid #EFEFEF;
+}
+
+.post-view-header div {
+  margin-left: 12px;
+}
+
+.post-view-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.post-view-below-header {
+  padding: 0 16px;
+}
+
+.post-view-space {
+  height: 480px;
+  overflow: auto;
+}
+
+.submit-comment-icon {
+  width: 40px;
+  margin-top: -5px;
+  margin-right: -9px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.post-view-icon-container {
+  margin-top: 4px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.post-view-heart-icon {
+  margin-right: 12px;
+}
+
+.post-view-heart-icon:hover {
+  cursor: pointer;
+}
+
+.view-delete-icon {
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 270px;
+}
+
+.post-view-comment-icon:hover {
+  cursor: pointer;
+}
+
+.post-view-comments-list {
+  list-style: none;
+}
+
+.post-view-comments-list li {
+  padding-top: 5px;
+}
+
+.post-view-time {
+  height: 19px;
+  margin-bottom: 4px;
+  padding-top: 5px;
+  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+  padding: 0 16px;
+}
+
+.post-view-comment-form-container {
+  border-top: 1px solid #EFEFEF;
+  margin-top: 4px;
+  min-height: 56px;
+  bottom: 0;
+}
+
+.post-view-comment-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.post-view-comment-form textarea {
+  resize: none;
+  min-height: 18px;
+  color: #262626;
+  font-size: 14px;
+  line-height: 18px;
+  width: 330px;
+  border: 0;
+  max-height: 80px;
+  outline: 0;
+  padding: 0;
+}

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import UserProfile from "./user_profile";
-import { fetchPosts } from "../../actions/post_actions";
+import { fetchPosts, openEditting, closeEditting, deletePost } from "../../actions/post_actions";
 import { logout } from "../../actions/session_actions";
 import { updateUser } from "../../actions/user_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
@@ -8,7 +8,8 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 const mapStateToProps = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
-    posts: Object.values(state.entities.posts)
+    posts: Object.values(state.entities.posts).reverse(),
+    captionEditting: state.ui.captionEditting
   };
 };
 
@@ -17,8 +18,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchPosts: () => dispatch(fetchPosts()),
     logout: () => dispatch(logout()),
     updateUser: (user) => dispatch(updateUser(user)),
-    openModal: (modal) => dispatch(openModal(modal)),
+    openModal: (type, options) => dispatch(openModal(type, options)),
     closeModal: () => dispatch(closeModal())
+    
   };
 };
 

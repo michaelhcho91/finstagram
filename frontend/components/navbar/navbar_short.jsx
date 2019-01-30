@@ -5,6 +5,16 @@ import { connect } from "react-redux";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
 class NavbarShort extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick() {
+    this.props.openModal("create", null);
+  }
+  
   render() {
     return (
       <nav className="nav-container-short">
@@ -21,8 +31,8 @@ class NavbarShort extends React.Component {
             </li>
 
             <li className="nav-right-items-short">
-              <img className="icon-upload-short" onClick={this.props.openModal} src={window.upload_icon} />
-              <Link to={`/`} className="icon-heart-short"><img src={window.heart_icon} /></Link>
+              <img className="icon-upload-short" onClick={this.handleClick} src={window.upload_icon} />
+              <img className="icon-heart-short" src={window.heart_icon} />
               <Link to={`/profile`} className="icon-profile-short"><img src={window.profile_icon} /></Link>
             </li>
           </ul>
@@ -40,7 +50,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    openModal: (modal) => dispatch(openModal("create")),
+    openModal: (options) => dispatch(openModal("create", options)),
     closeModal: () => dispatch(closeModal())
   };
 };
