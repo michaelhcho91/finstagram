@@ -19,8 +19,16 @@ class PostCaption extends React.Component {
   render() {
     const {
       currentUser,
-      post
+      post,
+      user
     } = this.props;
+
+    let captionUsername;
+    if (user) {
+      captionUsername = user.username;
+    } else {
+      captionUsername = currentUser.username;
+    }
     
     let editButton;
     if (post.posterId === currentUser.id) {
@@ -28,7 +36,7 @@ class PostCaption extends React.Component {
     } else editButton = null;
     return (
       <>
-        <span>{post.caption}</span>
+        <span>{captionUsername} {post.caption}</span>
         {editButton}
       </>
     )

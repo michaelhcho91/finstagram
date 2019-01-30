@@ -46,7 +46,7 @@ class PostIndexItem extends React.Component {
     if (captionEditting === post.id) {
       postCaption = <PostCaptionEdit post={post} user={user} closeEditting={closeEditting} />
     } else {
-      postCaption = <PostCaption currentUser={currentUser} post={post} openEditting={openEditting}/>
+      postCaption = <PostCaption user={user} currentUser={currentUser} post={post} openEditting={openEditting}/>
     }
     
     let postHeader;

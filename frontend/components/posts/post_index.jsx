@@ -46,16 +46,18 @@ class PostIndex extends React.Component {
 
     let postsList;
     postsList = posts.map( (post, idx) => {
-      return <PostIndexItem key={idx}
-                            post={post}
-                            user={users[post.posterId]}
-                            currentUser={currentUser}
-                            createComment={createComment}
-                            deletePost={deletePost}
-                            deleteComment={deleteComment}
-                            openEditting={openEditting}
-                            closeEditting={closeEditting}
-                            captionEditting={captionEditting} />
+      if (users[post.posterId]) {
+        return <PostIndexItem key={idx}
+                              post={post}
+                              user={users[post.posterId]}
+                              currentUser={currentUser}
+                              createComment={createComment}
+                              deletePost={deletePost}
+                              deleteComment={deleteComment}
+                              openEditting={openEditting}
+                              closeEditting={closeEditting}
+                              captionEditting={captionEditting} />
+      } else return null;
     });
 
     let navbar;
