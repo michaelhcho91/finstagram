@@ -84,6 +84,14 @@ img {
   cursor: pointer;
 }
 
+.liked-icon {
+  margin-right: 12px;
+}
+
+.liked-icon:hover {
+  cursor: pointer;
+}
+
 .delete-icon {
   width: 35px;
   height: 35px;

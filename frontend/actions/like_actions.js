@@ -1,7 +1,15 @@
 import * as LikeApiUtil from "../util/like_api_util";
 
+export const RECEIVE_LIKES = "RECEIVE_LIKES";
 export const RECEIVE_LIKE = "RECEIVE_LIKE";
 export const REMOVE_LIKE = "REMOVE_LIKE";
+
+const receiveLikes = (likes) => {
+  return {
+    type: RECEIVE_LIKES,
+    likes
+  };
+};
 
 const receiveLike = (like) => {
   return {
@@ -10,11 +18,18 @@ const receiveLike = (like) => {
   };
 };
 
-const removeLike = (likeId) => {
+const removeLike = (like) => {
   return {
     type: REMOVE_LIKE,
-    likeId
+    like
   };
+};
+
+export const fetchLikes = () => (dispatch) => {
+  return LikeApiUtil.fetchLikes().
+    then((likes) => {
+      return dispatch(receiveLikes(likes));
+    });
 };
 
 export const createLike = (like) => (dispatch) => {
@@ -24,9 +39,9 @@ export const createLike = (like) => (dispatch) => {
     });
 };
 
-export const deleteLike = (likeId) => (dispatch) => {
-  return LikeApiUtil.deleteLike(likeId).
+export const deleteLike = (like) => (dispatch) => {
+  return LikeApiUtil.deleteLike(like).
     then(() => {
-      return dispatch(removeLike(likeId));
+      return dispatch(removeLike(like));
     });
 };

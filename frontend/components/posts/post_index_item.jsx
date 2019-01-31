@@ -14,6 +14,8 @@ class PostIndexItem extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.likePost = this.likePost.bind(this);
+    this.unlikePost = this.unlikePost.bind(this);
   }
 
   handleDelete() {
@@ -29,6 +31,33 @@ class PostIndexItem extends React.Component {
     e.preventDefault();
   }
 
+  likePost() {
+    const {
+      createLike,
+      post,
+      currentUser
+    } = this.props;
+    
+    createLike({
+      post_id: post.id,
+      liker_id: currentUser.id
+    });
+  }
+  
+  unlikePost() {
+    const {
+      deleteLike,
+      post,
+      likes,
+      currentUser
+    } = this.props;
+
+    const myLikes = likes.filter(like => like.liker_id === currentUser.id);
+    const currentLike = myLikes.find(like => like.post_id === post.id);
+
+    deleteLike(currentLike);
+  }
+  
   render() {
     const {
       user,
@@ -61,6 +90,17 @@ class PostIndexItem extends React.Component {
     if (post.posterId === currentUser.id) {
       deleteButton = <button className="delete-icon" onClick={this.handleDelete}><img src={window.delete_icon} /></button>
     } else deleteButton = null;
+
+    const likeCount = post.likerIds.length;
+    let likeOrLikes = "likes";
+    if (likeCount === 1) likeOrLikes = "like";
+    
+    let heartIcon;
+    if (post.likerIds.includes(currentUser.id)) {
+      heartIcon = <img onClick={this.unlikePost} className="liked-icon" src={window.liked_icon} />
+    } else {
+      heartIcon = <img onClick={this.likePost} className="heart-icon" src={window.heart_icon} />
+    };
     
     return (
       <li>
@@ -77,7 +117,7 @@ class PostIndexItem extends React.Component {
             <div>
               <section className="post-icon-container">
                 <span>
-                  <img className="heart-icon" src={window.heart_icon} />
+                  {heartIcon}
                 </span>
                 <span>
                   <label className="post-comment-icon" htmlFor={`comment-${post.id}`} ><img src={window.comment_icon} /></label>
@@ -86,7 +126,7 @@ class PostIndexItem extends React.Component {
                   {deleteButton}
                 </span>
               </section>
-              <section className="post-likes">23,894,575 likes</section>
+              <section className="post-likes">{likeCount} {likeOrLikes}</section>
             </div>
 
             <div>

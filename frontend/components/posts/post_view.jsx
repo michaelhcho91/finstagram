@@ -27,6 +27,10 @@ class PostView extends React.Component {
     e.preventDefault();
   }
   
+  handleClick() {
+    // createLike
+  }
+  
   render() {
     const {
       post,

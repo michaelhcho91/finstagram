@@ -1,4 +1,8 @@
 class Api::LikesController < ApplicationController
+  def index
+    @likes = Like.all
+  end
+  
   def create
     @like = Like.new(like_params)
     @like.liker_id = current_user.id
@@ -7,7 +11,7 @@ class Api::LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.where(liker_id: current_user.id).where(post_id: params[:id])[0]
+    @like = Like.find(params[:id])
     @like.destroy
     render :show
   end

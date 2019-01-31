@@ -13,13 +13,15 @@ class PostIndex extends React.Component {
   componentDidMount() {
     const {
       fetchUsers,
-      fetchPosts
+      fetchPosts,
+      fetchLikes
     } = this.props;
     const { currentScrollHeight } = this.state;
     
     window.scrollTo(0, 0);
     fetchUsers();
     fetchPosts();
+    fetchLikes();
     this.setState({ currentScrollHeight: window.scrollY });
     
     window.onscroll = () => {
@@ -35,13 +37,14 @@ class PostIndex extends React.Component {
     const {
       posts,
       users,
+      likes,
       currentUser,
-      createComment,
       deletePost,
-      deleteComment,
       openEditting,
       closeEditting,
-      captionEditting
+      captionEditting,
+      createLike,
+      deleteLike
     } = this.props;
 
     let postsList;
@@ -50,13 +53,14 @@ class PostIndex extends React.Component {
         return <PostIndexItem key={idx}
                               post={post}
                               user={users[post.posterId]}
+                              likes={likes}
                               currentUser={currentUser}
-                              createComment={createComment}
                               deletePost={deletePost}
-                              deleteComment={deleteComment}
                               openEditting={openEditting}
                               closeEditting={closeEditting}
-                              captionEditting={captionEditting} />
+                              captionEditting={captionEditting}
+                              createLike={createLike}
+                              deleteLike={deleteLike} />
       } else return null;
     });
 
