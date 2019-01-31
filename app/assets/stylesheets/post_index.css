@@ -105,6 +105,14 @@ img {
   padding-bottom: 5px;
 }
 
+.like-this {
+  font-weight: 500;
+}
+
+.like-this:hover {
+  cursor: pointer;
+}
+
 .caption-edit-icon {
   height: 28px;
   width: 28px;
