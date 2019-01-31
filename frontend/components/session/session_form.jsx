@@ -16,6 +16,10 @@ class SessionForm extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+  
   componentWillUnmount() {
     this.props.clearErrors();
   }
@@ -35,7 +39,9 @@ class SessionForm extends React.Component {
   
   update(field) {
     return (e) => {
-      this.setState({ [field]: e.currentTarget.value });
+      this.setState({
+        [field]: e.currentTarget.value
+      });
     };
   }
 

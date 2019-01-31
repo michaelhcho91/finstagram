@@ -48,7 +48,9 @@ class PostIndexItem extends React.Component {
 
   update(field) {
     return (e) => {
-      this.setState({ [field]: e.currentTarget.value });
+      this.setState({
+        [field]: e.currentTarget.value
+      });
     };
   }
 
@@ -78,7 +80,7 @@ class PostIndexItem extends React.Component {
 
     deleteLike(currentLike);
   }
-  
+
   render() {
     const {
       user,
@@ -96,7 +98,7 @@ class PostIndexItem extends React.Component {
     if (user) {
       postHeader = <>
                     <img className="post-profile-pic" src={user.photoUrl} />
-                    <div>{user.username}</div>
+                    <span className="profile-link">{user.username}</span>
                   </>
     } else postHeader = null;
 

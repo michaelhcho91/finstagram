@@ -26,7 +26,9 @@ class PostCreate extends React.Component {
   
   update(field) {
     return(e) => {
-      this.setState({ [field]: e.currentTarget.value });
+      this.setState({
+        [field]: e.currentTarget.value
+      });
     };
   }
   

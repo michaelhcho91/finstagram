@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import Footer from "../splash/footer";
 
 class Splash extends React.Component {
   constructor(props) {
@@ -14,6 +13,10 @@ class Splash extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+  }
+  
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
   
   componentWillUnmount() {
@@ -35,7 +38,9 @@ class Splash extends React.Component {
 
   update(field) {
     return (e) => {
-      this.setState({ [field]: e.currentTarget.value });
+      this.setState({
+        [field]: e.currentTarget.value
+      });
     };
   }
 

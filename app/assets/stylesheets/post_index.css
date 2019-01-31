@@ -37,7 +37,7 @@ img {
   align-items: center;
 }
 
-.post-header div {
+.post-header span {
   margin-left: 12px;
 }
 
@@ -47,7 +47,6 @@ img {
   margin-right: -9px;
   background-color: transparent;
   border: none;
-  cursor: pointer;
 }
 
 .post-profile-pic {

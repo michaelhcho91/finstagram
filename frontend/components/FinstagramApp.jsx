@@ -19,8 +19,8 @@ const App = () => {
           <ProtectedRoute path="/profile" component={UserProfileContainer} />
           <Route path="/" component={SplashContainer} />
         </Switch>
-
       </div>
+      
       <Footer />
     </>
   )
