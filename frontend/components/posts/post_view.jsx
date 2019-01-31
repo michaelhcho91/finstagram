@@ -132,6 +132,10 @@ class PostView extends React.Component {
       return <CommentContainer key={idx} commentId={comment.id} />
     })
     
+    const {
+      body
+    } = this.state;
+    
     return(
       <>
         <article className="post-view-container">
@@ -176,7 +180,7 @@ class PostView extends React.Component {
               <div>
                 <form onSubmit={this.handleSubmit} className="post-view-comment-form" id={`comment-form-${post.id}`}>
                   <input onChange={this.update("body")} id={`view-comment-${post.posterId}`} placeholder="Add a comment..."></input>
-                  <button className="submit-comment-icon" onClick={this.handleSubmit}><img src={window.submit_icon} /></button>
+                  <button className="submit-comment-icon" onClick={this.handleSubmit} disabled={!body}><img src={window.submit_icon} /></button>
                 </form>
               </div>
             </section>
