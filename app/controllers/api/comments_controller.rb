@@ -1,6 +1,8 @@
 class Api::CommentsController < ApplicationController
   def index
-    @comments = Post.where(post_id: params[:id])
+    # @comments = Post.where(post_id: params[:id])
+    @comments = Comment.all
+    render :index
   end
   
   def create
@@ -15,8 +17,9 @@ class Api::CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    comment.destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    render :show
   end
 
   private

@@ -12,5 +12,4 @@
 class Like < ApplicationRecord
   belongs_to :liker, foreign_key: :liker_id, class_name: :User
   belongs_to :post, foreign_key: :post_id, class_name: :Post
-  has_one :receiver, through: :post, source: :poster
 end

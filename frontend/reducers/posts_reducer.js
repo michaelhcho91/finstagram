@@ -5,7 +5,10 @@ import { RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
 
 const postsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-  let newState = merge({}, oldState);
+  let newState = merge(
+    {},
+    oldState
+  );
 
   switch (action.type) {
     case RECEIVE_POSTS:
@@ -27,12 +30,7 @@ const postsReducer = (oldState = {}, action) => {
       return newState;
       
     case RECEIVE_COMMENT:
-      if (newState[action.comment.post_id].comments) {
-        newState[action.comment.post_id].comments[action.comment.id] = action.comment;
-      } else {
-        newState[action.comment.post_id].comments = {};
-        newState[action.comment.post_id].comments[action.comment.id] = action.comment;
-      }
+      newState[action.comment.post_id].commentIds.push(action.comment.id);
       return newState;
       
     case REMOVE_COMMENT:

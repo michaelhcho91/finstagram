@@ -9,5 +9,11 @@
     else
       json.likerIds []
     end
+
+    if post.comments
+      json.commentIds post.comments.pluck(:id)
+    else
+      json.commentIds []
+    end    
   end
 end

@@ -22,7 +22,8 @@ class UserProfile extends React.Component {
 
     const {
       fetchPosts,
-      fetchLikes
+      fetchLikes,
+      fetchComments
     } = this.props;
     
     const {
@@ -31,6 +32,7 @@ class UserProfile extends React.Component {
     
     fetchPosts();
     fetchLikes();
+    fetchComments();
     this.setState({
       currentScrollHeight: window.scrollY
     });

@@ -5,17 +5,20 @@ import PostCaptionEdit from "../posts/post_caption_edit";
 import { connect } from "react-redux";
 import { openEditting, closeEditting, deletePost } from "../../actions/post_actions";
 import { createLike, deleteLike } from "../../actions/like_actions";
+import { createComment, deleteComment } from "../../actions/comment_actions";
 
 class PostView extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentScrollHeight: null
+      body: "",
+      commenter_id: this.props.currentUser.id,
+      post_id: this.props.post.id
     };
 
-    this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.likePost = this.likePost.bind(this);
     this.unlikePost = this.unlikePost.bind(this);
   }
@@ -32,6 +35,24 @@ class PostView extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const {
+      createComment,
+      post
+    } = this.props;
+
+    createComment(this.state);
+    this.setState({
+      body: ""
+    });
+
+    const form = document.getElementById(`comment-form-${post.id}`);
+    form.reset();
+  }
+  
+  update(field) {
+    return (e) => {
+      this.setState({ [field]: e.currentTarget.value });
+    };
   }
   
   likePost() {
@@ -52,8 +73,7 @@ class PostView extends React.Component {
       post,
       likes,
       currentUser,
-      deleteLike,
-      fetchPost
+      deleteLike
     } = this.props;
 
     const myLikes = likes.filter(like => like.liker_id === currentUser.id);
@@ -65,6 +85,7 @@ class PostView extends React.Component {
   render() {
     const {
       post,
+      comments,
       currentUser,
       captionEditting,
       closeEditting,
@@ -104,6 +125,11 @@ class PostView extends React.Component {
       heartIcon = <img onClick={this.likePost} className="heart-icon" src={window.heart_icon} />
     };
     
+    const postComments = comments.filter(comment => comment.post_id === post.id);
+    const commentsList = postComments.map((comment, idx) => {
+      return <li key={idx}>{comment.username} {comment.body}</li>
+    })
+    
     return(
       <>
         <article className="post-view-container">
@@ -122,16 +148,7 @@ class PostView extends React.Component {
               <div className="post-view-space">
                 {postCaption}
                 <ul className="post-view-comments-list">
-                  <li>cool post!</li>
-                  <li>nice</li>
-                  <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem est sunt quia et nihil accusamus magnam tenetur hic id laudantium rem ducimus, repellendus vel? Amet eius numquam libero voluptates rem?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aliquid deserunt exercitationem ipsum asperiores vero vel quia blanditiis in possimus aperiam a, fuga, et laboriosam nostrum voluptas tempora nisi rem.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur nihil repudiandae nam eaque? Delectus perspiciatis ducimus omnis in officiis, iste placeat dignissimos. Enim officia dicta autem odit magni consequatur earum.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, eum, esse ipsum, voluptates nobis enim perferendis neque consectetur tenetur minus adipisci repellendus. Culpa aperiam nihil tempora saepe perspiciatis et quibusdam!
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, laudantium nesciunt. Illum cupiditate minima similique quidem! Ipsa, nisi quam, dolores consequuntur quasi architecto voluptate vero at voluptatem harum voluptatum error!
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum beatae voluptatibus ea tenetur vel, est eius harum, minima aperiam veniam doloribus vero, neque fugiat rem earum nostrum. Ea, neque tenetur.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt minima consequatur blanditiis cum error at quos vel totam molestias perspiciatis? Deserunt velit sunt incidunt odio consequatur fuga ullam illo cumque?
-                  </li>
+                  {commentsList}
                 </ul>
               </div>
 
@@ -155,8 +172,8 @@ class PostView extends React.Component {
 
             <section className="post-view-comment-form-container">
               <div>
-                <form onSubmit={this.handleSubmit} className="post-view-comment-form">
-                  <textarea id={`view-comment-${post.posterId}`} placeholder="Add a comment..."></textarea>
+                <form onSubmit={this.handleSubmit} className="post-view-comment-form" id={`comment-form-${post.id}`}>
+                  <input onChange={this.update("body")} id={`view-comment-${post.posterId}`} placeholder="Add a comment..."></input>
                   <button className="submit-comment-icon" onClick={this.handleSubmit}><img src={window.submit_icon} /></button>
                 </form>
               </div>
@@ -173,7 +190,8 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.entities.users[state.session.id],
     captionEditting: state.ui.captionEditting,
     likes: Object.values(state.entities.likes),
-    post: state.entities.posts[ownProps.postId]
+    post: state.entities.posts[ownProps.postId],
+    comments: Object.values(state.entities.comments)
   };
 };
 
@@ -183,7 +201,9 @@ const mapDispatchToProps = (dispatch) => {
     closeEditting: () => dispatch(closeEditting()),
     deletePost: (postId) => dispatch(deletePost(postId)),
     createLike: (like) => dispatch(createLike(like)),
-    deleteLike: (like) => dispatch(deleteLike(like))
+    deleteLike: (like) => dispatch(deleteLike(like)),
+    createComment: (comment) => dispatch(createComment(comment)),
+    deleteComment: (commentId) => dispatch(deleteComment(commentId))
   };
 };
 

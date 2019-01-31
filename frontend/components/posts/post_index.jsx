@@ -18,7 +18,8 @@ class PostIndex extends React.Component {
     const {
       fetchUsers,
       fetchPosts,
-      fetchLikes
+      fetchLikes,
+      fetchComments
     } = this.props;
 
     const {
@@ -28,6 +29,7 @@ class PostIndex extends React.Component {
     fetchUsers();
     fetchPosts();
     fetchLikes();
+    fetchComments();
     
     this.setState({
       currentScrollHeight: window.scrollY
@@ -52,29 +54,37 @@ class PostIndex extends React.Component {
       posts,
       users,
       likes,
+      comments,
       currentUser,
       deletePost,
       openEditting,
       closeEditting,
       captionEditting,
       createLike,
-      deleteLike
+      deleteLike,
+      createComment,
+      deleteComment
     } = this.props;
 
     let postsList;
     postsList = posts.map( (post, idx) => {
       if (users[post.posterId]) {
+        const postComments = comments.filter(comment => comment.post_id === post.id);
+        
         return <PostIndexItem key={idx}
                               post={post}
                               user={users[post.posterId]}
                               likes={likes}
+                              postComments={postComments}
                               currentUser={currentUser}
                               deletePost={deletePost}
                               openEditting={openEditting}
                               closeEditting={closeEditting}
                               captionEditting={captionEditting}
                               createLike={createLike}
-                              deleteLike={deleteLike} />
+                              deleteLike={deleteLike}
+                              createComment={createComment}
+                              deleteComment={deleteComment} />
       } else return null;
     });
 

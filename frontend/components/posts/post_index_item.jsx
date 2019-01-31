@@ -9,7 +9,8 @@ class PostIndexItem extends React.Component {
 
     this.state = {
       body: "",
-      commenter_id: this.props.currentUser.id
+      commenter_id: this.props.currentUser.id,
+      post_id: this.props.post.id
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,6 +30,24 @@ class PostIndexItem extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
+    const {
+      createComment,
+      post
+    } = this.props;
+
+    createComment(this.state);
+    this.setState({
+      body: ""
+    });
+
+    const form = document.getElementById(`comment-form-${post.id}`);
+    form.reset();
+  }
+
+  update(field) {
+    return (e) => {
+      this.setState({ [field]: e.currentTarget.value });
+    };
   }
 
   likePost() {
@@ -62,6 +81,7 @@ class PostIndexItem extends React.Component {
     const {
       user,
       post,
+      postComments,
       currentUser,
       captionEditting,
       closeEditting,
@@ -69,14 +89,6 @@ class PostIndexItem extends React.Component {
     } = this.props;
 
     const createdAt = timeSince(post.created_at);
-
-    let postCaption;
-
-    if (captionEditting === post.id) {
-      postCaption = <PostCaptionEdit post={post} user={user} closeEditting={closeEditting} />
-    } else {
-      postCaption = <PostCaption user={user} currentUser={currentUser} post={post} openEditting={openEditting}/>
-    }
     
     let postHeader;
     if (user) {
@@ -85,6 +97,13 @@ class PostIndexItem extends React.Component {
                     <div>{user.username}</div>
                   </>
     } else postHeader = null;
+
+    let postCaption;
+    if (captionEditting === post.id) {
+      postCaption = <PostCaptionEdit post={post} user={user} closeEditting={closeEditting} />
+    } else {
+      postCaption = <PostCaption user={user} currentUser={currentUser} post={post} openEditting={openEditting}/>
+    }
 
     let deleteButton;
     if (post.posterId === currentUser.id) {
@@ -101,6 +120,10 @@ class PostIndexItem extends React.Component {
     } else {
       heartIcon = <img onClick={this.likePost} className="heart-icon" src={window.heart_icon} />
     };
+    
+    const commentsList = postComments.map((comment, idx) => {
+      return <li key={idx}>{comment.username} {comment.body}</li>
+    })
     
     return (
       <li>
@@ -132,8 +155,7 @@ class PostIndexItem extends React.Component {
             <div>
               {postCaption}
               <ul className="post-comments-list">
-                <li>cool post!</li>
-                <li>nice</li>
+                {commentsList}
               </ul>
             </div>
 
@@ -141,8 +163,8 @@ class PostIndexItem extends React.Component {
 
             <section className="post-comment-form-container">
               <div>
-                <form onSubmit={this.handleSubmit} className="post-comment-form">
-                  <textarea id={`comment-${post.id}`} placeholder="Add a comment..."></textarea>
+                <form onSubmit={this.handleSubmit} className="post-comment-form" id={`comment-form-${post.id}`}>
+                  <input onChange={this.update("body")} id={`comment-${post.id}`} placeholder="Add a comment..."></input>
                   <button className="submit-comment-icon" onClick={this.handleSubmit}><img src={window.submit_icon}/></button>
                 </form>
               </div>

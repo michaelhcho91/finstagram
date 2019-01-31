@@ -6,8 +6,7 @@ class Modal extends React.Component {
   render() {
     const {
       modal,
-      closeModal,
-      fetchPost
+      closeModal
     } = this.props;
 
     if (!modal) return null;

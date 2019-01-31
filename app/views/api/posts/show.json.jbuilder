@@ -8,12 +8,8 @@ else
   json.likerIds []
 end
 
-json.comments do
-  @post.comments.each do |comment|
-    json.set! comment.id do
-      json.extract! comment, :id, :body, :post_id, :commenter_id, :created_at
-      json.username comment.commenter.username
-      json.receiverId comment.receiver.id
-    end
-  end
+if @post.comments
+  json.commentIds @post.comments.pluck(:id)
+else
+  json.commentIds []
 end

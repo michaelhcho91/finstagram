@@ -172,7 +172,7 @@ img {
   padding-top: 15px;
 }
 
-.post-comment-form textarea {
+.post-comment-form input {
   resize: none;
   min-height: 18px;
   color: #262626;

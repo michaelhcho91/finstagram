@@ -117,4 +117,5 @@
 
 .user-post:hover {
   cursor: pointer;
+  opacity: 0.33;
 }
