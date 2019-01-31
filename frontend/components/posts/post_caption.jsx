@@ -29,14 +29,20 @@ class PostCaption extends React.Component {
     } else {
       captionUsername = currentUser.username;
     }
+
+    let captionSpan;
+    if (post.caption) {
+      captionSpan = <span>{captionUsername} {post.caption}</span>
+    } else captionSpan = null;
     
     let editButton;
     if (post.posterId === currentUser.id) {
       editButton = <button onClick={this.handleClick} className="caption-edit-icon"><img src={window.edit_icon} /></button>
     } else editButton = null;
+    
     return (
       <>
-        <span>{captionUsername} {post.caption}</span>
+        {captionSpan}
         {editButton}
       </>
     )

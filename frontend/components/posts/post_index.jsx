@@ -7,33 +7,47 @@ class PostIndex extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { currentScrollHeight: null };
+    this.state = {
+      currentScrollHeight: null
+    };
   }
   
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     const {
       fetchUsers,
       fetchPosts,
       fetchLikes
     } = this.props;
-    const { currentScrollHeight } = this.state;
+
+    const {
+      currentScrollHeight
+    } = this.state;
     
-    window.scrollTo(0, 0);
     fetchUsers();
     fetchPosts();
     fetchLikes();
-    this.setState({ currentScrollHeight: window.scrollY });
+    
+    this.setState({
+      currentScrollHeight: window.scrollY
+    });
     
     window.onscroll = () => {
       const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
       if (currentScrollHeight !== newScrollHeight) {
-        this.setState({ currentScrollHeight: newScrollHeight });
+        this.setState({
+          currentScrollHeight: newScrollHeight
+        });
       }
     };
   }
   
   render() {
-    const { currentScrollHeight } = this.state;
+    const {
+      currentScrollHeight
+    } = this.state;
+    
     const {
       posts,
       users,

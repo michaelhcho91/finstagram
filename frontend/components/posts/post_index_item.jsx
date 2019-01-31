@@ -9,7 +9,8 @@ class PostIndexItem extends React.Component {
 
     this.state = {
       body: "",
-      commenter_id: this.props.currentUser.id
+      commenter_id: this.props.currentUser.id,
+      liked: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,7 +38,7 @@ class PostIndexItem extends React.Component {
       post,
       currentUser
     } = this.props;
-    
+
     createLike({
       post_id: post.id,
       liker_id: currentUser.id
