@@ -122,7 +122,6 @@ img {
 
 .caption-edit-input {
   resize: none;
-  /* width: 583px; */
   width: 100%;
   min-height: 18px;
   font-size: 14px;
@@ -143,6 +142,11 @@ img {
 
 .post-comments-list li {
   padding-top: 5px;
+}
+
+.deletable:hover {
+  cursor: pointer;
+  opacity: 0.50;
 }
 
 .post-time {

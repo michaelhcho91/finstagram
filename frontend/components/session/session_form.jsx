@@ -23,7 +23,11 @@ class SessionForm extends React.Component {
   demoLogin(e) {
     e.preventDefault();
 
-    this.props.login({
+    const {
+      login
+    } = this.props;
+    
+    login({
       username: "demo",
       password: "password"
     });
@@ -38,7 +42,11 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     
-    this.props.processForm(this.state);
+    const {
+      processForm
+    } = this.props;
+    
+    processForm(this.state);
   }
   
   render() {
@@ -56,7 +64,10 @@ class SessionForm extends React.Component {
 
     let form;
     if (formType === "Log In") {
-      const { username, password } = this.state;
+      const {
+        username,
+        password
+      } = this.state;
 
       form = <>
               <form className="session-form login" onSubmit={this.handleSubmit}>

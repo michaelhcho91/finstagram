@@ -54,6 +54,10 @@ class UserProfile extends React.Component {
       photoFile
     } = this.state;
 
+    const {
+      updateUser
+    } = this.props;
+
     const formData = new FormData();
     if (photoFile) {
       formData.append(
@@ -62,7 +66,7 @@ class UserProfile extends React.Component {
       );
     }
 
-    this.props.updateUser(formData);
+    updateUser(formData);
   }
   
   handleFile(e) {
@@ -87,6 +91,10 @@ class UserProfile extends React.Component {
       openModal,
       logout
     } = this.props;
+
+    const {
+      currentScrollHeight
+    } = this.state;
     
     let postsList;
     let myPosts;
@@ -104,7 +112,7 @@ class UserProfile extends React.Component {
     if (postCount === 1) postOrPosts = "post";
     
     let navbar;
-    if (this.state.currentScrollHeight <= 90) {
+    if (currentScrollHeight <= 90) {
       navbar = <NavbarContainer />
     } else {
       navbar = <NavbarShort />

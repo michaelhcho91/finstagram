@@ -22,8 +22,12 @@ class Splash extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
+
+    const {
+      login
+    } = this.props;
     
-    this.props.login({
+    login({
       username: "demo",
       password: "password"
     });
@@ -38,7 +42,11 @@ class Splash extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     
-    this.props.processForm(this.state);
+    const {
+      processForm
+    } = this.props;
+    
+    processForm(this.state);
   }
   
   render() {

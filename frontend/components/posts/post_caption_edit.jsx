@@ -7,6 +7,7 @@ import { merge } from "lodash";
 class PostCaptionEdit extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       caption: this.props.post.caption
     };

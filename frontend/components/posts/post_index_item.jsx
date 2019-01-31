@@ -2,6 +2,7 @@ import React from "react";
 import { timeSince } from "../../util/date_util";
 import PostCaption from "./post_caption";
 import PostCaptionEdit from "./post_caption_edit";
+import CommentContainer from "../comments/comment_container";
 
 class PostIndexItem extends React.Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class PostIndexItem extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
+    
     const {
       createComment,
       post
@@ -122,7 +124,7 @@ class PostIndexItem extends React.Component {
     };
     
     const commentsList = postComments.map((comment, idx) => {
-      return <li key={idx}>{comment.username} {comment.body}</li>
+      return <CommentContainer key={idx} commentId={comment.id} />
     })
     
     return (

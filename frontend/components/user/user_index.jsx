@@ -7,7 +7,10 @@ class UserIndex extends React.Component {
   }
 
   render() {
-    const { users } = this.props;
+    const {
+      users
+    } = this.props;
+    
     const usersList = users.map( (user, idx) => {
       return <UserIndexItem key={idx} user={user} />
     });

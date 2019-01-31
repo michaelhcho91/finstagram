@@ -34,7 +34,8 @@ const postsReducer = (oldState = {}, action) => {
       return newState;
       
     case REMOVE_COMMENT:
-      delete newState[action.comment.post_id].comments[action.commentId];
+      newState[action.comment.post_id].commentIds = 
+        newState[action.comment.post_id].commentIds.filter(id => id !== action.comment.id);
       return newState;
       
     case RECEIVE_LIKE:

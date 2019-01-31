@@ -2,6 +2,7 @@ import React from "react";
 import { timeSince } from "../../util/date_util";
 import PostCaption from "../posts/post_caption";
 import PostCaptionEdit from "../posts/post_caption_edit";
+import CommentContainer from "../comments/comment_container";
 import { connect } from "react-redux";
 import { openEditting, closeEditting, deletePost } from "../../actions/post_actions";
 import { createLike, deleteLike } from "../../actions/like_actions";
@@ -35,6 +36,7 @@ class PostView extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    
     const {
       createComment,
       post
@@ -125,9 +127,9 @@ class PostView extends React.Component {
       heartIcon = <img onClick={this.likePost} className="heart-icon" src={window.heart_icon} />
     };
     
-    const postComments = comments.filter(comment => comment.post_id === post.id);
+    const postComments = comments.filter(comment => post.commentIds.includes(comment.id));
     const commentsList = postComments.map((comment, idx) => {
-      return <li key={idx}>{comment.username} {comment.body}</li>
+      return <CommentContainer key={idx} commentId={comment.id} />
     })
     
     return(

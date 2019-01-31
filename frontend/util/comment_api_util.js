@@ -13,9 +13,9 @@ export const createComment = (comment) => {
   });
 };
 
-export const deleteComment = (commentId) => {
+export const deleteComment = (comment) => {
   return $.ajax({
     method: "DELETE",
-    url: `api/comments/${commentId}`
+    url: `api/comments/${comment.id}`
   });
 };

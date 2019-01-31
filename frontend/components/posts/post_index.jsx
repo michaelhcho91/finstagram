@@ -69,7 +69,7 @@ class PostIndex extends React.Component {
     let postsList;
     postsList = posts.map( (post, idx) => {
       if (users[post.posterId]) {
-        const postComments = comments.filter(comment => comment.post_id === post.id);
+        const postComments = comments.filter(comment => post.commentIds.includes(comment.id));
         
         return <PostIndexItem key={idx}
                               post={post}
