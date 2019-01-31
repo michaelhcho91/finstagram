@@ -4,6 +4,7 @@ import { fetchPosts } from "../../actions/post_actions";
 import { logout } from "../../actions/session_actions";
 import { updateUser } from "../../actions/user_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
+import { fetchLikes } from "../../actions/like_actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -19,8 +20,8 @@ const mapDispatchToProps = (dispatch) => {
     logout: () => dispatch(logout()),
     updateUser: (user) => dispatch(updateUser(user)),
     openModal: (type, options) => dispatch(openModal(type, options)),
-    closeModal: () => dispatch(closeModal())
-    
+    closeModal: () => dispatch(closeModal()),
+    fetchLikes: () => dispatch(fetchLikes())
   };
 };
 

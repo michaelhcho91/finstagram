@@ -1,5 +1,4 @@
 import React from "react";
-import Footer from "../splash/footer";
 import NavbarContainer from "../navbar/navbar_container";
 import NavbarShort from "../navbar/navbar_short";
 import UserProfileItem from "./user_profile_item";
@@ -19,17 +18,29 @@ class UserProfile extends React.Component {
   }
   
   componentDidMount() {
-    const { fetchPosts } = this.props;
-    const { currentScrollHeight } = this.state;
-    
     window.scrollTo(0, 0);
+
+    const {
+      fetchPosts,
+      fetchLikes
+    } = this.props;
+    
+    const {
+      currentScrollHeight
+    } = this.state;
+    
     fetchPosts();
-    this.setState({ currentScrollHeight: window.scrollY });
+    fetchLikes();
+    this.setState({
+      currentScrollHeight: window.scrollY
+    });
 
     window.onscroll = () => {
       const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
       if (currentScrollHeight !== newScrollHeight) {
-        this.setState({ currentScrollHeight: newScrollHeight });
+        this.setState({
+          currentScrollHeight: newScrollHeight
+        });
       }
     };
   }
@@ -37,11 +48,16 @@ class UserProfile extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const { photoFile } = this.state;
+    const {
+      photoFile
+    } = this.state;
 
     const formData = new FormData();
     if (photoFile) {
-      formData.append("user[photo]", photoFile);
+      formData.append(
+        "user[photo]",
+        photoFile
+      );
     }
   }
   

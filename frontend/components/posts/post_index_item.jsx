@@ -9,8 +9,7 @@ class PostIndexItem extends React.Component {
 
     this.state = {
       body: "",
-      commenter_id: this.props.currentUser.id,
-      liked: false
+      commenter_id: this.props.currentUser.id
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

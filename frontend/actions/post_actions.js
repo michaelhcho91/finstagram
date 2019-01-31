@@ -64,6 +64,17 @@ export const fetchPosts = () => (dispatch) => {
     }));
 };
 
+export const fetchPost = (postId) => (dispatch) => {
+  debugger
+  return PostApiUtil.fetchPost(postId).
+    then((post => {
+      debugger
+      return dispatch(receivePost(post));
+    }), (errors => {
+      return dispatch(receiveErrors(errors));
+    }));
+};
+
 export const createPost = (post) => (dispatch) => {
   return PostApiUtil.createPost(post).
     then((post => {

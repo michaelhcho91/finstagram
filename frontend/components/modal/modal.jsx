@@ -6,7 +6,8 @@ class Modal extends React.Component {
   render() {
     const {
       modal,
-      closeModal
+      closeModal,
+      fetchPost
     } = this.props;
 
     if (!modal) return null;
@@ -17,7 +18,7 @@ class Modal extends React.Component {
         component = <PostCreate />;
         break;
       case "postView":
-        component = <PostView post={modal.options} closeModal={closeModal} />;
+        component = <PostView post={modal.options} fetchPost={fetchPost} closeModal={closeModal} />;
         break;
       default:
         return null;

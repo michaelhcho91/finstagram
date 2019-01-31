@@ -4,15 +4,22 @@ import PostCaption from "../posts/post_caption";
 import PostCaptionEdit from "../posts/post_caption_edit";
 import { connect } from "react-redux";
 import { openEditting, closeEditting, deletePost } from "../../actions/post_actions";
+import { createLike, deleteLike } from "../../actions/like_actions";
 
 class PostView extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      currentScrollHeight: null
+    };
+
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.likePost = this.likePost.bind(this);
+    this.unlikePost = this.unlikePost.bind(this);
   }
-
+  
   handleDelete() {
     const {
       deletePost,
@@ -27,8 +34,37 @@ class PostView extends React.Component {
     e.preventDefault();
   }
   
-  handleClick() {
-    // createLike
+  likePost() {
+    const {
+      post,
+      currentUser,
+      createLike,
+      fetchPost
+    } = this.props;
+
+    createLike({
+      post_id: post.id,
+      liker_id: currentUser.id
+    });
+
+    fetchPost(post.id);
+  }
+
+  unlikePost() {
+    const {
+      post,
+      likes,
+      currentUser,
+      deleteLike,
+      fetchPost
+    } = this.props;
+
+    const myLikes = likes.filter(like => like.liker_id === currentUser.id);
+    const currentLike = myLikes.find(like => like.post_id === post.id);
+
+    deleteLike(currentLike);
+
+    fetchPost(post.id);
   }
   
   render() {
@@ -62,6 +98,17 @@ class PostView extends React.Component {
       deleteButton = <button className="view-delete-icon" onClick={this.handleDelete}><img src={window.delete_icon} /></button>
     } else deleteButton = null;
 
+    const likeCount = post.likerIds.length;
+    let likeOrLikes = "likes";
+    if (likeCount === 1) likeOrLikes = "like";
+    
+    let heartIcon;
+    if (post.likerIds.includes(currentUser.id)) {
+      heartIcon = <img onClick={this.unlikePost} className="liked-icon" src={window.liked_icon} />
+    } else {
+      heartIcon = <img onClick={this.likePost} className="heart-icon" src={window.heart_icon} />
+    };
+    
     return(
       <>
         <article className="post-view-container">
@@ -96,7 +143,7 @@ class PostView extends React.Component {
               <div>
                 <section className="post-view-icon-container">
                   <span>
-                    <img className="post-view-heart-icon" src={window.heart_icon} />
+                    {heartIcon}
                   </span>
                   <span>
                     <label className="post-view-comment-icon" htmlFor={`view-comment-${post.posterId}`} ><img src={window.comment_icon} /></label>
@@ -105,7 +152,7 @@ class PostView extends React.Component {
                     {deleteButton}
                   </span>
                 </section>
-                <section className="post-likes">23,894,575 likes</section>
+                <section className="post-likes">{likeCount} {likeOrLikes}</section>
               </div>
             </div>
 
@@ -129,7 +176,8 @@ class PostView extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
-    captionEditting: state.ui.captionEditting
+    captionEditting: state.ui.captionEditting,
+    likes: Object.values(state.entities.likes)
   };
 };
 
@@ -137,7 +185,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     openEditting: (postId) => dispatch(openEditting(postId)),
     closeEditting: () => dispatch(closeEditting()),
-    deletePost: (postId) => dispatch(deletePost(postId))
+    deletePost: (postId) => dispatch(deletePost(postId)),
+    createLike: (like) => dispatch(createLike(like)),
+    deleteLike: (like) => dispatch(deleteLike(like))
   };
 };
 
