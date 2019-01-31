@@ -61,6 +61,8 @@ class UserProfile extends React.Component {
         photoFile
       );
     }
+
+    this.props.updateUser(formData);
   }
   
   handleFile(e) {
@@ -73,9 +75,9 @@ class UserProfile extends React.Component {
       });
     };
 
-    const form = document.getElementById("profile-form");
+    if (file) fileReader.readAsDataURL(file);
 
-    form.dispatchEvent(new Event("submit"));
+    const form = document.getElementById("profile-form");
   }
   
   render() {

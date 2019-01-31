@@ -10,10 +10,6 @@ img {
   max-width: 100%;
 }
 
-.post-photo img {
-  max-width: 100%;
-}
-
 .posts-list-left {
   display: flex;
   flex-direction: column;
@@ -47,7 +43,7 @@ img {
 
 .submit-comment-icon {
   width: 40px;
-  margin-top: -5px;
+  margin-top: 5px;
   margin-right: -9px;
   background-color: transparent;
   border: none;
@@ -60,8 +56,8 @@ img {
   border-radius: 100%;
 }
 
-.post-photo {
-  min-height: 100%;
+.post-photo img {
+  margin-bottom: -7px;
 }
 
 .below-photo {
@@ -70,7 +66,7 @@ img {
 }
 
 .post-icon-container {
-  margin-top: 4px;
+  padding-top: 8px;
   height: 40px;
   display: flex;
   align-items: center;
