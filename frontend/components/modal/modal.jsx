@@ -18,7 +18,7 @@ class Modal extends React.Component {
         component = <PostCreate />;
         break;
       case "postView":
-        component = <PostView post={modal.options} fetchPost={fetchPost} closeModal={closeModal} />;
+        component = <PostView postId={modal.options.id} closeModal={closeModal} />;
         break;
       default:
         return null;

@@ -25,13 +25,11 @@ class PostCaptionEdit extends React.Component {
     const {
       updatePost,
       post,
-      closeEditting,
-      closeModal
+      closeEditting
     } = this.props;
 
     updatePost(merge({}, post, this.state)).
-      then(closeEditting()).
-        then(closeModal());
+      then(closeEditting());
   }
   
   render() {
@@ -50,8 +48,7 @@ class PostCaptionEdit extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    updatePost: (post) => dispatch(updatePost(post)),
-    closeModal: () => dispatch(closeModal())
+    updatePost: (post) => dispatch(updatePost(post))
   };
 };
 

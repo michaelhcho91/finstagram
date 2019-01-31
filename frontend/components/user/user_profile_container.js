@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.entities.users[state.session.id],
     posts: Object.values(state.entities.posts).reverse(),
-    captionEditting: state.ui.captionEditting
+    captionEditting: state.ui.captionEditting,
+    likes: Object.values(state.entities.likes)
   };
 };
 

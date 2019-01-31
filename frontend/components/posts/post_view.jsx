@@ -38,16 +38,13 @@ class PostView extends React.Component {
     const {
       post,
       currentUser,
-      createLike,
-      fetchPost
+      createLike
     } = this.props;
 
     createLike({
       post_id: post.id,
       liker_id: currentUser.id
     });
-
-    fetchPost(post.id);
   }
 
   unlikePost() {
@@ -63,8 +60,6 @@ class PostView extends React.Component {
     const currentLike = myLikes.find(like => like.post_id === post.id);
 
     deleteLike(currentLike);
-
-    fetchPost(post.id);
   }
   
   render() {
@@ -173,11 +168,12 @@ class PostView extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
     captionEditting: state.ui.captionEditting,
-    likes: Object.values(state.entities.likes)
+    likes: Object.values(state.entities.likes),
+    post: state.entities.posts[ownProps.postId]
   };
 };
 

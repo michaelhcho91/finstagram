@@ -9,7 +9,7 @@
 
 .user-profile {
   background-color: #FAFAFA;
-  max-width: 935px;
+  max-width: 975px;
   padding: 60px 20px 0;
 }
 
@@ -97,12 +97,12 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 14px;
+  grid-gap: 28px;
 }
 
 .user-post {
-  height: 302px;
-  width: 302px;
+  height: 293px;
+  width: 293px;
   overflow: hidden;
   justify-content: center;
   align-items: center;
