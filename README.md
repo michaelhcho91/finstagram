@@ -10,4 +10,8 @@ Once logged in, users are taken to their feed of posts.
 
 ![](./readme_images/feed-ss.png)
 
+Users can see their profile that lists their own posts.
+
+![](./readme_images/profile-ss.png)
+
 Development technologies include React/Redux for the frontend and Ruby on Rails/PostgreSQL for the backend.
