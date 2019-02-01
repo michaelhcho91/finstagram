@@ -127,7 +127,7 @@ class UserProfile extends React.Component {
             <header className="user-profile-info">
               <div className="profile-pic">
                 <form id="profile-form" onSubmit={this.handleSubmit}>
-                  <input className="profile-file-input" id="profile-file-input" type="file" onChange={this.handleFile}/>
+                  <input disabled className="profile-file-input" id="profile-file-input" type="file" onChange={this.handleFile}/>
                   <label htmlFor="profile-file-input">
                     <img src={currentUser.photoUrl}/>
                   </label>
