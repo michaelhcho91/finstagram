@@ -6,7 +6,7 @@ Finstagram is a fullstack single-page social media web application based on [Ins
 
 ![](./readme_images/splash-ss.png)
 
-Once logged in, users are taken to their feed of posts.
+Finstagram's main feature is being able to share photos and see photos of other users. Once logged in, users are taken to their feed of posts. Users can create posts by clicking on the upload icon on the navigation bar, which immediately updates the feed. Users can navigate to their personal profile page by clicking on the profile icon on the navigation bar. From there, they may view all of their posts individually. 
 
 ![](./readme_images/feed-ss.png)
 
