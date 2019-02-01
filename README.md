@@ -44,6 +44,14 @@ Users may like or unlike a photo by clicking on `Be the first to like this`, cli
 
 ![](./readme_images/comment-like-ss.png)
 
+Comment deletion is handled by a simple condition to check whether the `currentUser` is the owner of a comment. An `onClick` handler function invokes the delete function only when the condition is met.
+
+```
+if (comment.commenter_id === currentUser.id) {
+  deleteComment(comment);
+}
+```
+
 # Technologies
 
 Development technologies for Finstagram include React/Redux for the frontend, Ruby on Rails/PostgreSQL for the backend, and Amazon Web Services S3 for file storage.
