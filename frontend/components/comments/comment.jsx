@@ -32,7 +32,7 @@ class Comment extends React.Component {
     
     return(
       <li onClick={this.removeComment}>
-        <span className={`${deletable}`}>{comment.username} {comment.body}</span>
+        <span className={`${deletable}`}>{comment.username} <span className="comment-body">{comment.body}</span></span>
       </li>
     )
   }

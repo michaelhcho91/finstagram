@@ -32,7 +32,7 @@ class PostCaption extends React.Component {
 
     let captionSpan;
     if (post.caption) {
-      captionSpan = <span>{captionUsername} {post.caption}</span>
+      captionSpan = <span className="post-caption-user">{captionUsername} <span className="post-caption">{post.caption}</span></span>
     } else captionSpan = null;
     
     let editButton;

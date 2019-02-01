@@ -58,6 +58,18 @@ img {
   border-radius: 100%;
 }
 
+.profile-link {
+  font-weight: 450;
+}
+
+.post-caption-user {
+  font-weight: 450;
+}
+
+.post-caption {
+  font-weight: 350;
+}
+
 .post-photo {
   text-align: center;
 }
@@ -171,6 +183,14 @@ img {
 .deletable:hover {
   cursor: pointer;
   opacity: 0.50;
+}
+
+.deletable {
+  font-weight: 450;
+}
+
+.comment-body {
+  font-weight: 350;
 }
 
 .post-time {
