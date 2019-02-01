@@ -146,7 +146,7 @@ class UserProfile extends React.Component {
                 <div>
                   <ul className="user-post-follow-list">
                     <li>{postCount} {postOrPosts}</li>
-                    <li>0 followers</li>
+                    <li>593m followers</li>
                     <li>0 following</li>
                   </ul>
                   <div>

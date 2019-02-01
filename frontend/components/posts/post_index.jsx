@@ -88,6 +88,10 @@ class PostIndex extends React.Component {
       } else return null;
     });
 
+    if (postsList.length === 0) {
+      postsList = <article className="temp-post-container"></article>
+    };
+
     let navbar;
     if (currentScrollHeight <= 90) {
       navbar = <NavbarContainer />

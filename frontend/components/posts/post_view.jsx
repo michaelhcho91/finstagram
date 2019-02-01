@@ -118,9 +118,15 @@ class PostView extends React.Component {
       deleteButton = <button className="view-delete-icon" onClick={this.handleDelete}><img src={window.delete_icon} /></button>
     } else deleteButton = null;
 
-    const likeCount = post.likerIds.length;
+    let likeCount = post.likerIds.length;
     let likeOrLikes = "likes";
     if (likeCount === 1) likeOrLikes = "like";
+    if (likeCount === 0) {
+      likeCount = <span>
+                    Be the first to <span onClick={this.likePost} className="like-this">like this</span>
+                  </span>;
+      likeOrLikes = null;
+    }
     
     let heartIcon;
     if (post.likerIds.includes(currentUser.id)) {

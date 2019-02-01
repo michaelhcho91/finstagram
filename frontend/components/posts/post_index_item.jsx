@@ -18,6 +18,7 @@ class PostIndexItem extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.likePost = this.likePost.bind(this);
     this.unlikePost = this.unlikePost.bind(this);
+    this.doubleClick = this.doubleClick.bind(this);
   }
 
   handleDelete() {
@@ -79,6 +80,19 @@ class PostIndexItem extends React.Component {
     const currentLike = myLikes.find(like => like.post_id === post.id);
 
     deleteLike(currentLike);
+  }
+
+  doubleClick() {
+    const {
+      post,
+      currentUser
+    } = this.props;
+
+    if (post.likerIds.includes(currentUser.id)) {
+      return this.unlikePost();
+    } else {
+      return this.likePost();
+    }
   }
 
   render() {
@@ -147,7 +161,7 @@ class PostIndexItem extends React.Component {
           </header>
 
           <div className="post-photo">
-            <img src={post.photoUrl} />
+            <img onDoubleClick={this.doubleClick} src={post.photoUrl} />
           </div>
 
           <div className="below-photo">

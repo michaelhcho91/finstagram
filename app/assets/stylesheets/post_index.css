@@ -1,7 +1,6 @@
 .post-index-section {
   margin-top: 78px;
   width: 1010px;
-  margin-bottom: 100px;
   display: flex;
   justify-content: center;
 }
@@ -27,6 +26,10 @@ img {
   margin-bottom: 60px;
   border-radius: 3px;
   border: 1px solid #E6E6E6;
+}
+
+.temp-post-container {
+  margin-bottom: 450px;
 }
 
 .post-header {
