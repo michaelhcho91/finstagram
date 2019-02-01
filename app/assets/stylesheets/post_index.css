@@ -189,6 +189,10 @@ img {
   font-weight: 450;
 }
 
+.not-deletable {
+  font-weight: 450;
+}
+
 .comment-body {
   font-weight: 350;
 }
