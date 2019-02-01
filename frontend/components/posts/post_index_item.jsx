@@ -11,7 +11,8 @@ class PostIndexItem extends React.Component {
     this.state = {
       body: "",
       commenter_id: this.props.currentUser.id,
-      post_id: this.props.post.id
+      post_id: this.props.post.id,
+      likeHeart: "like-heart-none"
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -66,6 +67,16 @@ class PostIndexItem extends React.Component {
       post_id: post.id,
       liker_id: currentUser.id
     });
+
+    this.setState({
+      likeHeart: "like-heart-display"
+    });
+
+    setTimeout(() => {
+      this.setState({
+        likeHeart: "like-heart-none"
+      });
+    }, 1500);
   }
   
   unlikePost() {
@@ -150,7 +161,8 @@ class PostIndexItem extends React.Component {
     })
     
     const {
-      body
+      body,
+      likeHeart
     } = this.state;
     
     return (

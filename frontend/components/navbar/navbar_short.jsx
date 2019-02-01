@@ -12,6 +12,10 @@ class NavbarShort extends React.Component {
   }
   
   handleClick() {
+    window.onscroll = function () {
+      window.scrollTo(0, 0);
+    };
+    
     this.props.openModal("create", null);
   }
   

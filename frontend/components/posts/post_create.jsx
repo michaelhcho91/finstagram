@@ -53,6 +53,8 @@ class PostCreate extends React.Component {
     createPost(formData).
       then(closeModal()).
         then(history.push("/"));
+    
+    window.onscroll = function () {};
   }
 
   handleFile(e) {

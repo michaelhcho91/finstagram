@@ -62,6 +62,15 @@ img {
   margin-bottom: -7px;
 }
 
+.like-heart-display {
+  display: flex;
+  z-index: 20;
+}
+
+.like-heart-none {
+  display: none;
+}
+
 .below-photo {
   padding: 0 16px;
   background-color: white;
