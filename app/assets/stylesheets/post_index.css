@@ -58,6 +58,11 @@ img {
   border-radius: 100%;
 }
 
+.post-photo {
+  display: flex;
+  justify-content: center;
+}
+
 .post-photo img {
   margin-bottom: -7px;
 }
