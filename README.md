@@ -33,4 +33,13 @@ Users may like or unlike a photo by clicking on `Be the first to like this`, cli
 
 ![](./readme_images/comment-like-ss.png)
 
-Development technologies include React/Redux for the frontend and Ruby on Rails/PostgreSQL for the backend.
+# Technologies
+
+Development technologies for Finstagram include React/Redux for the frontend, Ruby on Rails/PostgreSQL for the backend, and Amazon Web Services S3 for file storage.
+
+# Future Implementations
+
+* Search bar to find other uses
+* Follow feature to personalize feed
+* Edit profile and upload profile photo
+* Notifications for likes and comments
