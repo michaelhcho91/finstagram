@@ -29,7 +29,7 @@ Clicking on the upload icon opens up a post form, accomplished by rendering a mo
 
 Post caption editting is handled by a slice of Redux state that holds either `null` or the `id` of the post caption being editted. This ensures that only a specific post is being editted. When the state holds a post id, a caption edit component is rendered in place of the caption component. On submittion of the edit, the state is reverted to null, rendering the updated caption component.
 
-```
+```javascript
 let postCaption;
 if (captionEditting === post.id) {
   postCaption = <PostCaptionEdit post={post} />
@@ -46,7 +46,7 @@ Users may like or unlike a photo by clicking on `Be the first to like this`, cli
 
 Comment deletion is handled by a simple condition to check whether the `currentUser` is the owner of a comment. An `onClick` handler function invokes the delete function only when the condition is met.
 
-```
+```javascript
 if (comment.commenter_id === currentUser.id) {
   deleteComment(comment);
 }
