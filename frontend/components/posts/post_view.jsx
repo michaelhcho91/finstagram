@@ -123,7 +123,7 @@ class PostView extends React.Component {
     if (currentUser) {
       postHeader = <>
         <img className="post-view-profile-pic" src={currentUser.photoUrl} />
-        <div>{currentUser.username}</div>
+        <div className="post-view-user">{currentUser.username}</div>
       </>
     } else postHeader = null;
 

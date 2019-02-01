@@ -45,6 +45,10 @@
   border-radius: 100%;
 }
 
+.post-view-user {
+  font-weight: 450;
+}
+
 .post-view-below-header {
   padding: 0 16px;
 }
