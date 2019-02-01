@@ -59,11 +59,11 @@ img {
 }
 
 .post-photo {
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
 .post-photo img {
+  margin: 0 auto;
   margin-bottom: -7px;
 }
 

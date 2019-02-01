@@ -161,8 +161,7 @@ class PostIndexItem extends React.Component {
     })
     
     const {
-      body,
-      likeHeart
+      body
     } = this.state;
     
     return (
