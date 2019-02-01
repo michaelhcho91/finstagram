@@ -22,6 +22,7 @@ class PostView extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.likePost = this.likePost.bind(this);
     this.unlikePost = this.unlikePost.bind(this);
+    this.doubleClick = this.doubleClick.bind(this);
   }
   
   handleDelete() {
@@ -84,6 +85,19 @@ class PostView extends React.Component {
     const currentLike = myLikes.find(like => like.post_id === post.id);
 
     deleteLike(currentLike);
+  }
+
+  doubleClick() {
+    const {
+      post,
+      currentUser
+    } = this.props;
+
+    if (post.likerIds.includes(currentUser.id)) {
+      return this.unlikePost();
+    } else {
+      return this.likePost();
+    }
   }
   
   render() {
@@ -149,7 +163,7 @@ class PostView extends React.Component {
         <article className="post-view-container">
           <section className="photo-side">
             <div className="photo-space">
-              <img src={post.photoUrl}/>
+              <img onDoubleClick={this.doubleClick} src={post.photoUrl}/>
             </div>
           </section>
 
