@@ -27,6 +27,36 @@ Clicking on the upload icon opens up a post form, accomplished by rendering a mo
 
 ![](./readme_images/upload-ss.png)
 
+Photo preview is rendered by a file reading function that sets the `photoUrl` to the component's state.
+
+```
+handleFile(e) {
+  const file = e.currentTarget.files[0];
+  const fileReader = new FileReader();
+
+  fileReader.onloadend = () => {
+
+    this.setState({
+      photoFile: file,
+      photoUrl: fileReader.result
+    });
+  };
+
+  if (file) fileReader.readAsDataURL(file);
+}
+```
+
+Post caption editting is handled by a slice of Redux state that holds either `null` or the `id` of the post caption being editted. This ensures that only a specific post is being editted. When the state holds a post id, a caption edit component is rendered in place of the caption component. On submittion of the edit, the state is reverted to null, rendering the updated caption component.
+
+```
+let postCaption;
+if (captionEditting === post.id) {
+  postCaption = <PostCaptionEdit post={post} />
+} else {
+  postCaption = <PostCaption post={post} />
+}
+```
+
 ## Comments and Likes
 
 Users may like or unlike a photo by clicking on `Be the first to like this`, clicking on the heart icon, or double clicking on the photo. The like count is displayed under each photo. Clicking on the comment icon focuses on the comment input, where a user may post a comment. Hovering over their own comments highlights the comment, allowing deletion by clicking on it.
