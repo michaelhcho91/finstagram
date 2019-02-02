@@ -76,7 +76,7 @@ class PostIndexItem extends React.Component {
       this.setState({
         likeHeart: "like-heart-none"
       });
-    }, 1500);
+    }, 1200);
   }
   
   unlikePost() {
@@ -172,6 +172,9 @@ class PostIndexItem extends React.Component {
           </header>
 
           <div className="post-photo">
+            <div className="heart-container">
+              <img className={this.state.likeHeart} src={window.like_heart_icon} />
+            </div>
             <img onDoubleClick={this.doubleClick} src={post.photoUrl} />
           </div>
 

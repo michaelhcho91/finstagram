@@ -79,9 +79,16 @@ img {
   margin-bottom: -7px;
 }
 
-.like-heart-display {
+.heart-container {
   display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.like-heart-display {
+  position: absolute;
   z-index: 20;
+  max-height: 250px;
 }
 
 .like-heart-none {
