@@ -5,7 +5,7 @@
 .nav-container-short {
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 100;
   background-color: #fff;
   height: 52px;
   width: 100%;

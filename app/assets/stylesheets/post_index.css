@@ -82,13 +82,13 @@ img {
 .heart-container {
   display: flex;
   justify-content: center;
-  background-color: transparent;
 }
 
 .like-heart-display {
   position: absolute;
-  z-index: 20;
-  max-height: 250px;
+  z-index: 1;
+  max-height: 150px;
+  opacity: 0.90;
 }
 
 .like-heart-none {
