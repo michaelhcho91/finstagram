@@ -2,24 +2,24 @@ const path = require("path");
 const webpack = require("webpack");
 
 var plugins = [];
-var devPlugins = [];
+// var devPlugins = [];
 
-var prodPlugins = [
-  new webpack.DefinePlugin({
-    "process.env": {
-      "NODE_ENV": JSON.stringify("production")
-    }
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      warnings: true
-    }
-  })
-];
+// var prodPlugins = [
+//   new webpack.DefinePlugin({
+//     "process.env": {
+//       "NODE_ENV": JSON.stringify("production")
+//     }
+//   }),
+//   new webpack.optimize.UglifyJsPlugin({
+//     compress: {
+//       warnings: true
+//     }
+//   })
+// ];
 
-plugins = plugins.concat(
-  process.env.NODE_ENV === "production" ? prodPlugins : devPlugins
-);
+// plugins = plugins.concat(
+//   process.env.NODE_ENV === "production" ? prodPlugins : devPlugins
+// );
 
 module.exports = {
   context: __dirname,
