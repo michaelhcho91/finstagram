@@ -87,8 +87,8 @@ img {
 .like-heart-display {
   position: absolute;
   z-index: 1;
-  max-height: 150px;
-  opacity: 0.90;
+  max-height: 140px;
+  opacity: 0.85;
 }
 
 .like-heart-none {
