@@ -6,7 +6,7 @@
 }
 
 img {
-  max-width: 100%;
+  max-width: 615px;
 }
 
 .posts-list-left {
@@ -72,16 +72,14 @@ img {
 
 .post-photo {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .post-photo img {
   margin: 0 auto;
   margin-bottom: -7px;
-}
-
-.heart-container {
-  display: flex;
-  justify-content: center;
 }
 
 .like-heart-display {

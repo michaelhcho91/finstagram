@@ -172,9 +172,7 @@ class PostIndexItem extends React.Component {
           </header>
 
           <div className="post-photo">
-            <div className="heart-container">
-              <img className={this.state.likeHeart} src={window.like_heart_icon} />
-            </div>
+            <img className={this.state.likeHeart} src={window.like_heart_icon} />
             <img onDoubleClick={this.doubleClick} src={post.photoUrl} />
           </div>
 

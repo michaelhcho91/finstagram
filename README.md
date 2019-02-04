@@ -23,11 +23,11 @@ Users can navigate to their personal profile by clicking on the profile icon. Th
 
 ## Post Create
 
-Clicking on the upload icon opens up a post form, accomplished by rendering a modal component, that includes an optional caption input and a mandatory photo input. Once a file is chosen, the photo is previewed on screen before submittion. The optional caption can be editted later by clicking on the edit icon on the post. After submittion, users are taken to their feed, which is updated with their new post. Photo storage is handled by Amazon Web Services S3.
+Clicking on the upload icon opens up a post form, accomplished by rendering a modal component, that includes an optional caption input and a mandatory photo input. Once a file is chosen, the photo is previewed on screen before submission. The optional caption can be editted later by clicking on the edit icon on the post. After submission, users are taken to their feed, which is updated with their new post. Photo storage is handled by Amazon Web Services S3.
 
 ![](./readme_images/upload-ss.png)
 
-Post caption editting is handled by a slice of Redux state that holds either `null` or the `id` of the post caption being editted. This ensures that only a specific post is being editted. When the state holds a post id, a caption edit component is rendered in place of the caption component. On submittion of the edit, the state is reverted to null, rendering the updated caption component.
+Post caption editting is handled by a slice of Redux state that holds either `null` or the `id` of the post caption being editted. This ensures that only a specific post is being editted. When the state holds a post id, a caption edit component is rendered in place of the caption component. On submission of the edit, the state is reverted to null, rendering the updated caption component.
 
 ```javascript
 let postCaption;
