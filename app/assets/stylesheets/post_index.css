@@ -77,10 +77,10 @@ img {
   align-items: center;
 }
 
-.post-photo img {
+.post-photo-img {
   margin: 0 auto;
   margin-bottom: -7px;
-  max-width: 615px;
+  min-width: 615px;
 }
 
 .like-heart-display {
