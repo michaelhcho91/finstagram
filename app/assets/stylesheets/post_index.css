@@ -6,7 +6,7 @@
 }
 
 img {
-  max-width: 615px;
+  max-width: 100%;
 }
 
 .posts-list-left {
@@ -80,6 +80,7 @@ img {
 .post-photo img {
   margin: 0 auto;
   margin-bottom: -7px;
+  max-width: 615px;
 }
 
 .like-heart-display {
