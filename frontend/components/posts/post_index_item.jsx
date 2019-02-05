@@ -35,13 +35,14 @@ class PostIndexItem extends React.Component {
     
     const {
       createComment,
-      postId
+      postId,
+      currentUser
     } = this.props;
 
     createComment({
       body: this.state.body,
-      commenter_id: this.props.currentUser.id,
-      post_id: this.props.postId
+      commenter_id: currentUser.id,
+      post_id: postId
     });
     this.setState({
       body: ""
