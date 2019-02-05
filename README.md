@@ -25,6 +25,22 @@ Users can navigate to their personal profile by clicking on the profile icon. Th
 
 Clicking on the upload icon opens up a post form, accomplished by rendering a modal component, that includes an optional caption input and a mandatory photo input. Once a file is chosen, the photo is previewed on screen before submission. The optional caption can be editted later by clicking on the edit icon on the post. After submission, users are taken to their feed, which is updated with their new post. Photo storage is handled by Amazon Web Services S3.
 
+Since the profile post view and the post create form both utilize modals, the different modal components are conditionally rendered with a switch statement that checks the modal slice of state. The modal reducer updates the Redux state with either a string value or `null` to indicate which modal to render.
+
+```javascript
+let component;
+switch (modal.type) {
+  case "create":
+    component = <PostCreate />;
+    break;
+  case "postView":
+    component = <PostView postId={modal.options.id} closeModal={closeModal} />;
+    break;
+  default:
+    return null;
+}
+```
+
 ![](./readme_images/upload-ss.png)
 
 Post caption editting is handled by a slice of Redux state that holds either `null` or the `id` of the post caption being editted. This ensures that only a specific post is being editted. When the state holds a post id, a caption edit component is rendered in place of the caption component. On submission of the edit, the state is reverted to null, rendering the updated caption component.
