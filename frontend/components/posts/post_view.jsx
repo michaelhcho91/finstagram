@@ -15,7 +15,8 @@ class PostView extends React.Component {
     this.state = {
       body: "",
       commenter_id: this.props.currentUser.id,
-      post_id: this.props.post.id
+      post_id: this.props.post.id,
+      likeHeart: "like-heart-none"
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -71,6 +72,16 @@ class PostView extends React.Component {
       post_id: post.id,
       liker_id: currentUser.id
     });
+
+    this.setState({
+      likeHeart: "like-heart-display"
+    });
+
+    setTimeout(() => {
+      this.setState({
+        likeHeart: "like-heart-none"
+      });
+    }, 1200);
   }
 
   unlikePost() {
@@ -163,6 +174,7 @@ class PostView extends React.Component {
         <article className="post-view-container">
           <section className="photo-side">
             <div className="photo-space">
+              <img className={this.state.likeHeart} src={window.like_heart_icon} />
               <img onDoubleClick={this.doubleClick} src={post.photoUrl}/>
             </div>
           </section>

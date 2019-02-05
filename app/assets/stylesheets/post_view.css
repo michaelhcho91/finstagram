@@ -18,6 +18,12 @@
   max-height: 700px;
 }
 
+.photo-space {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .post-view-right {
   min-width: 400px;
   max-width: 400px;
