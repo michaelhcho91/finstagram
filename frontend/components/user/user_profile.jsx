@@ -32,10 +32,10 @@ class UserProfile extends React.Component {
       currentScrollHeight
     } = this.state;
     
+    fetchUsers();
     fetchPosts();
     fetchLikes();
     fetchComments();
-    fetchUsers();
     if (this.props.match.params.userId) {
       fetchUser(this.props.match.params.userId);
     }
@@ -107,7 +107,7 @@ class UserProfile extends React.Component {
     let myPosts;
     let thisUser;
 
-    if (this.props.match.params.userId) {
+    if (user) {
       thisUser = user;
     } else thisUser = currentUser;
 
@@ -131,7 +131,7 @@ class UserProfile extends React.Component {
     } else {
       navbar = <NavbarShort />
     }
-    
+
     return (
       <>
         {navbar}
