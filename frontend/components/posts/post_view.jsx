@@ -74,7 +74,7 @@ class PostView extends React.Component {
     });
 
     this.setState({
-      likeHeart: "like-heart-display"
+      likeHeart: "like-heart-display-view"
     });
 
     setTimeout(() => {

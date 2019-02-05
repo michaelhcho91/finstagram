@@ -24,6 +24,13 @@
   align-items: center;
 }
 
+.like-heart-display-view {
+  position: absolute;
+  z-index: 1;
+  max-width: 140px;
+  opacity: 0.85;
+}
+
 .post-view-right {
   min-width: 400px;
   max-width: 400px;
