@@ -40,6 +40,15 @@ img {
   align-items: center;
 }
 
+.post-header a {
+  text-decoration: none;
+  color: #262626;
+}
+
+.post-header a:visited {
+  text-decoration: none;
+}
+
 .post-header span {
   margin-left: 12px;
 }

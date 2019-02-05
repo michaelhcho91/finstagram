@@ -2,18 +2,19 @@ import { connect } from "react-redux";
 import UserProfile from "./user_profile";
 import { fetchPosts } from "../../actions/post_actions";
 import { logout } from "../../actions/session_actions";
-import { updateUser } from "../../actions/user_actions";
+import { fetchUsers, fetchUser, updateUser } from "../../actions/user_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { fetchLikes } from "../../actions/like_actions";
 import { fetchComments } from "../../actions/comment_actions";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
     posts: Object.values(state.entities.posts).reverse(),
     captionEditting: state.ui.captionEditting,
     likes: Object.values(state.entities.likes),
-    comments: Object.values(state.entities.comments)
+    comments: Object.values(state.entities.comments),
+    user: state.entities.users[ownProps.match.params.userId]
   };
 };
 
@@ -25,7 +26,9 @@ const mapDispatchToProps = (dispatch) => {
     openModal: (type, options) => dispatch(openModal(type, options)),
     closeModal: () => dispatch(closeModal()),
     fetchLikes: () => dispatch(fetchLikes()),
-    fetchComments: () => dispatch(fetchComments())
+    fetchComments: () => dispatch(fetchComments()),
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
+    fetchUsers: () => dispatch(fetchUsers())
   };
 };
 

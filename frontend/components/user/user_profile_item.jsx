@@ -10,10 +10,14 @@ class UserProfileItem extends React.Component {
   handleClick() {
     const {
       post,
-      openModal
+      openModal,
+      thisUser
     } = this.props;
     
-    openModal("postView", post);
+    openModal("postView", {
+      post,
+      thisUser
+    });
   }
 
   render() {

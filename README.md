@@ -34,7 +34,7 @@ switch (modal.type) {
     component = <PostCreate />;
     break;
   case "postView":
-    component = <PostView postId={modal.options.id} closeModal={closeModal} />;
+    component = <PostView />;
     break;
   default:
     return null;

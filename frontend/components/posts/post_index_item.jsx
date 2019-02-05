@@ -3,6 +3,7 @@ import { timeSince } from "../../util/date_util";
 import PostCaption from "./post_caption";
 import PostCaptionEdit from "./post_caption_edit";
 import CommentContainer from "../comments/comment_container";
+import { Link } from "react-router-dom";
 
 class PostIndexItem extends React.Component {
   constructor(props) {
@@ -123,7 +124,9 @@ class PostIndexItem extends React.Component {
     if (user) {
       postHeader = <>
                     <img className="post-profile-pic" src={user.photoUrl} />
-                    <span className="profile-link">{user.username}</span>
+                    <Link to={`/users/${user.id}`} >
+                      <span className="profile-link">{user.username}</span>
+                    </Link>
                   </>
     } else postHeader = null;
 

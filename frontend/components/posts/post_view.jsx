@@ -118,23 +118,28 @@ class PostView extends React.Component {
       currentUser,
       captionEditting,
       closeEditting,
-      openEditting
+      openEditting,
+      user
     } = this.props;
     
     const createdAt = timeSince(post.created_at);
 
     let postCaption;
     if (captionEditting === post.id) {
-      postCaption = <PostCaptionEdit post={post} closeEditting={closeEditting} />
+      postCaption = <PostCaptionEdit post={post}
+                                     closeEditting={closeEditting} />
     } else {
-      postCaption = <PostCaption currentUser={currentUser} post={post} openEditting={openEditting} />
+      postCaption = <PostCaption user={user}
+                                 currentUser={currentUser}
+                                 post={post}
+                                 openEditting={openEditting} />
     }
 
     let postHeader;
-    if (currentUser) {
+    if (user) {
       postHeader = <>
-        <img className="post-view-profile-pic" src={currentUser.photoUrl} />
-        <div className="post-view-user">{currentUser.username}</div>
+        <img className="post-view-profile-pic" src={user.photoUrl} />
+        <div className="post-view-user">{user.username}</div>
       </>
     } else postHeader = null;
 
@@ -231,7 +236,8 @@ const mapStateToProps = (state, ownProps) => {
     captionEditting: state.ui.captionEditting,
     likes: Object.values(state.entities.likes),
     post: state.entities.posts[ownProps.postId],
-    comments: Object.values(state.entities.comments)
+    comments: Object.values(state.entities.comments),
+    user: state.entities.users[ownProps.userId]
   };
 };
 

@@ -23,7 +23,9 @@ class UserProfile extends React.Component {
     const {
       fetchPosts,
       fetchLikes,
-      fetchComments
+      fetchComments,
+      fetchUser,
+      fetchUsers
     } = this.props;
     
     const {
@@ -33,6 +35,10 @@ class UserProfile extends React.Component {
     fetchPosts();
     fetchLikes();
     fetchComments();
+    fetchUsers();
+    if (this.props.match.params.userId) {
+      fetchUser(this.props.match.params.userId);
+    }
     this.setState({
       currentScrollHeight: window.scrollY
     });
@@ -89,7 +95,8 @@ class UserProfile extends React.Component {
       posts,
       currentUser,
       openModal,
-      logout
+      logout,
+      user
     } = this.props;
 
     const {
@@ -98,12 +105,19 @@ class UserProfile extends React.Component {
     
     let postsList;
     let myPosts;
+    let thisUser;
+
+    if (this.props.match.params.userId) {
+      thisUser = user;
+    } else thisUser = currentUser;
+
     if (posts) {
-      myPosts = posts.filter(post => post.posterId === currentUser.id);
+      myPosts = posts.filter(post => post.posterId === thisUser.id);
       postsList = myPosts.map( (post, idx) => {
         return <UserProfileItem post={post} 
                                 key={idx}
-                                openModal={openModal} />
+                                openModal={openModal}
+                                thisUser={thisUser} />
       });
     } else postsList = null;
 
@@ -129,14 +143,14 @@ class UserProfile extends React.Component {
                 <form id="profile-form" onSubmit={this.handleSubmit}>
                   <input disabled className="profile-file-input" id="profile-file-input" type="file" onChange={this.handleFile}/>
                   <label htmlFor="profile-file-input">
-                    <img src={currentUser.photoUrl}/>
+                    <img src={thisUser.photoUrl}/>
                   </label>
                 </form>
               </div>
 
               <section className="profile-info">
                 <div className="username-cog">
-                  <h1>{currentUser.username}</h1>
+                  <h1>{thisUser.username}</h1>
 
                   <div>
                     <button className="logout-button" onClick={logout}>Logout</button>
@@ -150,8 +164,8 @@ class UserProfile extends React.Component {
                     <li>0 following</li>
                   </ul>
                   <div>
-                    <h1 className="profile-name">{currentUser.name}</h1>
-                    <span>{currentUser.bio}</span>
+                    <h1 className="profile-name">{thisUser.name}</h1>
+                    <span>{thisUser.bio}</span>
                   </div>
                 </div>
               </section>
