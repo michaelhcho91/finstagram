@@ -210,6 +210,7 @@ class PostIndexItem extends React.Component {
               <div>
                 <form onSubmit={this.handleSubmit} className="post-comment-form" id={`comment-form-${post.id}`}>
                   <input onChange={this.update("body")} id={`comment-${post.id}`} placeholder="Add a comment..."></input>
+                  <input type="hidden" name="comment[post_id]" value={post.id}/>
                   <button className="submit-comment-icon" onClick={this.handleSubmit} disabled={!body}><img src={window.submit_icon}/></button>
                 </form>
               </div>

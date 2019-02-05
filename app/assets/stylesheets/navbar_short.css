@@ -57,7 +57,8 @@
 }
 
 .nav-search-short {
-  align-content: center;  
+  align-content: center;
+  margin-left: -25px;
 }
 
 .nav-search-short input {

@@ -80,7 +80,8 @@
 }
 
 .nav-search {
-  align-content: center;  
+  align-content: center;
+  margin-left: -25px;
 }
 
 .nav-search input {

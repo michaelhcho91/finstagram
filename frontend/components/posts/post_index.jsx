@@ -85,7 +85,7 @@ class PostIndex extends React.Component {
                               deleteLike={deleteLike}
                               createComment={createComment}
                               deleteComment={deleteComment} />
-      } else return null;
+      } else return [];
     });
 
     if (postsList.length === 0) {
