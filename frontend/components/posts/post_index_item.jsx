@@ -24,10 +24,10 @@ class PostIndexItem extends React.Component {
   handleDelete() {
     const {
       deletePost,
-      postId
+      post
     } = this.props;
 
-    deletePost(postId);
+    deletePost(post.id);
   }
   
   handleSubmit(e) {
@@ -35,20 +35,20 @@ class PostIndexItem extends React.Component {
     
     const {
       createComment,
-      postId,
+      post,
       currentUser
     } = this.props;
 
     createComment({
       body: this.state.body,
       commenter_id: currentUser.id,
-      post_id: postId
+      post_id: post.id
     });
     this.setState({
       body: ""
     });
 
-    const form = document.getElementById(`comment-form-${postId}`);
+    const form = document.getElementById(`comment-form-${post.id}`);
     form.reset();
   }
 
@@ -63,12 +63,12 @@ class PostIndexItem extends React.Component {
   likePost() {
     const {
       createLike,
-      postId,
+      post,
       currentUser
     } = this.props;
 
     createLike({
-      post_id: postId,
+      post_id: post.id,
       liker_id: currentUser.id
     });
 
@@ -86,13 +86,13 @@ class PostIndexItem extends React.Component {
   unlikePost() {
     const {
       deleteLike,
-      postId,
+      post,
       likes,
       currentUser
     } = this.props;
 
     const myLikes = likes.filter(like => like.liker_id === currentUser.id);
-    const currentLike = myLikes.find(like => like.post_id === postId);
+    const currentLike = myLikes.find(like => like.post_id === post.id);
 
     deleteLike(currentLike);
   }
@@ -114,7 +114,6 @@ class PostIndexItem extends React.Component {
     const {
       user,
       post,
-      postId,
       postComments,
       currentUser,
       captionEditting,
@@ -135,7 +134,7 @@ class PostIndexItem extends React.Component {
     } else postHeader = null;
 
     let postCaption;
-    if (captionEditting === postId) {
+    if (captionEditting === post.id) {
       postCaption = <PostCaptionEdit post={post} user={user} closeEditting={closeEditting} />
     } else {
       postCaption = <PostCaption user={user} currentUser={currentUser} post={post} openEditting={openEditting}/>

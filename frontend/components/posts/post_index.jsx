@@ -1,5 +1,5 @@
 import React from "react";
-import PostIndexItem from "./post_index_item";
+import PostIndexItemContainer from "./post_index_item_container";
 import NavbarContainer from "../navbar/navbar_container";
 import NavbarShort from "../navbar/navbar_short";
 
@@ -55,15 +55,7 @@ class PostIndex extends React.Component {
       users,
       likes,
       comments,
-      currentUser,
-      deletePost,
-      openEditting,
-      closeEditting,
-      captionEditting,
-      createLike,
-      deleteLike,
-      createComment,
-      deleteComment
+      currentUser
     } = this.props;
 
     let postsList;
@@ -71,21 +63,12 @@ class PostIndex extends React.Component {
       if (users[post.posterId]) {
         const postComments = comments.filter(comment => post.commentIds.includes(comment.id));
         
-        return <PostIndexItem key={idx}
-                              post={post}
-                              postId={post.id}
-                              user={users[post.posterId]}
-                              likes={likes}
-                              postComments={postComments}
-                              currentUser={currentUser}
-                              deletePost={deletePost}
-                              openEditting={openEditting}
-                              closeEditting={closeEditting}
-                              captionEditting={captionEditting}
-                              createLike={createLike}
-                              deleteLike={deleteLike}
-                              createComment={createComment}
-                              deleteComment={deleteComment} />
+        return <PostIndexItemContainer key={idx}
+                                       post={post}
+                                       user={users[post.posterId]}
+                                       likes={likes}
+                                       postComments={postComments}
+                                       currentUser={currentUser} />
       }
     });
 
