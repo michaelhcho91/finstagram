@@ -73,6 +73,7 @@ class PostIndex extends React.Component {
         
         return <PostIndexItem key={idx}
                               post={post}
+                              postId={post.id}
                               user={users[post.posterId]}
                               likes={likes}
                               postComments={postComments}
@@ -85,7 +86,7 @@ class PostIndex extends React.Component {
                               deleteLike={deleteLike}
                               createComment={createComment}
                               deleteComment={deleteComment} />
-      } else return [];
+      }
     });
 
     if (postsList.length === 0) {

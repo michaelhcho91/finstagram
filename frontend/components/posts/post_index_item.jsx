@@ -11,8 +11,6 @@ class PostIndexItem extends React.Component {
 
     this.state = {
       body: "",
-      commenter_id: this.props.currentUser.id,
-      post_id: this.props.post.id,
       likeHeart: "like-heart-none"
     };
 
@@ -26,10 +24,10 @@ class PostIndexItem extends React.Component {
   handleDelete() {
     const {
       deletePost,
-      post
+      postId
     } = this.props;
 
-    deletePost(post.id);
+    deletePost(postId);
   }
   
   handleSubmit(e) {
@@ -37,15 +35,19 @@ class PostIndexItem extends React.Component {
     
     const {
       createComment,
-      post
+      postId
     } = this.props;
 
-    createComment(this.state);
+    createComment({
+      body: this.state.body,
+      commenter_id: this.props.currentUser.id,
+      post_id: this.props.postId
+    });
     this.setState({
       body: ""
     });
 
-    const form = document.getElementById(`comment-form-${post.id}`);
+    const form = document.getElementById(`comment-form-${postId}`);
     form.reset();
   }
 
@@ -60,12 +62,12 @@ class PostIndexItem extends React.Component {
   likePost() {
     const {
       createLike,
-      post,
+      postId,
       currentUser
     } = this.props;
 
     createLike({
-      post_id: post.id,
+      post_id: postId,
       liker_id: currentUser.id
     });
 
@@ -83,13 +85,13 @@ class PostIndexItem extends React.Component {
   unlikePost() {
     const {
       deleteLike,
-      post,
+      postId,
       likes,
       currentUser
     } = this.props;
 
     const myLikes = likes.filter(like => like.liker_id === currentUser.id);
-    const currentLike = myLikes.find(like => like.post_id === post.id);
+    const currentLike = myLikes.find(like => like.post_id === postId);
 
     deleteLike(currentLike);
   }
@@ -111,6 +113,7 @@ class PostIndexItem extends React.Component {
     const {
       user,
       post,
+      postId,
       postComments,
       currentUser,
       captionEditting,
@@ -131,7 +134,7 @@ class PostIndexItem extends React.Component {
     } else postHeader = null;
 
     let postCaption;
-    if (captionEditting === post.id) {
+    if (captionEditting === postId) {
       postCaption = <PostCaptionEdit post={post} user={user} closeEditting={closeEditting} />
     } else {
       postCaption = <PostCaption user={user} currentUser={currentUser} post={post} openEditting={openEditting}/>
@@ -210,7 +213,6 @@ class PostIndexItem extends React.Component {
               <div>
                 <form onSubmit={this.handleSubmit} className="post-comment-form" id={`comment-form-${post.id}`}>
                   <input onChange={this.update("body")} id={`comment-${post.id}`} placeholder="Add a comment..."></input>
-                  <input type="hidden" name="comment[post_id]" value={post.id}/>
                   <button className="submit-comment-icon" onClick={this.handleSubmit} disabled={!body}><img src={window.submit_icon}/></button>
                 </form>
               </div>
