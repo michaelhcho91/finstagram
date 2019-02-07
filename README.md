@@ -2,7 +2,7 @@
 
 ## Live: [Finstagram](https://finstagram-aa.herokuapp.com/#/ "Finstagram")
 
-Finstagram is a fullstack single-page social media web application based on [Instagram](https://www.instagram.com/ "Instagram"). Users can sign up, share photos, and interact with photos other users posted by liking and commenting.
+Finstagram is a fullstack single-page social media web application based on [Instagram](https://www.instagram.com/ "Instagram"). Users can sign up, share photos, follow users, and interact with photos other users posted by liking and commenting.
 
 ![](./readme_images/splash-ss.png)
 
@@ -10,13 +10,13 @@ Finstagram is a fullstack single-page social media web application based on [Ins
 
 ## Feed
 
-Finstagram's main feature is being able to share photos and see photos of other users. Once logged in, users are taken to their feed. Users can create posts by clicking on the upload icon on the navigation bar, which immediately updates the feed with the most recent post.
+Finstagram's main feature is being able to share photos and see photos of other users. On sign up, users are taken to the explore page because their feed will be empty. Here they may view posts by other users and follow them if they choose, populating their feed. Users can create posts by clicking on the upload icon on their personal profile, which immediately updates the feed with the most recent post.
 
 ![](./readme_images/feed-ss.png)
 
 ## Profile
 
-Users can navigate to their personal profile by clicking on the profile icon. Their total number of posts is displayed by their username. From there, they may view all of their posts individually, delete posts, create posts through the navigation bar, or navigate back to their feed by clicking on the logo icon.
+Users can navigate to their personal profile by clicking on the profile icon. Their total number of posts is displayed by their username. From there, they may view all of their posts individually, delete posts, create posts, or navigate back to their feed by clicking on the logo icon.
 
 ![](./readme_images/profile-ss.png)
 ![](./readme_images/postview-ss.png)
@@ -75,6 +75,5 @@ Development technologies for Finstagram include React/Redux for the frontend, Ru
 # Future Implementations
 
 * Search bar to find other users
-* Follow feature to personalize feed
 * Edit profile and upload profile photo
 * Notifications for likes and comments
