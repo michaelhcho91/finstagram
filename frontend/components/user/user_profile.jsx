@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarContainer from "../navbar/navbar_container";
+import Navbar from "../navbar/navbar";
 import NavbarShort from "../navbar/navbar_short";
 import UserProfileItem from "./user_profile_item";
 
@@ -15,6 +15,7 @@ class UserProfile extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.followUser = this.followUser.bind(this);
     this.unfollowUser = this.unfollowUser.bind(this);
   }
@@ -25,9 +26,8 @@ class UserProfile extends React.Component {
     const {
       fetchPosts,
       fetchComments,
-      fetchUser,
       fetchUsers,
-      fetchFollows
+      fetchUser
     } = this.props;
     
     const {
@@ -37,7 +37,6 @@ class UserProfile extends React.Component {
     fetchUsers();
     fetchPosts();
     fetchComments();
-    fetchFollows();
     if (this.props.match.params.userId) {
       fetchUser(this.props.match.params.userId);
     }
@@ -92,34 +91,38 @@ class UserProfile extends React.Component {
     const form = document.getElementById("profile-form");
   }
   
+  handleClick() {
+    window.onscroll = function () {
+      window.scrollTo(0, 0);
+    };
+
+    this.props.openModal("create", null);
+  }
+  
   followUser() {
     const {
       createFollow,
       user,
-      fetchUsers
+      currentUser
     } = this.props;
 
     createFollow({
-      following_id: user.id
+      following_id: user.id,
+      follower_id: currentUser.id
     });
-
-    fetchUsers();
   }
 
   unfollowUser() {
     const {
       deleteFollow,
       user,
-      currentUser,
-      fetchUsers
+      currentUser
     } = this.props;
 
     deleteFollow({
       following_id: user.id,
       follower_id: currentUser.id
     });
-
-    fetchUsers();
   }
   
   render() {
@@ -128,8 +131,7 @@ class UserProfile extends React.Component {
       currentUser,
       openModal,
       logout,
-      user,
-      follows
+      user
     } = this.props;
 
     const {
@@ -157,11 +159,6 @@ class UserProfile extends React.Component {
     let postOrPosts = "posts";
     if (postCount === 1) postOrPosts = "post";
     
-    // let myFollowers;
-    // if (follows) {
-    //   myFollowers = follows.filter(follow => follow.follower_id === thisUser.id)
-    // }
-    
     let followingCount = null;
     if (thisUser.followingIds) {
       followingCount = thisUser.followingIds.length;
@@ -175,7 +172,7 @@ class UserProfile extends React.Component {
     
     let navbar;
     if (currentScrollHeight <= 90) {
-      navbar = <NavbarContainer />
+      navbar = <Navbar />
     } else {
       navbar = <NavbarShort />
     }
@@ -189,9 +186,11 @@ class UserProfile extends React.Component {
       }
     }
     
+    let uploadIcon = <img className="icon-upload" onClick={this.handleClick} src={window.upload_icon} />;
     let logoutButton = <button className="logout-button" onClick={logout}>Logout</button>;
     if (thisUser !== currentUser) {
       logoutButton = null;
+      uploadIcon = null;
     } else if (thisUser === currentUser) {
       followButton = null;
     }
@@ -219,6 +218,7 @@ class UserProfile extends React.Component {
                   <div>
                     {logoutButton}
                     {followButton}
+                    {uploadIcon}
                   </div>
                 </div>
 

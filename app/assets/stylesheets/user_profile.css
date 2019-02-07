@@ -11,7 +11,7 @@
   background-color: #FAFAFA;
   max-width: 975px;
   padding: 60px 20px 0;
-  margin-bottom: 450px;
+  margin-bottom: 454px;
 }
 
 .user-profile-info {
@@ -58,6 +58,15 @@
   margin-bottom: 20px;
 }
 
+.icon-upload {
+  margin-left: 20px;
+  margin-bottom: -9px;
+}
+
+.icon-upload:hover {
+  cursor: pointer;
+}
+
 .logout-button {
   background-color: transparent;
   color: #262626;
@@ -80,6 +89,10 @@
   font-size: 14px;
   line-height: 18px;
   padding: 5px 10px;
+}
+
+.follow-button:focus {
+  outline: none;
 }
 
 .username-cog h1 {

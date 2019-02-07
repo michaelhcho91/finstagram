@@ -27,12 +27,15 @@ const usersReducer = (oldState = {}, action) => {
       );
 
     case RECEIVE_FOLLOW:
-      newState[action.follow.follower_id].followingIds.push(action.follow.id);
+      newState[action.follow.following_id].followerIds.push(action.follow.follower_id);
+      newState[action.follow.follower_id].followingIds.push(action.follow.following_id);
       return newState;
 
     case REMOVE_FOLLOW:
-      newState[action.follow.follower_id].followerIds =
-        newState[action.follow.follower_id].followerIds.filter(id => id !== action.follow.follower_id);
+      newState[action.follow.following_id].followerIds =
+        newState[action.follow.following_id].followerIds.filter(id => id !== action.follow.follower_id);
+      newState[action.follow.follower_id].followingIds =
+        newState[action.follow.follower_id].followingIds.filter(id => id !== action.follow.following_id);
       return newState;
     
     default:

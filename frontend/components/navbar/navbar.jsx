@@ -5,18 +5,8 @@ import ModalContainer from "../modal/modal_container";
 class Navbar extends React.Component {  
   constructor(props) {
     super(props);
+  }
 
-    this.handleClick = this.handleClick.bind(this);
-  }
-  
-  handleClick() {
-    window.onscroll = function () {
-      window.scrollTo(0, 0);
-    };
-    
-    this.props.openModal("create", null);
-  }
-  
   render() {
     return (
       <nav className="nav-container">
@@ -35,7 +25,7 @@ class Navbar extends React.Component {
             </li>
             
             <li className="nav-right-items">
-              <img className="icon-upload" onClick={this.handleClick} src={window.upload_icon}/>
+              <Link to={"/explore"} className="icon-explore"><img src={window.explore_icon}/></Link>
               <img className="icon-heart" src={window.heart_icon}/>
               <Link to={"/profile"} className="icon-profile"><img src={window.profile_icon}/></Link>
             </li>

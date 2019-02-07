@@ -1,22 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ModalContainer from "../modal/modal_container";
-import { connect } from "react-redux";
-import { openModal, closeModal } from "../../actions/modal_actions";
 
 class NavbarShort extends React.Component {
   constructor(props) {
     super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-  
-  handleClick() {
-    window.onscroll = function () {
-      window.scrollTo(0, 0);
-    };
-    
-    this.props.openModal("create", null);
   }
   
   render() {
@@ -35,7 +23,7 @@ class NavbarShort extends React.Component {
             </li>
 
             <li className="nav-right-items-short">
-              <img className="icon-upload-short" onClick={this.handleClick} src={window.upload_icon} />
+              <Link to={"/explore"} className="icon-explore"><img src={window.explore_icon} /></Link>
               <img className="icon-heart-short" src={window.heart_icon} />
               <Link to={`/profile`} className="icon-profile-short"><img src={window.profile_icon} /></Link>
             </li>
@@ -46,17 +34,4 @@ class NavbarShort extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    modal: state.ui.modal
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    openModal: (options) => dispatch(openModal("create", options)),
-    closeModal: () => dispatch(closeModal())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarShort);
+export default NavbarShort;

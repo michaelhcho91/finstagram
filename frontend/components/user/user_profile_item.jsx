@@ -21,7 +21,10 @@ class UserProfileItem extends React.Component {
   }
 
   render() {
-    const { post } = this.props;
+    const {
+      post
+    } = this.props;
+    
     return(
       <li className="user-post"><img onClick={this.handleClick} src={post.photoUrl} /></li>
     )

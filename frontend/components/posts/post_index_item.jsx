@@ -19,6 +19,8 @@ class PostIndexItem extends React.Component {
     this.likePost = this.likePost.bind(this);
     this.unlikePost = this.unlikePost.bind(this);
     this.doubleClick = this.doubleClick.bind(this);
+    this.followUser = this.followUser.bind(this);
+    this.unfollowUser = this.unfollowUser.bind(this);
   }
 
   handleDelete() {
@@ -87,14 +89,13 @@ class PostIndexItem extends React.Component {
     const {
       deleteLike,
       post,
-      likes,
       currentUser
     } = this.props;
 
-    const myLikes = likes.filter(like => like.liker_id === currentUser.id);
-    const currentLike = myLikes.find(like => like.post_id === post.id);
-
-    deleteLike(currentLike);
+    deleteLike({
+      post_id: post.id,
+      liker_id: currentUser.id
+    });
   }
 
   doubleClick() {
@@ -108,6 +109,32 @@ class PostIndexItem extends React.Component {
     } else {
       return this.likePost();
     }
+  }
+
+  followUser() {
+    const {
+      createFollow,
+      user,
+      currentUser
+    } = this.props;
+
+    createFollow({
+      following_id: user.id,
+      follower_id: currentUser.id
+    });
+  }
+
+  unfollowUser() {
+    const {
+      deleteFollow,
+      user,
+      currentUser
+    } = this.props;
+
+    deleteFollow({
+      following_id: user.id,
+      follower_id: currentUser.id
+    });
   }
 
   render() {
@@ -132,6 +159,17 @@ class PostIndexItem extends React.Component {
                     </Link>
                   </>
     } else postHeader = null;
+
+    let followButton;
+    if (currentUser && user) {
+      if (currentUser.followingIds.includes(user.id)) {
+        followButton = <button className="follow-button" onClick={this.unfollowUser}>Unfollow</button>
+      } else if (user === currentUser) {
+        followButton = null
+      } else {
+        followButton = <button className="follow-button" onClick={this.followUser}>Follow</button>
+      }
+    }
 
     let postCaption;
     if (captionEditting === post.id) {
@@ -174,7 +212,7 @@ class PostIndexItem extends React.Component {
       <li>
         <article className="post-container">
           <header className="post-header">
-            {postHeader}
+            {postHeader} {followButton}
           </header>
 
           <div className="post-photo">

@@ -1,10 +1,13 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchPosts } from "../../actions/post_actions";
+import { fetchUsers } from "../../actions/user_actions";
+import { fetchComments } from "../../actions/comment_actions";
 import PostIndexItemContainer from "./post_index_item_container";
 import Navbar from "../navbar/navbar";
 import NavbarShort from "../navbar/navbar_short";
 
-class PostIndex extends React.Component {
+class PostExplore extends React.Component {
   constructor(props) {
     super(props);
 
@@ -12,13 +15,11 @@ class PostIndex extends React.Component {
       currentScrollHeight: null
     };
   }
-  
-  componentDidMount() {
-    window.scrollTo(0, 0);
 
+  componentDidMount() {
     const {
-      fetchUsers,
       fetchPosts,
+      fetchUsers,
       fetchComments
     } = this.props;
 
@@ -29,11 +30,11 @@ class PostIndex extends React.Component {
     fetchUsers();
     fetchPosts();
     fetchComments();
-    
+
     this.setState({
       currentScrollHeight: window.scrollY
     });
-    
+
     window.onscroll = () => {
       const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
       if (currentScrollHeight !== newScrollHeight) {
@@ -48,19 +49,18 @@ class PostIndex extends React.Component {
     const {
       currentScrollHeight
     } = this.state;
-    
+
     const {
-      posts,
       users,
+      posts,
       comments,
       currentUser
     } = this.props;
 
-    let postsList;
-    postsList = posts.filter(post => currentUser.followingIds.includes(post.posterId) || currentUser.id === post.posterId).map( (post, idx) => {
+    const explorePosts = posts.filter(post => !currentUser.followingIds.includes(post.posterId) && currentUser.id !== post.posterId).map( (post, idx) => {
       if (users[post.posterId]) {
         const postComments = comments.filter(comment => post.commentIds.includes(comment.id));
-        
+
         return <PostIndexItemContainer key={idx}
                                        post={post}
                                        user={users[post.posterId]}
@@ -69,38 +69,42 @@ class PostIndex extends React.Component {
       }
     });
 
-    if (postsList.length === 0) {
-      postsList = <article className="temp-post-container"></article>
-    };
-
     let navbar;
     if (currentScrollHeight <= 90) {
       navbar = <Navbar />
     } else {
       navbar = <NavbarShort />
     }
-
-    let notFollowing = <Redirect to={"/explore"} />
-    if (postsList.length > 0) {
-      notFollowing = null;
-    }
     
     return (
       <>
         {navbar}
-        {notFollowing}
-
-        <section className="post-index-section">
-          <div className="posts-list-left">
-            <ul className="posts-list">
-              {postsList}
-            </ul>  
-          </div>
-          {/* <UserIndexContainer /> */}
+      
+        <section className="explore-container">
+          <ul className="posts-list">
+            {explorePosts}
+          </ul>
         </section>
       </>
     )
   }
 }
 
-export default PostIndex;
+const mapStateToProps = (state) => {
+  return {
+    posts: Object.values(state.entities.posts).reverse(),
+    users: state.entities.users,
+    comments: Object.values(state.entities.comments),
+    currentUser: state.entities.users[state.session.id]
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPosts: () => dispatch(fetchPosts()),
+    fetchUsers: () => dispatch(fetchUsers()),
+    fetchComments: () => dispatch(fetchComments())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostExplore);

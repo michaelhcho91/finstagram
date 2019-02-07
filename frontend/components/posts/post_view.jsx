@@ -87,15 +87,14 @@ class PostView extends React.Component {
   unlikePost() {
     const {
       post,
-      likes,
       currentUser,
       deleteLike
     } = this.props;
 
-    const myLikes = likes.filter(like => like.liker_id === currentUser.id);
-    const currentLike = myLikes.find(like => like.post_id === post.id);
-
-    deleteLike(currentLike);
+    deleteLike({
+      post_id: post.id,
+      liker_id: currentUser.id
+    });
   }
 
   doubleClick() {
@@ -234,7 +233,6 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.entities.users[state.session.id],
     captionEditting: state.ui.captionEditting,
-    likes: Object.values(state.entities.likes),
     post: state.entities.posts[ownProps.postId],
     comments: Object.values(state.entities.comments),
     user: state.entities.users[ownProps.userId]

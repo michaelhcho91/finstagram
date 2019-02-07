@@ -5,23 +5,20 @@ import { logout } from "../../actions/session_actions";
 import { fetchUsers, fetchUser, updateUser } from "../../actions/user_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { fetchComments } from "../../actions/comment_actions";
-import { fetchFollows, createFollow, deleteFollow } from "../../actions/follow_actions";
+import { createFollow, deleteFollow } from "../../actions/follow_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
     posts: Object.values(state.entities.posts).reverse(),
-    likes: Object.values(state.entities.likes),
     comments: Object.values(state.entities.comments),
     currentUser: state.entities.users[state.session.id],
     user: state.entities.users[ownProps.match.params.userId],
-    follows: Object.values(state.entities.follows),
     captionEditting: state.ui.captionEditting
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchFollows: () => dispatch(fetchFollows()),
     fetchPosts: () => dispatch(fetchPosts()),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
     fetchUsers: () => dispatch(fetchUsers()),

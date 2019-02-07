@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :posts, except: [:new, :edit]
     resources :comments, only: [:index, :create, :destroy]
-    resources :follows, only: [:index, :show, :create, :destroy]
-    resources :likes, only: [:index, :create, :destroy]
+    resources :follows, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
 end
