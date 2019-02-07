@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../navbar/navbar";
 import NavbarShort from "../navbar/navbar_short";
 import UserProfileItem from "./user_profile_item";
@@ -9,12 +10,8 @@ class UserProfile extends React.Component {
     
     this.state = {
       currentScrollHeight: null,
-      id: this.props.currentUser.id,
-      photoFile: null
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleFile = this.handleFile.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.followUser = this.followUser.bind(this);
     this.unfollowUser = this.unfollowUser.bind(this);
@@ -53,44 +50,7 @@ class UserProfile extends React.Component {
       }
     };
   }
-  
-  handleSubmit(e) {
-    e.preventDefault();
 
-    const {
-      photoFile
-    } = this.state;
-
-    const {
-      updateUser
-    } = this.props;
-
-    const formData = new FormData();
-    if (photoFile) {
-      formData.append(
-        "user[photo]",
-        photoFile
-      );
-    }
-
-    updateUser(formData);
-  }
-  
-  handleFile(e) {
-    const file = e.currentTarget.files[0];
-    const fileReader = new FileReader();
-
-    fileReader.onloadend = () => {
-      this.setState({
-        photoFile: file,
-      });
-    };
-
-    if (file) fileReader.readAsDataURL(file);
-
-    const form = document.getElementById("profile-form");
-  }
-  
   handleClick() {
     window.onscroll = function () {
       window.scrollTo(0, 0);
@@ -203,12 +163,7 @@ class UserProfile extends React.Component {
           <div className="user-profile">
             <header className="user-profile-info">
               <div className="profile-pic">
-                <form id="profile-form" onSubmit={this.handleSubmit}>
-                  <input disabled className="profile-file-input" id="profile-file-input" type="file" onChange={this.handleFile}/>
-                  <label htmlFor="profile-file-input">
-                    <img src={thisUser.photoUrl}/>
-                  </label>
-                </form>
+                <Link to={"profile/edit"}><img src={thisUser.photoUrl}/></Link>
               </div>
 
               <section className="profile-info">

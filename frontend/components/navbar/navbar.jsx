@@ -15,9 +15,9 @@ class Navbar extends React.Component {
         <div className="nav-list-container">
           <ul className="nav-list">
             <li className="nav-left-items">
-              <div><Link to={"/"} className="icon-feed"><img src={window.feed_icon}/></Link></div>
+              <div><Link to={"/feed"} className="icon-feed"><img src={window.feed_icon}/></Link></div>
               <div className="nav-divider"></div>
-              <div><Link to={"/"} className="nav-logo">Finstagram</Link></div>
+              <div><Link to={"/feed"} className="nav-logo">Finstagram</Link></div>
             </li>
             
             <li className="nav-search">

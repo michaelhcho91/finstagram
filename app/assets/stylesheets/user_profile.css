@@ -42,11 +42,6 @@
   cursor: pointer;
 }
 
-.profile-file-input {
-  width: 0;
-  height: 0;
-}
-
 .profile-info {
   height: 150px;
   width: 613px;

@@ -15,7 +15,7 @@ class NavbarShort extends React.Component {
         <div className="nav-list-container-short">
           <ul className="nav-list-short">
             <li className="nav-left-items-short">
-              <div><Link to={`/`} className="icon-feed-short"><img src={window.feed_icon} /></Link></div>
+              <div><Link to={`/feed`} className="icon-feed-short"><img src={window.feed_icon} /></Link></div>
             </li>
 
             <li className="nav-search-short">
