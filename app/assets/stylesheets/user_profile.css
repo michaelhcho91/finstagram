@@ -11,7 +11,7 @@
   background-color: #FAFAFA;
   max-width: 975px;
   padding: 60px 20px 0;
-  margin-bottom: 170px;
+  margin-bottom: 450px;
 }
 
 .user-profile-info {
@@ -59,6 +59,18 @@
 }
 
 .logout-button {
+  background-color: transparent;
+  color: #262626;
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 5px 10px;
+}
+
+.follow-button {
   background-color: transparent;
   color: #262626;
   border: 1px solid #DBDBDB;

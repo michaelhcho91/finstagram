@@ -19,6 +19,7 @@ img {
 .posts-list {
   padding-top: 60px;
   list-style: none;
+  margin-bottom: 50px;
 }
 
 .post-container {
@@ -29,7 +30,7 @@ img {
 }
 
 .temp-post-container {
-  margin-bottom: 450px;
+  margin-bottom: 688px;
 }
 
 .post-header {
@@ -88,7 +89,7 @@ img {
 
 .post-photo-img {
   margin: 0 auto;
-  margin-bottom: -7px;
+  margin-bottom: -4px;
   min-width: 615px;
 }
 

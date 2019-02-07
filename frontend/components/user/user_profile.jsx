@@ -15,6 +15,8 @@ class UserProfile extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.followUser = this.followUser.bind(this);
+    this.unfollowUser = this.unfollowUser.bind(this);
   }
   
   componentDidMount() {
@@ -22,10 +24,10 @@ class UserProfile extends React.Component {
 
     const {
       fetchPosts,
-      fetchLikes,
       fetchComments,
       fetchUser,
-      fetchUsers
+      fetchUsers,
+      fetchFollows
     } = this.props;
     
     const {
@@ -34,8 +36,8 @@ class UserProfile extends React.Component {
     
     fetchUsers();
     fetchPosts();
-    fetchLikes();
     fetchComments();
+    fetchFollows();
     if (this.props.match.params.userId) {
       fetchUser(this.props.match.params.userId);
     }
@@ -90,27 +92,57 @@ class UserProfile extends React.Component {
     const form = document.getElementById("profile-form");
   }
   
+  followUser() {
+    const {
+      createFollow,
+      user,
+      fetchUsers
+    } = this.props;
+
+    createFollow({
+      following_id: user.id
+    });
+
+    fetchUsers();
+  }
+
+  unfollowUser() {
+    const {
+      deleteFollow,
+      user,
+      currentUser,
+      fetchUsers
+    } = this.props;
+
+    deleteFollow({
+      following_id: user.id,
+      follower_id: currentUser.id
+    });
+
+    fetchUsers();
+  }
+  
   render() {
     const {
       posts,
       currentUser,
       openModal,
       logout,
-      user
+      user,
+      follows
     } = this.props;
 
     const {
       currentScrollHeight
     } = this.state;
     
-    let postsList;
-    let myPosts;
     let thisUser;
-
     if (user) {
       thisUser = user;
     } else thisUser = currentUser;
-
+    
+    let postsList;
+    let myPosts;
     if (posts) {
       myPosts = posts.filter(post => post.posterId === thisUser.id);
       postsList = myPosts.map( (post, idx) => {
@@ -119,11 +151,27 @@ class UserProfile extends React.Component {
                                 openModal={openModal}
                                 thisUser={thisUser} />
       });
-    } else postsList = null;
+    }
 
     const postCount = myPosts.length;
     let postOrPosts = "posts";
     if (postCount === 1) postOrPosts = "post";
+    
+    // let myFollowers;
+    // if (follows) {
+    //   myFollowers = follows.filter(follow => follow.follower_id === thisUser.id)
+    // }
+    
+    let followingCount = null;
+    if (thisUser.followingIds) {
+      followingCount = thisUser.followingIds.length;
+    }
+    let followerCount = null;
+    if (thisUser.followerIds) {
+      followerCount = thisUser.followerIds.length;
+    }
+    let followerOrFollowers = "followers";
+    if (followerCount === 1) followerOrFollowers = "follower";
     
     let navbar;
     if (currentScrollHeight <= 90) {
@@ -131,7 +179,23 @@ class UserProfile extends React.Component {
     } else {
       navbar = <NavbarShort />
     }
-
+    
+    let followButton;
+    if (currentUser && user) {
+      if (currentUser.followingIds.includes(user.id)) {
+        followButton = <button className="follow-button" onClick={this.unfollowUser}>Unfollow</button>
+      } else {
+        followButton = <button className="follow-button" onClick={this.followUser}>Follow</button>
+      }
+    }
+    
+    let logoutButton = <button className="logout-button" onClick={logout}>Logout</button>;
+    if (thisUser !== currentUser) {
+      logoutButton = null;
+    } else if (thisUser === currentUser) {
+      followButton = null;
+    }
+    
     return (
       <>
         {navbar}
@@ -153,15 +217,16 @@ class UserProfile extends React.Component {
                   <h1>{thisUser.username}</h1>
 
                   <div>
-                    <button className="logout-button" onClick={logout}>Logout</button>
+                    {logoutButton}
+                    {followButton}
                   </div>
                 </div>
 
                 <div>
                   <ul className="user-post-follow-list">
                     <li>{postCount} {postOrPosts}</li>
-                    <li>593m followers</li>
-                    <li>0 following</li>
+                    <li>{followerCount} {followerOrFollowers}</li>
+                    <li>{followingCount} following</li>
                   </ul>
                   <div>
                     <h1 className="profile-name">{thisUser.name}</h1>

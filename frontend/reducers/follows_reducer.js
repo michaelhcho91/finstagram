@@ -1,15 +1,22 @@
 import { merge } from "lodash";
-import { RECEIVE_FOLLOW, REMOVE_FOLLOW } from "../actions/follow_actions";
+import { RECEIVE_FOLLOWS, RECEIVE_FOLLOW, REMOVE_FOLLOW } from "../actions/follow_actions";
 
 const followsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
 
   switch (action.type) {
+    case RECEIVE_FOLLOWS:
+      return merge(
+        {},
+        oldState,
+        action.follows
+      );
+    
     case RECEIVE_FOLLOW:
       return merge(
         {},
         oldState,
-        { [action.follow.follower_id]: action.follow }
+        { [action.follow.following_id]: action.follow }
       );
 
     case REMOVE_FOLLOW:
@@ -17,7 +24,7 @@ const followsReducer = (oldState = {}, action) => {
         {},
         oldState
       );
-      delete newState[action.followId];
+      delete newState[action.follow.following_id];
       return newState;
       
     default:

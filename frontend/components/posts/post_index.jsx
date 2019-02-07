@@ -59,6 +59,7 @@ class PostIndex extends React.Component {
     } = this.props;
 
     let postsList;
+    // postsList = posts.filter(post => currentUser.followingIds.includes(post.posterId)).map( (post, idx) => {
     postsList = posts.map( (post, idx) => {
       if (users[post.posterId]) {
         const postComments = comments.filter(comment => post.commentIds.includes(comment.id));
@@ -93,6 +94,7 @@ class PostIndex extends React.Component {
               {postsList}
             </ul>  
           </div>
+          {/* <UserIndexContainer /> */}
         </section>
       </>
     )
