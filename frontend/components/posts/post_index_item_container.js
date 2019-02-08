@@ -4,6 +4,7 @@ import { deletePost, openEditting, closeEditting } from "../../actions/post_acti
 import { createLike, deleteLike } from "../../actions/like_actions";
 import { createComment, deleteComment } from "../../actions/comment_actions";
 import { createFollow, deleteFollow } from "../../actions/follow_actions";
+import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -21,7 +22,8 @@ const mapDispatchToProps = (dispatch) => {
     createComment: (comment) => dispatch(createComment(comment)),
     deleteComment: (commentId) => dispatch(deleteComment(commentId)),
     createFollow: (follow) => dispatch(createFollow(follow)),
-    deleteFollow: (followingId) => dispatch(deleteFollow(followingId))
+    deleteFollow: (followingId) => dispatch(deleteFollow(followingId)),
+    closeModal: () => dispatch(closeModal())
   };
 };
 
