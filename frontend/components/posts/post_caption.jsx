@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class PostCaption extends React.Component {
   constructor(props) {
@@ -25,9 +26,13 @@ class PostCaption extends React.Component {
 
     let captionUsername;
     if (user) {
-      captionUsername = user.username;
+      captionUsername = <Link to={`/users/${user.id}`}>
+                          {user.username}
+                        </Link>;
     } else {
-      captionUsername = currentUser.username;
+      captionUsername = <Link to={`/users/${currentUser.id}`}>
+                          {currentUser.username}
+                        </Link>;
     }
 
     let captionSpan;

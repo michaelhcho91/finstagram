@@ -73,8 +73,10 @@ img {
   margin-right: 10px;
 }
 
-.post-caption-user {
+.post-caption-user a {
   font-weight: 450;
+  text-decoration: none;
+  color: inherit;
 }
 
 .post-caption {
