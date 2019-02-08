@@ -174,9 +174,15 @@ class PostIndexItem extends React.Component {
 
     let postCaption;
     if (captionEditting === post.id) {
-      postCaption = <PostCaptionEdit post={post} user={user} closeEditting={closeEditting} />
+      postCaption = <PostCaptionEdit post={post}
+                                     user={user}
+                                     closeEditting={closeEditting} />
     } else {
-      postCaption = <PostCaption user={user} currentUser={currentUser} post={post} openEditting={openEditting} closeModal={closeModal} />
+      postCaption = <PostCaption user={user}
+                                 currentUser={currentUser} 
+                                 post={post} 
+                                 openEditting={openEditting} 
+                                 closeModal={closeModal} />
     }
 
     let deleteButton;

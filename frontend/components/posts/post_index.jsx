@@ -77,7 +77,7 @@ class PostIndex extends React.Component {
     }
 
     let notFollowing = null;
-    if (postsList.length === 0) {
+    if (!posts && postsList.length === 0) {
       notFollowing = <Redirect to={"/explore"} />;
     }
     
