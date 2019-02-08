@@ -103,6 +103,12 @@
   margin: 32px 0 32px 193px;
 }
 
+.edit-submit:disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  outline: 0;
+}
+
 .edit-unsaved {
   display: none;
 }

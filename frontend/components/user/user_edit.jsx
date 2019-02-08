@@ -16,7 +16,8 @@ class UserEdit extends React.Component {
       email: currentUser.email,
       photoFile: null,
       photoUrl: currentUser.photoUrl,
-      savedOrNot: "edit-unsaved"
+      savedOrNot: "edit-unsaved",
+      disabledOrNot: true
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,7 +62,7 @@ class UserEdit extends React.Component {
       this.setState({
         savedOrNot: "edit-unsaved"
       });
-    }, 1200);
+    }, 1600);
   }
   
   handleFile(e) {
@@ -81,7 +82,8 @@ class UserEdit extends React.Component {
   update(field) {
     return (e) => {
       this.setState({
-        [field]: e.currentTarget.value
+        [field]: e.currentTarget.value,
+        disabledOrNot: false
       });
     };
   }
@@ -93,16 +95,17 @@ class UserEdit extends React.Component {
 
     const {
       photoUrl,
-      savedOrNot
+      savedOrNot,
+      disabledOrNot
     } = this.state;
-
+    
     let preview;
     if (photoUrl) {
       preview = <img className="edit-pic-preview" src={photoUrl} />
     } else {
       preview = <img className="current-pic" src={currentUser.photoUrl} />
     };
-
+    
     return(
       <>
         <Navbar />
@@ -161,7 +164,8 @@ class UserEdit extends React.Component {
             </div>
           </div>
 
-          <input className="edit-submit" type="submit" value="Submit" /><span className={savedOrNot}>Saved!</span>
+          <input className="edit-submit" type="submit" value="Submit" disabled={disabledOrNot} />
+          <span className={savedOrNot}>Saved!</span>
         </form>
       </>
     )
