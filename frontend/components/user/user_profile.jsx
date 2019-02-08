@@ -190,7 +190,9 @@ class UserProfile extends React.Component {
                   </ul>
                   <div>
                     <h1 className="profile-name">{thisUser.name}</h1>
-                    <span>{thisUser.bio}</span>
+                    <div className="profile-bio">
+                      <span>{thisUser.bio}</span>
+                    </div>
                   </div>
                 </div>
               </section>

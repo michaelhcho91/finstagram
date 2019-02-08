@@ -116,6 +116,11 @@
   font-weight: 500;
 }
 
+.profile-bio {
+  overflow: auto;
+  height: 70px;
+}
+
 .user-posts {
   width: 935px;
   list-style: none;
