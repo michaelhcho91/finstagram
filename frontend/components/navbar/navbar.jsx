@@ -17,7 +17,7 @@ class Navbar extends React.Component {
             </li>
             
             <li className="nav-search">
-              <input type="text" placeholder="Search" />
+              <input type="text" placeholder="                      Search" />
             </li>
             
             <li className="nav-right-items">

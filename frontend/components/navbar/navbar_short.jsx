@@ -15,7 +15,7 @@ class NavbarShort extends React.Component {
             </li>
 
             <li className="nav-search-short">
-              <input type="text" placeholder="Search" />
+              <input type="text" placeholder="                      Search" />
             </li>
 
             <li className="nav-right-items-short">
