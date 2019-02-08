@@ -6,6 +6,7 @@ class Comment extends React.Component {
     super(props);
 
     this.removeComment = this.removeComment.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   
   removeComment() {
@@ -18,6 +19,10 @@ class Comment extends React.Component {
     if (comment.commenter_id === currentUser.id) {
       deleteComment(comment);
     }
+  }
+  
+  handleClick() {
+    this.props.closeModal();
   }
   
   render() {
@@ -34,7 +39,7 @@ class Comment extends React.Component {
     return(
       <li>
         <span className="comment-username">
-          <Link to={comment.username !== currentUser.username ? `/users/${comment.commenter_id}` : `/profile`}>
+          <Link onClick={this.handleClick} to={comment.username !== currentUser.username ? `/users/${comment.commenter_id}` : `/profile`}>
             {comment.username} 
           </Link>
           <span onClick={this.removeComment} className={`comment-body ${deletable}`}> {comment.body}</span>

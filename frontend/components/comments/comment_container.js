@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Comment from "./comment";
 import { deleteComment } from "../../actions/comment_actions";
+import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -11,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteComment: (comment) => dispatch(deleteComment(comment))
+    deleteComment: (comment) => dispatch(deleteComment(comment)),
+    closeModal: () => dispatch(closeModal())
   };
 };
 
