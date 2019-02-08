@@ -102,3 +102,13 @@
   font-weight: 500;
   margin: 32px 0 32px 193px;
 }
+
+.edit-unsaved {
+  display: none;
+}
+
+.edit-saved {
+  color: red;
+  font-weight: 400;
+  margin-left: 14px;
+}

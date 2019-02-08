@@ -15,7 +15,8 @@ class UserEdit extends React.Component {
       bio: currentUser.bio,
       email: currentUser.email,
       photoFile: null,
-      photoUrl: currentUser.photoUrl
+      photoUrl: currentUser.photoUrl,
+      savedOrNot: "edit-unsaved"
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,7 +36,6 @@ class UserEdit extends React.Component {
 
     const {
       updateUser,
-      history,
       currentUser
     } = this.props;
 
@@ -51,8 +51,17 @@ class UserEdit extends React.Component {
     updateUser({
       formData,
       id: currentUser.id
-    }).
-      then(history.push("/profile"));
+    });
+
+    this.setState({
+      savedOrNot: "edit-saved"
+    });
+
+    setTimeout(() => {
+      this.setState({
+        savedOrNot: "edit-unsaved"
+      });
+    }, 1200);
   }
   
   handleFile(e) {
@@ -60,7 +69,6 @@ class UserEdit extends React.Component {
     const fileReader = new FileReader();
 
     fileReader.onloadend = () => {
-
       this.setState({
         photoFile: file,
         photoUrl: fileReader.result
@@ -84,7 +92,8 @@ class UserEdit extends React.Component {
     } = this.props;
 
     const {
-      photoUrl
+      photoUrl,
+      savedOrNot
     } = this.state;
 
     let preview;
@@ -152,7 +161,7 @@ class UserEdit extends React.Component {
             </div>
           </div>
 
-          <input className="edit-submit" type="submit" value="Submit" />
+          <input className="edit-submit" type="submit" value="Submit" /><span className={savedOrNot}>Saved!</span>
         </form>
       </>
     )

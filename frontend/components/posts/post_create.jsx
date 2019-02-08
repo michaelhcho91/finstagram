@@ -62,7 +62,6 @@ class PostCreate extends React.Component {
     const fileReader = new FileReader();
 
     fileReader.onloadend = () => {
-
       this.setState({
         photoFile: file,
         photoUrl: fileReader.result
