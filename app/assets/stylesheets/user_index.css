@@ -1,0 +1,82 @@
+.user-index-container {
+  padding-top: 60px;
+  margin-left: 28px;
+  height: 505px;
+  width: 293px;
+}
+
+.user-index-header {
+  max-height: 62px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-left: 5px;
+}
+
+.user-index-pic img {
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+}
+
+.user-index-info {
+  margin-left: 14px;
+}
+
+.user-index-info h1 {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.user-index-info a {
+  text-decoration: none;
+  color: #262626;
+}
+
+.user-index-info h2 {
+  font-size: 12px;
+  line-height: 14px;
+  color: #999;
+}
+
+.following-list {
+  list-style: none;
+  border: 1px solid #E6E6E6;
+  border-radius: 4px;
+  height: 440px;
+  padding: 17px;
+  background-color: white;
+  overflow: auto;
+}
+
+.following-list span {
+  color: #999;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.following-item {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  margin-left: 5px;
+}
+
+.following-item img {
+  border-radius: 100%;
+  height: 44px;
+  width: 44px;
+}
+
+.following-item h2 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-left: 14px;
+}
+
+.following-item a {
+  text-decoration: none;
+  color: #262626;
+}

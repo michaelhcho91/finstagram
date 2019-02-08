@@ -42,7 +42,7 @@ class PostCaptionEdit extends React.Component {
       <>
         <form className="caption-edit-form" onSubmit={this.handleSubmit}>
           <input className="caption-edit-input" onChange={this.update("caption")} value={caption} />
-          <button className="caption-edit-submit"><img src={window.submit_icon}/></button>
+          <button className="caption-edit-submit"><img src={window.submit_icon} /></button>
         </form>
       </>
     )

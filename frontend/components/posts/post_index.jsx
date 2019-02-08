@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import PostIndexItemContainer from "./post_index_item_container";
+import UserIndexContainer from "../user/user_index_container";
 import Navbar from "../navbar/navbar";
 import NavbarShort from "../navbar/navbar_short";
 
@@ -92,7 +93,7 @@ class PostIndex extends React.Component {
               {postsList}
             </ul>  
           </div>
-          {/* <UserIndexContainer /> */}
+          <UserIndexContainer />
         </section>
       </>
     )

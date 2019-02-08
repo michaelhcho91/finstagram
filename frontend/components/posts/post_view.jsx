@@ -182,7 +182,7 @@ class PostView extends React.Component {
           <section className="photo-side">
             <div className="photo-space">
               <img className={this.state.likeHeart} src={window.like_heart_icon} />
-              <img onDoubleClick={this.doubleClick} src={post.photoUrl}/>
+              <img onDoubleClick={this.doubleClick} src={post.photoUrl} />
             </div>
           </section>
 

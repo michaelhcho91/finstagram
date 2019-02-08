@@ -82,15 +82,15 @@ class PostCreate extends React.Component {
     if (photoUrl) {
       preview = <img className="post-preview" src={photoUrl} />
     } else {
-      preview = <div className="post-preview"/>
+      preview = <div className="post-preview" />
     };
     
     return (
       <div className="post-create-container">
         <form className="post-create-form" onSubmit={this.handleSubmit} className="post-create-form">
           <h2 className="post-create-h2">Upload an image!</h2>
-          <textarea className="post-caption-input" onChange={this.update("caption")} type="text" placeholder="Write a caption..."/>
-          <input className="post-file-input" id="file-selector" onChange={this.handleFile} type="file"/>
+          <textarea className="post-caption-input" onChange={this.update("caption")} type="text" placeholder="Write a caption..." />
+          <input className="post-file-input" id="file-selector" onChange={this.handleFile} type="file" />
           <label className="post-file-input-label" htmlFor="file-selector">Choose File</label>
           <button className="post-create-submit" disabled={!photoFile} type="submit">Share</button>
         </form>
