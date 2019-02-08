@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Comment extends React.Component {
   constructor(props) {
@@ -31,8 +32,13 @@ class Comment extends React.Component {
     } else deletable = "not-deletable";
     
     return(
-      <li onClick={this.removeComment}>
-        <span className={`${deletable}`}>{comment.username} <span className="comment-body">{comment.body}</span></span>
+      <li>
+        <span className="comment-username">
+          <Link to={`/users/${comment.commenter_id}`}>
+            {comment.username} 
+          </Link>
+          <span onClick={this.removeComment} className={`comment-body ${deletable}`}> {comment.body}</span>
+        </span>
       </li>
     )
   }

@@ -197,17 +197,23 @@ img {
   padding-top: 5px;
 }
 
+.comment-username a {
+  text-decoration: none;
+  font-weight: 450;
+  color: inherit;
+}
+
 .deletable:hover {
   cursor: pointer;
   opacity: 0.50;
 }
 
 .deletable {
-  font-weight: 450;
+  font-weight: 350;
 }
 
 .not-deletable {
-  font-weight: 450;
+  font-weight: 350;
 }
 
 .comment-body {
