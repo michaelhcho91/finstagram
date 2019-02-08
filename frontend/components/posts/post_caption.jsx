@@ -6,6 +6,7 @@ class PostCaption extends React.Component {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
+    this.exitModal = this.exitModal.bind(this);
   }
   
   handleClick() {
@@ -17,6 +18,10 @@ class PostCaption extends React.Component {
     openEditting(post.id);
   }
   
+  exitModal() {
+    this.props.closeModal();
+  }
+  
   render() {
     const {
       currentUser,
@@ -26,7 +31,7 @@ class PostCaption extends React.Component {
 
     let captionUsername;
     if (user) {
-      captionUsername = <Link to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
+      captionUsername = <Link onClick={this.exitModal} to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
                           {user ? user.username : currentUser.username}
                         </Link>;
     }

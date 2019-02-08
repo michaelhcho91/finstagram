@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { openEditting, closeEditting, deletePost } from "../../actions/post_actions";
 import { createLike, deleteLike } from "../../actions/like_actions";
 import { createComment, deleteComment } from "../../actions/comment_actions";
+import { closeModal } from "../../actions/modal_actions";
 
 class PostView extends React.Component {
   constructor(props) {
@@ -118,7 +119,8 @@ class PostView extends React.Component {
       captionEditting,
       closeEditting,
       openEditting,
-      user
+      user,
+      closeModal
     } = this.props;
     
     const createdAt = timeSince(post.created_at);
@@ -131,14 +133,15 @@ class PostView extends React.Component {
       postCaption = <PostCaption user={user}
                                  currentUser={currentUser}
                                  post={post}
-                                 openEditting={openEditting} />
+                                 openEditting={openEditting}
+                                 closeModal={closeModal} />
     }
 
     let postHeader;
     if (user) {
       postHeader = <>
         <img className="post-view-profile-pic" src={user.photoUrl} />
-        <div className="post-view-user">{user.username}</div>
+        <div onClick={() => closeModal()} className="post-view-user">{user.username}</div>
       </>
     } else postHeader = null;
 
@@ -247,7 +250,8 @@ const mapDispatchToProps = (dispatch) => {
     createLike: (like) => dispatch(createLike(like)),
     deleteLike: (like) => dispatch(deleteLike(like)),
     createComment: (comment) => dispatch(createComment(comment)),
-    deleteComment: (commentId) => dispatch(deleteComment(commentId))
+    deleteComment: (commentId) => dispatch(deleteComment(commentId)),
+    closeModal: () => dispatch(closeModal())
   };
 };
 

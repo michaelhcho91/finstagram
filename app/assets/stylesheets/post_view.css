@@ -60,6 +60,7 @@
 
 .post-view-user {
   font-weight: 450;
+  cursor: pointer;
 }
 
 .post-view-below-header {
