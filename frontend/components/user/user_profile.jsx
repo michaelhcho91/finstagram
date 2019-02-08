@@ -154,7 +154,12 @@ class UserProfile extends React.Component {
     } else if (thisUser === currentUser) {
       followButton = null;
     }
-    
+
+    let profilePic = <Link to={"profile/edit"}><img src={thisUser.photoUrl} /></Link>;
+    if (thisUser !== currentUser) {
+      profilePic = <img src={thisUser.photoUrl} />
+    }
+
     return (
       <>
         {navbar}
@@ -163,7 +168,7 @@ class UserProfile extends React.Component {
           <div className="user-profile">
             <header className="user-profile-info">
               <div className="profile-pic">
-                <Link to={"profile/edit"}><img src={thisUser.photoUrl}/></Link>
+                {profilePic}
               </div>
 
               <section className="profile-info">

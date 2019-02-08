@@ -21,7 +21,11 @@ class SessionForm extends React.Component {
   }
   
   componentWillUnmount() {
-    this.props.clearErrors();
+    const {
+      clearErrors
+    } = this.props;
+    
+    clearErrors();
   }
 
   demoLogin(e) {
@@ -61,6 +65,13 @@ class SessionForm extends React.Component {
       errors
     } = this.props;
 
+    const {
+      email,
+      name,
+      username,
+      password
+    } = this.state;
+
     let errorsList;
     if (errors.length !== 0) {
       errorsList = errors.map( (error, idx) => {
@@ -70,11 +81,6 @@ class SessionForm extends React.Component {
 
     let form;
     if (formType === "Log In") {
-      const {
-        username,
-        password
-      } = this.state;
-
       form = <>
               <form className="session-form login" onSubmit={this.handleSubmit}>
                 <h1 className="session-h1 login">Finstagram</h1>
@@ -91,13 +97,6 @@ class SessionForm extends React.Component {
               </div>
             </>
     } else {
-      const {
-        email,
-        name,
-        username,
-        password
-      } = this.state;
-
       form = <>
               <form className="session-form" onSubmit={this.handleSubmit}>
                 <h1 className="session-h1">Finstagram</h1>

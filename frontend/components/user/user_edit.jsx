@@ -5,13 +5,17 @@ class UserEdit extends React.Component {
   constructor(props) {
     super(props);
 
+    const {
+      currentUser
+    } = this.props;
+    
     this.state = {
-      name: "",
-      username: "",
-      bio: "",
-      email: "",
+      name: currentUser.name,
+      username: currentUser.username,
+      bio: currentUser.bio,
+      email: currentUser.email,
       photoFile: null,
-      photoUrl: null
+      photoUrl: currentUser.photoUrl
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +35,8 @@ class UserEdit extends React.Component {
 
     const {
       updateUser,
-      history
+      history,
+      currentUser
     } = this.props;
 
     const formData = new FormData();
@@ -39,9 +44,14 @@ class UserEdit extends React.Component {
     formData.append("user[username]", username);
     formData.append("user[bio]", bio);
     formData.append("user[email]", email);
-    if (photoFile) formData.append("user[photo]", photoFile);
-
-    updateUser(formData).
+    if (photoFile) {
+      formData.append("user[photo]", photoFile);
+    }
+    
+    updateUser({
+      formData,
+      id: currentUser.id
+    }).
       then(history.push("/profile"));
   }
   
@@ -83,15 +93,17 @@ class UserEdit extends React.Component {
     } else {
       preview = <img className="current-pic" src={currentUser.photoUrl} />
     };
-    
+
     return(
       <>
         <Navbar />
       
         <form className="edit-form-container" onSubmit={this.handleSubmit}>
           <div className="edit-pic">
-            <aside className="profile-pic-view">
-              {preview}
+            <aside className="edit-pic-left">
+              <label className="file-input-label" htmlFor="file-selector">
+                {preview}
+              </label>
             </aside>
             <div>
               <h1>{currentUser.username}</h1>
@@ -101,42 +113,46 @@ class UserEdit extends React.Component {
           </div>
         
           <div className="edit-name">
-            <aside>
+            <aside className="edit-name-left">
               <label htmlFor="name">Name</label>
             </aside>
             <div>
-              <input type="text" id="name" onChange={this.update("name")} value={currentUser.name} />              
+              <input type="text" id="name" onChange={this.update("name")} defaultValue={currentUser.name} />              
             </div>
           </div>
 
           <div className="edit-username">
-            <aside>
+            <aside className="edit-username-left">
               <label htmlFor="username">Username</label>
             </aside>
             <div>
-              <input type="text" id="username" onChange={this.update("username")} value={currentUser.username} />
+              <input type="text" id="username" onChange={this.update("username")} defaultValue={currentUser.username} />
             </div>
           </div>
 
           <div className="edit-bio">
-            <aside>
+            <aside className="edit-bio-left">
               <label htmlFor="bio">Bio</label>
             </aside>
             <div>
-              <input type="text" id="bio" onChange={this.update("bio")} value={currentUser.bio} />
+              <input type="text" id="bio" onChange={this.update("bio")} defaultValue={currentUser.bio} />
             </div>
+          </div>
+
+          <div className="edit-private">
+            <h2>Private Information</h2>
           </div>
 
           <div className="edit-email">
-            <aside>
+            <aside className="edit-email-left">
               <label htmlFor="email">Email</label>
             </aside>
             <div>
-              <input type="text" id="email" onChange={this.update("email")} value={currentUser.email} />
+              <input type="text" id="email" onChange={this.update("email")} defaultValue={currentUser.email} />
             </div>
           </div>
 
-          <input type="submit" value="Submit" disabled/>
+          <input className="edit-submit" type="submit" value="Submit" />
         </form>
       </>
     )

@@ -55,7 +55,7 @@ class PostIndex extends React.Component {
       comments,
       currentUser
     } = this.props;
-
+    
     let postsList;
     postsList = posts.filter(post => currentUser.followingIds.includes(post.posterId) || currentUser.id === post.posterId).map( (post, idx) => {
       if (users[post.posterId]) {
@@ -76,9 +76,9 @@ class PostIndex extends React.Component {
       navbar = <NavbarShort />
     }
 
-    let notFollowing = <Redirect to={"/explore"} />
-    if (postsList.length > 0) {
-      notFollowing = null;
+    let notFollowing = null;
+    if (!posts || postsList.length === 0) {
+      notFollowing = <Redirect to={"/explore"} />;
     }
     
     return (

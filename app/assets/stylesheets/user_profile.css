@@ -39,6 +39,9 @@
   border: 1px solid #E9E9E8;
   margin-left: 70px;
   margin-bottom: 3px;
+}
+
+.profile-pic a {
   cursor: pointer;
 }
 

@@ -1,9 +1,42 @@
 .edit-form-container {
-  margin-top: 138px;
-  margin-bottom: 200px;
+  margin: 138px 0 270px 0;
   border: 1px solid #DBDBDB;
   width: 700px;
   border-radius: 3px;
+}
+
+.edit-pic, .edit-name, .edit-username, .edit-bio, .edit-email {
+  margin: 32px 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.edit-private {
+  margin: 32px 0 -15px 193px;
+  color: #999;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.edit-pic-left {
+  margin: 0 32px 0 123px;
+}
+
+.edit-name-left {
+  margin: 0 32px 0 119px;
+}
+
+.edit-username-left {
+  margin: 0 32px 0 87px;
+}
+
+.edit-bio-left {
+  margin: 0 32px 0 137px;
+}
+
+.edit-email-left {
+  margin: 0 32px 0 122px;
 }
 
 .edit-pic-preview {
@@ -18,7 +51,7 @@
   width: 100%;
 }
 
-.profile-pic-view {
+.edit-pic-left {
   height: 40px;
   width: 40px;
 }
@@ -47,10 +80,25 @@
 }
 
 #name, #username, #bio, #email {
-  border: 1px solid #EFEFEF;
+  border: 1px solid #DBDBDB;
   color: #262626;
   border-radius: 3px;
   font-size: 16px;
   height: 32px;
   padding: 0 10px;
+  width: 356px;
+}
+
+.edit-submit {
+  background-color: #3897f0;
+  border: 1px solid #3897f0;
+  border-radius: 4px;
+  color: #FFF;
+  cursor: pointer;
+  padding: 5px 9px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+  margin: 32px 0 32px 190px;
 }
