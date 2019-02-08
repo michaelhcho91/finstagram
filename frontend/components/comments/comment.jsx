@@ -34,7 +34,7 @@ class Comment extends React.Component {
     return(
       <li>
         <span className="comment-username">
-          <Link to={`/users/${comment.commenter_id}`}>
+          <Link to={comment.username !== currentUser.username ? `/users/${comment.commenter_id}` : `/profile`}>
             {comment.username} 
           </Link>
           <span onClick={this.removeComment} className={`comment-body ${deletable}`}> {comment.body}</span>

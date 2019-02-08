@@ -154,7 +154,7 @@ class PostIndexItem extends React.Component {
     if (user) {
       postHeader = <>
                     <img className="post-profile-pic" src={user.photoUrl} />
-                    <Link to={`/users/${user.id}`} >
+                    <Link to={user !== currentUser ? `/users/${user.id}` : `/profile`} >
                       <span className="profile-link">{user.username}</span>
                     </Link>
                   </>

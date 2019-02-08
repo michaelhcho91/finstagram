@@ -26,12 +26,8 @@ class PostCaption extends React.Component {
 
     let captionUsername;
     if (user) {
-      captionUsername = <Link to={`/users/${user.id}`}>
-                          {user.username}
-                        </Link>;
-    } else {
-      captionUsername = <Link to={`/users/${currentUser.id}`}>
-                          {currentUser.username}
+      captionUsername = <Link to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
+                          {user ? user.username : currentUser.username}
                         </Link>;
     }
 
