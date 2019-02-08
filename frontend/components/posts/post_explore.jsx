@@ -57,7 +57,7 @@ class PostExplore extends React.Component {
       currentUser
     } = this.props;
 
-    const explorePosts = posts.filter(post => !currentUser.followingIds.includes(post.posterId) && currentUser.id !== post.posterId).map( (post, idx) => {
+    let explorePosts = posts.filter(post => !currentUser.followingIds.includes(post.posterId) && currentUser.id !== post.posterId).map( (post, idx) => {
       if (users[post.posterId]) {
         const postComments = comments.filter(comment => post.commentIds.includes(comment.id));
 
@@ -69,6 +69,10 @@ class PostExplore extends React.Component {
       }
     });
 
+    if (explorePosts.length === 0) {
+      explorePosts = <article className="temp-explore-container" />
+    }
+    
     let navbar;
     if (currentScrollHeight <= 90) {
       navbar = <Navbar />
