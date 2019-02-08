@@ -76,9 +76,9 @@ class PostIndex extends React.Component {
     } else {
       navbar = <NavbarShort />
     }
-
     let notFollowing = null;
-    if (currentUser.followingIds.length === 0) {
+    let myPosts = posts.filter(post => currentUser.id === post.posterId);
+    if (currentUser.followingIds.length === 0 && myPosts.length === 0) {
       notFollowing = <Redirect to={"/explore"} />;
     }
     

@@ -115,6 +115,10 @@ class UserProfile extends React.Component {
       });
     }
 
+    if (postsList.length === 0) {
+      postsList = <article className="temp-post-list" />
+    }
+
     const postCount = myPosts.length;
     let postOrPosts = "posts";
     if (postCount === 1) postOrPosts = "post";
