@@ -173,6 +173,16 @@ img {
   cursor: pointer;
 }
 
+.hide-edit {
+  display: none;
+}
+
+.show-edit {
+  font-weight: 350;
+  font-size: 14px;
+  /* color: firebrick; */
+}
+
 .caption-edit-form {
   display: flex;
   justify-content: center;
@@ -220,6 +230,16 @@ img {
 
 .not-deletable {
   font-weight: 350;
+}
+
+.hide-delete {
+  display: none;
+}
+
+.show-delete {
+  color: firebrick;
+  font-weight: 350;
+  font-size: 14px;
 }
 
 .comment-body {
