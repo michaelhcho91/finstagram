@@ -4,6 +4,8 @@
   height: 505px;
   width: 293px;
   margin-bottom: 270px;
+  position: sticky;
+  top: 27px;
 }
 
 .user-index-header {
