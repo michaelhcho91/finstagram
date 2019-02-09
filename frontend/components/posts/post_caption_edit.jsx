@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import React from "react";
 import { updatePost } from "../../actions/post_actions";
-import { closeModal } from "../../actions/modal_actions";
 import { merge } from "lodash";
 
 class PostCaptionEdit extends React.Component {
@@ -15,6 +14,10 @@ class PostCaptionEdit extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    document.getElementById("caption-edit-input").focus();
+  }
+  
   update(field) {
     return (e) => {
       this.setState({
@@ -41,7 +44,7 @@ class PostCaptionEdit extends React.Component {
     return (
       <>
         <form className="caption-edit-form" onSubmit={this.handleSubmit}>
-          <input className="caption-edit-input" onChange={this.update("caption")} value={caption} />
+          <input id="caption-edit-input" className="caption-edit-input" onChange={this.update("caption")} value={caption} />
           <button className="caption-edit-submit"><img src={window.submit_icon} /></button>
         </form>
       </>
