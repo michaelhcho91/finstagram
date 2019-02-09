@@ -63,7 +63,7 @@ class PostCaption extends React.Component {
       <>
         {captionSpan}
         {editButton}
-        <span className={editClass}> Edit Caption</span>
+        <span className={editClass}>Edit Caption</span>
       </>
     )
   };
