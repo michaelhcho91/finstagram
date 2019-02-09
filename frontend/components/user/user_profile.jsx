@@ -146,7 +146,7 @@ class UserProfile extends React.Component {
     let followButton;
     if (currentUser && user) {
       if (currentUser.followingIds.includes(user.id)) {
-        followButton = <button className="follow-button" onClick={this.unfollowUser}>Unfollow</button>
+        followButton = <button className="follow-button" onClick={this.unfollowUser}>Following</button>
       } else {
         followButton = <button className="follow-button" onClick={this.followUser}>Follow</button>
       }
