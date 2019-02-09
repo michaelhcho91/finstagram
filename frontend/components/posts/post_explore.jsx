@@ -85,6 +85,7 @@ class PostExplore extends React.Component {
         {navbar}
       
         <section className="explore-container">
+          <h2 className="explore-text">Explore</h2>
           <ul className="posts-list">
             {explorePosts}
           </ul>
