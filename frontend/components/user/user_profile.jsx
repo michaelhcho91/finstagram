@@ -10,6 +10,7 @@ class UserProfile extends React.Component {
     
     this.state = {
       currentScrollHeight: null,
+      uploadShow: "hide-upload"
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -95,7 +96,8 @@ class UserProfile extends React.Component {
     } = this.props;
 
     const {
-      currentScrollHeight
+      currentScrollHeight,
+      uploadShow
     } = this.state;
     
     let thisUser;
@@ -150,7 +152,7 @@ class UserProfile extends React.Component {
       }
     }
     
-    let uploadIcon = <img className="icon-upload" onClick={this.handleClick} src={window.upload_icon} />;
+    let uploadIcon = <img onMouseLeave={() => this.setState({uploadShow: "hide-upload"})} onMouseEnter={() => this.setState({uploadShow: "show-upload"})} className="icon-upload" onClick={this.handleClick} src={window.upload_icon} />;
     let logoutButton = <button className="logout-button" onClick={logout}>Logout</button>;
     if (thisUser !== currentUser) {
       logoutButton = null;
@@ -183,6 +185,7 @@ class UserProfile extends React.Component {
                     {logoutButton}
                     {followButton}
                     {uploadIcon}
+                    <span className={uploadShow}> Upload a photo!</span>
                   </div>
                 </div>
 

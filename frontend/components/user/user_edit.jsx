@@ -72,7 +72,8 @@ class UserEdit extends React.Component {
     fileReader.onloadend = () => {
       this.setState({
         photoFile: file,
-        photoUrl: fileReader.result
+        photoUrl: fileReader.result,
+        disabledOrNot: false
       });
     };
 

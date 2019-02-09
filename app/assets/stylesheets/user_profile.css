@@ -55,6 +55,15 @@
   margin-bottom: 20px;
 }
 
+.hide-upload {
+  display: none;
+}
+
+.show-upload {
+  font-weight: 350;
+  font-size: 14px;
+}
+
 .icon-upload {
   margin-left: 20px;
   margin-bottom: -9px;

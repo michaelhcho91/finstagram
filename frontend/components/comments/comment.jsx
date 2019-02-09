@@ -59,20 +59,22 @@ class Comment extends React.Component {
     } else deletable = "not-deletable";
     
     return(
-      <li>
-        <span className="comment-username">
-          <Link onClick={this.handleClick} to={comment.username !== currentUser.username ? `/users/${comment.commenter_id}` : `/profile`}>
-            {comment.username} 
-          </Link>
-          <span 
-            onMouseEnter={this.deleteOrNot}
-            onMouseLeave={() => this.setState({deleteClass: "hide-delete"})}
-            onClick={this.removeComment}
-            className={`comment-body ${deletable}`}> {comment.body}
+      <>
+        <li>
+          <span className="comment-username">
+            <Link onClick={this.handleClick} to={comment.username !== currentUser.username ? `/users/${comment.commenter_id}` : `/profile`}>
+              {comment.username} 
+            </Link>
+            <span 
+              onMouseEnter={this.deleteOrNot}
+              onMouseLeave={() => this.setState({deleteClass: "hide-delete"})}
+              onClick={this.removeComment}
+              className={`comment-body ${deletable}`}> {comment.body}
+            </span>
+            <span className={deleteClass}> Delete</span>
           </span>
-          <span className={deleteClass}> Delete</span>
-        </span>
-      </li>
+        </li>
+      </>
     )
   }
 }
