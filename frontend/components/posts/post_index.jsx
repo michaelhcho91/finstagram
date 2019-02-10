@@ -20,13 +20,15 @@ class PostIndex extends React.Component {
     const {
       fetchUsers,
       fetchPosts,
-      fetchComments
+      fetchComments,
+      closeModal
     } = this.props;
 
     const {
       currentScrollHeight
     } = this.state;
     
+    closeModal();
     fetchUsers();
     fetchPosts();
     fetchComments();

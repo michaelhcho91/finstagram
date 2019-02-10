@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchPosts } from "../../actions/post_actions";
 import { fetchUsers } from "../../actions/user_actions";
 import { fetchComments } from "../../actions/comment_actions";
+import { closeModal } from "../../actions/modal_actions";
 import PostIndexItemContainer from "./post_index_item_container";
 import Navbar from "../navbar/navbar";
 import NavbarShort from "../navbar/navbar_short";
@@ -20,13 +21,15 @@ class PostExplore extends React.Component {
     const {
       fetchPosts,
       fetchUsers,
-      fetchComments
+      fetchComments,
+      closeModal
     } = this.props;
 
     const {
       currentScrollHeight
     } = this.state;
     
+    closeModal();
     fetchUsers();
     fetchPosts();
     fetchComments();
@@ -108,7 +111,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
     fetchUsers: () => dispatch(fetchUsers()),
-    fetchComments: () => dispatch(fetchComments())
+    fetchComments: () => dispatch(fetchComments()),
+    closeModal: () => dispatch(closeModal())
   };
 };
 
