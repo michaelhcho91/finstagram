@@ -20,7 +20,7 @@ class NavbarShort extends React.Component {
 
             <li className="nav-right-items-short">
               <Link to={"/explore"} className="icon-explore"><img src={window.explore_icon} /></Link>
-              <img className="icon-heart-short" src={window.heart_icon} />
+              <a href="https://github.com/michaelhcho91/finstagram" target="_blank"><img className="icon-github-short" src={window.github_icon} /></a>
               <Link to={`/profile`} className="icon-profile-short"><img src={window.profile_icon} /></Link>
             </li>
           </ul>

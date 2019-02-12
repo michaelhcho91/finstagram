@@ -22,7 +22,7 @@ class Navbar extends React.Component {
             
             <li className="nav-right-items">
               <Link to={"/explore"} className="icon-explore"><img src={window.explore_icon} /></Link>
-              <img className="icon-heart" src={window.heart_icon} />
+              <a href="https://github.com/michaelhcho91/finstagram" target="_blank"><img className="icon-github" src={window.github_icon} /></a>
               <Link to={"/profile"} className="icon-profile"><img src={window.profile_icon} /></Link>
             </li>
           </ul>

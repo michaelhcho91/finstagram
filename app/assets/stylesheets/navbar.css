@@ -67,8 +67,12 @@
   margin-left: 1px;
 }
 
-.icon-heart {
-  margin-left: 26px;
+.icon-github {
+  width: 26px;
+}
+
+.icon-github:hover {
+  cursor: pointer;
 }
 
 .nav-search {
