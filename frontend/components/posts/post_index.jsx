@@ -18,7 +18,6 @@ class PostIndex extends React.Component {
     window.scrollTo(0, 0);
 
     const {
-      fetchUsers,
       fetchPosts,
       fetchComments,
       closeModal
@@ -29,7 +28,6 @@ class PostIndex extends React.Component {
     } = this.state;
     
     closeModal();
-    fetchUsers();
     fetchPosts();
     fetchComments();
     

@@ -16,7 +16,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUsers: () => dispatch(fetchUsers()),
     fetchPosts: () => dispatch(fetchPosts()),
     fetchComments: () => dispatch(fetchComments()),
     closeModal: () => dispatch(closeModal())
