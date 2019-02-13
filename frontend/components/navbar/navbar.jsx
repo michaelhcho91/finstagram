@@ -13,6 +13,7 @@ class Navbar extends React.Component {
     };
 
     this.matchUsers = this.matchUsers.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);
   }
 
   componentDidMount() {
@@ -27,6 +28,12 @@ class Navbar extends React.Component {
     };
   }
 
+  clearSearch() {
+    this.setState({
+      searchValue: ""
+    });
+  }
+  
   matchUsers(searchValue) {
     const {
       users
@@ -42,7 +49,9 @@ class Navbar extends React.Component {
                 <img className="search-photo"src={user.photoUrl} />
               </aside>
               <div>
-                <Link to={`users/${user.id}`}>{user.username}</Link>
+                <Link onClick={this.clearSearch} to={`/users/${user.id}`}>
+                  {user.username}
+                </Link>
                 <span className="search-name">{user.name}</span>
               </div>
             </li>
