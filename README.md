@@ -75,5 +75,4 @@ Development technologies for Finstagram include React/Redux for the frontend, Ru
 # Future Implementations
 
 * Search bar to find other users
-* Edit profile and upload profile photo
-* Notifications for likes and comments
+* Optimize load times
