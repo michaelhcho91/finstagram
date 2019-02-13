@@ -24,7 +24,6 @@ class UserProfile extends React.Component {
     const {
       fetchPosts,
       fetchComments,
-      fetchUsers,
       fetchUser
     } = this.props;
     
@@ -32,7 +31,6 @@ class UserProfile extends React.Component {
       currentScrollHeight
     } = this.state;
     
-    fetchUsers();
     fetchPosts();
     fetchComments();
     if (this.props.match.params.userId) {

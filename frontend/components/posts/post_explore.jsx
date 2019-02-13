@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchPosts } from "../../actions/post_actions";
-import { fetchUsers } from "../../actions/user_actions";
 import { fetchComments } from "../../actions/comment_actions";
 import { closeModal } from "../../actions/modal_actions";
 import PostIndexItemContainer from "./post_index_item_container";
@@ -20,7 +19,6 @@ class PostExplore extends React.Component {
   componentDidMount() {
     const {
       fetchPosts,
-      fetchUsers,
       fetchComments,
       closeModal
     } = this.props;
@@ -30,7 +28,6 @@ class PostExplore extends React.Component {
     } = this.state;
     
     closeModal();
-    fetchUsers();
     fetchPosts();
     fetchComments();
 
@@ -110,7 +107,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
-    fetchUsers: () => dispatch(fetchUsers()),
     fetchComments: () => dispatch(fetchComments()),
     closeModal: () => dispatch(closeModal())
   };

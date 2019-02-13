@@ -26,7 +26,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   height: 28px;
   width: 100%;
 }
@@ -54,10 +53,11 @@
 
 .nav-search-short {
   align-content: center;
+  margin-right: 23px;
 }
 
 .nav-search-short input {
-  width: 212px;
+  width: 202px;
   height: 24px;
   font-size: 14px;
   font-weight: 150;
@@ -65,5 +65,27 @@
   border-style: solid;
   border: 1px solid #DBDBDB;
   background-color: #FAFAFA;
-  margin-left: 133px;
+  margin-left: 158px;
+  padding-left: 9px;
+}
+
+.short-list-results {
+  margin-left: 158px;
+}
+
+.search-li-short {
+  z-index: 3;
+  background-color: #FAFAFA;
+  display: flex;
+  border: 1px solid #EFEFEF;
+  width: 186px;
+  height: 50px;
+  padding: 8px 14px;
+  align-items: center;
+}
+
+.search-li-short a {
+  text-decoration: none;
+  color: #262626;
+  display: flex;
 }

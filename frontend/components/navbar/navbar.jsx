@@ -20,7 +20,6 @@ class Navbar extends React.Component {
   }
 
   update(field) {
-    console.log(this.state);
     return (e) => {
       this.setState({
         [field]: e.currentTarget.value
@@ -38,7 +37,15 @@ class Navbar extends React.Component {
       users.forEach((user, idx) => {
         if (user.username.toLowerCase().includes(searchValue.toLowerCase())) {
           searchResults.push(
-            <li key={idx} className="search-li"><Link to={`users/${user.id}`}>{user.username}</Link></li>
+            <li key={idx} className="search-li">
+              <aside className="search-photo-container">
+                <img className="search-photo"src={user.photoUrl} />
+              </aside>
+              <div>
+                <Link to={`users/${user.id}`}>{user.username}</Link>
+                <span className="search-name">{user.name}</span>
+              </div>
+            </li>
           );
         }
       });
@@ -66,7 +73,7 @@ class Navbar extends React.Component {
             </li>
             
             <li className="nav-search">
-              <input onChange={this.update("searchValue")} type="text" placeholder="                      Search" />
+              <input onChange={this.update("searchValue")} type="text" placeholder="                    Search" />
               <ul>
                 {this.matchUsers(searchValue)}
               </ul>

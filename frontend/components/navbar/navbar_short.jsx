@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ModalContainer from "../modal/modal_container";
-import { fetchUsers } from "../../actions/user_actions";
 
 class NavbarShort extends React.Component {
   constructor(props) {
@@ -15,12 +14,7 @@ class NavbarShort extends React.Component {
     this.matchUsers = this.matchUsers.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchUsers();
-  }
-
   update(field) {
-    console.log(this.state);
     return (e) => {
       this.setState({
         [field]: e.currentTarget.value
@@ -38,7 +32,15 @@ class NavbarShort extends React.Component {
       users.forEach((user, idx) => {
         if (user.username.toLowerCase().includes(searchValue.toLowerCase())) {
           searchResults.push(
-            <li key={idx} className="search-li"><Link to={`users/${user.id}`}>{user.username}</Link></li>
+            <li key={idx} className="search-li-short">
+              <aside className="search-photo-container">
+                <img className="search-photo" src={user.photoUrl} />
+              </aside>
+              <div>
+                <Link to={`users/${user.id}`}>{user.username}</Link>
+                <span className="search-name">{user.name}</span>
+              </div>
+            </li>
           );
         }
       });
@@ -64,8 +66,10 @@ class NavbarShort extends React.Component {
             </li>
 
             <li className="nav-search-short">
-              <input type="text" placeholder="                      Search" />
-              {this.matchUsers(searchValue)}
+              <input onChange={this.update("searchValue")} type="text" placeholder="                    Search" />
+              <ul className="short-list-results">
+                {this.matchUsers(searchValue)}
+              </ul>
             </li>
 
             <li className="nav-right-items-short">
@@ -86,10 +90,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsers: () => dispatch(fetchUsers())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NavbarShort);
+export default connect(mapStateToProps, null)(NavbarShort);

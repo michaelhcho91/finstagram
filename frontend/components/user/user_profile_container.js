@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import UserProfile from "./user_profile";
 import { fetchPosts } from "../../actions/post_actions";
 import { logout } from "../../actions/session_actions";
-import { fetchUsers, fetchUser } from "../../actions/user_actions";
+import { fetchUser } from "../../actions/user_actions";
 import { openModal, closeModal } from "../../actions/modal_actions";
 import { fetchComments } from "../../actions/comment_actions";
 import { createFollow, deleteFollow } from "../../actions/follow_actions";
@@ -21,7 +21,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchPosts: () => dispatch(fetchPosts()),
     fetchUser: (userId) => dispatch(fetchUser(userId)),
-    fetchUsers: () => dispatch(fetchUsers()),
     fetchComments: () => dispatch(fetchComments()),
     logout: () => dispatch(logout()),
     openModal: (type, options) => dispatch(openModal(type, options)),
