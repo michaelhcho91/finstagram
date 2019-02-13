@@ -48,9 +48,9 @@ Post caption editting is handled by a slice of Redux state that holds either `nu
 ```javascript
 let postCaption;
 if (captionEditting === post.id) {
-  postCaption = <PostCaptionEdit post={post} />
+  postCaption = <PostCaptionEdit post={post} />;
 } else {
-  postCaption = <PostCaption post={post} />
+  postCaption = <PostCaption post={post} />;
 }
 ```
 
