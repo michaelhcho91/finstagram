@@ -30,7 +30,8 @@ class NavbarShort extends React.Component {
     let searchResults = [];
     if (searchValue) {
       users.forEach((user, idx) => {
-        if (user.username.toLowerCase().includes(searchValue.toLowerCase())) {
+        if (user.username.toLowerCase().includes(searchValue.toLowerCase()) ||
+          user.name.toLowerCase().includes(searchValue.toLowerCase())) {
           searchResults.push(
             <li key={idx} className="search-li-short">
               <aside className="search-photo-container">
