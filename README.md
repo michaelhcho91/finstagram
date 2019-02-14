@@ -2,7 +2,7 @@
 
 ## Live: [Finstagram](https://finstagram-aa.herokuapp.com/#/ "Finstagram")
 
-Finstagram is a fullstack single-page social media web application based on [Instagram](https://www.instagram.com/ "Instagram"). Users can sign up, share photos, follow users, and interact with photos other users posted by liking and commenting.
+Finstagram is a fullstack single-page social media web application based on [Instagram](https://www.instagram.com/ "Instagram"). Users can sign up, share photos, find and follow users, and interact with photos other users posted by liking and commenting.
 
 ![](./readme_images/splash-ss.png)
 
@@ -74,5 +74,4 @@ Development technologies for Finstagram include React/Redux for the frontend, Ru
 
 # Future Implementations
 
-* Search bar to find other users
 * Optimize load times
