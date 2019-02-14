@@ -21,6 +21,7 @@ class Navbar extends React.Component {
   }
 
   update(field) {
+    console.log(this.state);
     return (e) => {
       this.setState({
         [field]: e.currentTarget.value
@@ -29,6 +30,9 @@ class Navbar extends React.Component {
   }
 
   clearSearch() {
+    const input = document.getElementById("search-input");
+    input.value = "";
+    
     this.setState({
       searchValue: ""
     });
@@ -83,7 +87,11 @@ class Navbar extends React.Component {
             </li>
             
             <li className="nav-search">
-              <input onChange={this.update("searchValue")} type="text" placeholder="                    Search" />
+              <input id="search-input"
+                     onChange={this.update("searchValue")}
+                    //  onBlur={this.clearSearch}
+                     type="text"
+                     placeholder="                    Search" />
               <ul className="results-list-container">
                 {this.matchUsers(searchValue)}
               </ul>

@@ -24,6 +24,9 @@ class NavbarShort extends React.Component {
   }
 
   clearSearch() {
+    const input = document.getElementById("search-input");
+    input.value = "";
+
     this.setState({
       searchValue: ""
     });
@@ -76,7 +79,11 @@ class NavbarShort extends React.Component {
             </li>
 
             <li className="nav-search-short">
-              <input onChange={this.update("searchValue")} type="text" placeholder="                    Search" />
+              <input id="search-input"
+                     onChange={this.update("searchValue")}
+                    //  onBlur={this.clearSearch}
+                     type="text"
+                     placeholder="                    Search" />
               <ul className="short-list-results">
                 {this.matchUsers(searchValue)}
               </ul>
