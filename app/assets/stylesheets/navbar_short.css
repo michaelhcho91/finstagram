@@ -71,6 +71,8 @@
 
 .short-list-results {
   margin-left: 158px;
+  height: 200px;
+  overflow: auto;
 }
 
 .search-li-short {

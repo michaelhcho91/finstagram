@@ -92,6 +92,11 @@
   padding-left: 9px;
 }
 
+.results-list-container {
+  height: 200px;
+  overflow: auto;
+}
+
 .search-li {
   z-index: 3;
   background-color: #FAFAFA;
