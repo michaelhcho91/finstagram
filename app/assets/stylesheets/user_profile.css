@@ -66,7 +66,8 @@
 
 .icon-upload {
   margin-left: 20px;
-  margin-bottom: -9px;
+  margin-bottom: -7px;
+  width: 25px;
 }
 
 .icon-upload:hover {
