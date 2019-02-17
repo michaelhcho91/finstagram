@@ -1,31 +1,56 @@
-.nav-container ul li {
+.nav-tall ul li {
   list-style: none;
 }
 
-.nav-container {
+.nav-tall {
   position: fixed;
   top: 0;
   z-index: 2;
-  background-color: #fff;
+  background-color: #FFF;
   height: 77px;
   width: 100%;
   border-bottom: 1px solid #DBDBDB;
-  /* transition: .2s ease-in-out; */
+  transition: all 0.2s ease-in-out;
 }
 
-.nav-list-container {
+.nav-short ul li {
+  list-style: none;
+}
+
+.nav-short {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  background-color: #FFF;
+  height: 52px;
+  width: 100%;
+  border-bottom: 1px solid #DBDBDB;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-tall-container {
   display: flex;
   box-sizing: border-box;
   margin: 0 auto;
   max-width: 1010px;
   padding: 26px 20px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-short-container {
+  display: flex;
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1010px;
+  padding: 0 20px;
+  margin-top: 13px;
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* align-items: center; */
   height: 28px;
   width: 100%;
 }
@@ -54,6 +79,10 @@
   border-left: 1px solid #262626;
 }
 
+.go-away {
+  display: none;
+}
+
 .nav-right-items {
   display: flex;
   align-items: center;
@@ -63,12 +92,12 @@
   margin-left: 26px;
 }
 
-.icon-profile {
-  margin-left: 1px;
-}
-
 .icon-github {
   width: 25px;
+}
+
+.icon-profile {
+  margin-left: 1px;
 }
 
 .icon-github:hover {
@@ -92,7 +121,26 @@
   padding-left: 9px;
 }
 
-.results-list-container {
+.nav-search-short input {
+  width: 202px;
+  height: 24px;
+  font-size: 14px;
+  font-weight: 150;
+  border-radius: 3px;
+  border-style: solid;
+  border: 1px solid #DBDBDB;
+  background-color: #FAFAFA;
+  margin-left: 104px;
+  padding-left: 9px;
+}
+
+.results-tall {
+  max-height: 200px;
+  overflow: auto;
+}
+
+.results-short {
+  margin-left: 104px;
   max-height: 200px;
   overflow: auto;
 }

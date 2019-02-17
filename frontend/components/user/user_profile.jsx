@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../navbar/navbar";
-import NavbarShort from "../navbar/navbar_short";
 import UserProfileItem from "./user_profile_item";
 
 class UserProfile extends React.Component {
@@ -9,7 +8,6 @@ class UserProfile extends React.Component {
     super(props);
     
     this.state = {
-      currentScrollHeight: null,
       uploadShow: "hide-upload"
     };
 
@@ -27,27 +25,11 @@ class UserProfile extends React.Component {
       fetchUser
     } = this.props;
     
-    const {
-      currentScrollHeight
-    } = this.state;
-    
     fetchPosts();
     fetchComments();
     if (this.props.match.params.userId) {
       fetchUser(this.props.match.params.userId);
     }
-    this.setState({
-      currentScrollHeight: window.scrollY
-    });
-
-    window.onscroll = () => {
-      const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
-      if (currentScrollHeight !== newScrollHeight) {
-        this.setState({
-          currentScrollHeight: newScrollHeight
-        });
-      }
-    };
   }
 
   handleClick() {
@@ -94,7 +76,6 @@ class UserProfile extends React.Component {
     } = this.props;
 
     const {
-      currentScrollHeight,
       uploadShow
     } = this.state;
     
@@ -134,13 +115,6 @@ class UserProfile extends React.Component {
     let followerOrFollowers = "followers";
     if (followerCount === 1) followerOrFollowers = "follower";
     
-    let navbar;
-    if (currentScrollHeight <= 90) {
-      navbar = <Navbar />
-    } else {
-      navbar = <NavbarShort />
-    }
-    
     let followButton;
     if (currentUser && user) {
       if (currentUser.followingIds.includes(user.id)) {
@@ -166,7 +140,7 @@ class UserProfile extends React.Component {
 
     return (
       <>
-        {navbar}
+        <Navbar />
       
         <main className="user-profile-container">
           <div className="user-profile">

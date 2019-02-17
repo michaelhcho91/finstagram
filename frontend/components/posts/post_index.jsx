@@ -3,15 +3,10 @@ import { Redirect } from "react-router-dom";
 import PostIndexItemContainer from "./post_index_item_container";
 import UserIndexContainer from "../user/user_index_container";
 import Navbar from "../navbar/navbar";
-import NavbarShort from "../navbar/navbar_short";
 
 class PostIndex extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      currentScrollHeight: null
-    };
   }
   
   componentDidMount() {
@@ -23,33 +18,12 @@ class PostIndex extends React.Component {
       closeModal
     } = this.props;
 
-    const {
-      currentScrollHeight
-    } = this.state;
-    
     closeModal();
     fetchPosts();
     fetchComments();
-    
-    this.setState({
-      currentScrollHeight: window.scrollY
-    });
-    
-    window.onscroll = () => {
-      const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
-      if (currentScrollHeight !== newScrollHeight) {
-        this.setState({
-          currentScrollHeight: newScrollHeight
-        });
-      }
-    };
   }
   
   render() {
-    const {
-      currentScrollHeight
-    } = this.state;
-    
     const {
       posts,
       users,
@@ -70,12 +44,6 @@ class PostIndex extends React.Component {
       }
     });
 
-    let navbar;
-    if (currentScrollHeight <= 90) {
-      navbar = <Navbar />
-    } else {
-      navbar = <NavbarShort />
-    }
     let notFollowing = null;
     let myPosts = posts.filter(post => currentUser.id === post.posterId);
     if (currentUser.followingIds.length === 0 && myPosts.length === 0) {
@@ -84,7 +52,7 @@ class PostIndex extends React.Component {
     
     return (
       <>
-        {navbar}
+        <Navbar />
         {notFollowing}
 
         <section className="post-index-section">

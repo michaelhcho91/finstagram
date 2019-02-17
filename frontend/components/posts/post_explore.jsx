@@ -5,15 +5,10 @@ import { fetchComments } from "../../actions/comment_actions";
 import { closeModal } from "../../actions/modal_actions";
 import PostIndexItemContainer from "./post_index_item_container";
 import Navbar from "../navbar/navbar";
-import NavbarShort from "../navbar/navbar_short";
 
 class PostExplore extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      currentScrollHeight: null
-    };
   }
 
   componentDidMount() {
@@ -23,33 +18,12 @@ class PostExplore extends React.Component {
       closeModal
     } = this.props;
 
-    const {
-      currentScrollHeight
-    } = this.state;
-    
     closeModal();
     fetchPosts();
     fetchComments();
-
-    this.setState({
-      currentScrollHeight: window.scrollY
-    });
-
-    window.onscroll = () => {
-      const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
-      if (currentScrollHeight !== newScrollHeight) {
-        this.setState({
-          currentScrollHeight: newScrollHeight
-        });
-      }
-    };
   }
   
   render() {
-    const {
-      currentScrollHeight
-    } = this.state;
-
     const {
       users,
       posts,
@@ -73,16 +47,9 @@ class PostExplore extends React.Component {
       explorePosts = <article className="temp-explore-container" />
     }
     
-    let navbar;
-    if (currentScrollHeight <= 90) {
-      navbar = <Navbar />
-    } else {
-      navbar = <NavbarShort />
-    }
-    
     return (
       <>
-        {navbar}
+        <Navbar />
       
         <section className="explore-container">
           <h2 className="explore-text">Explore</h2>
