@@ -71,16 +71,19 @@
   text-decoration: none;
   color: #262626;
   font-weight: 300;
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-divider {
   height: 28px;
   max-width: 1px;
   border-left: 1px solid #262626;
+  transition: all 0.2s ease-in-out;
 }
 
 .go-away {
   display: none;
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-right-items {
