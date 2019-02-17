@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import PostIndex from "./post_index";
 import { fetchPosts } from "../../actions/post_actions";
-import { fetchUsers } from "../../actions/user_actions";
 import { fetchComments } from "../../actions/comment_actions";
 import { closeModal } from "../../actions/modal_actions";
 

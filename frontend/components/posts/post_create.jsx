@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { createPost } from "../../actions/post_actions";
 import { closeModal } from "../../actions/modal_actions";
-import { clearErrors, fetchPosts } from "../../actions/post_actions";
+import { clearErrors } from "../../actions/post_actions";
 
 class PostCreate extends React.Component {
   constructor(props) {
@@ -11,17 +11,35 @@ class PostCreate extends React.Component {
 
     this.state = {
       caption: "",
-      poster_id: this.props.currentUser.id,
       photoFile: null,
       photoUrl: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.escToClose = this.escToClose.bind(this);
   }
 
   componentWillUnmount() {
     this.props.clearErrors();
+
+    document.removeEventListener("keydown", this.escToClose);
+  }
+  
+  componentDidMount() {
+    this.escToClose();
+  }
+
+  escToClose() {
+    const {
+      closeModal
+    } = this.props;
+    
+    document.addEventListener("keydown", (e) => {
+      if (e.keyCode === 27) {
+        closeModal();
+      }
+    });
   }
   
   update(field) {
@@ -53,8 +71,6 @@ class PostCreate extends React.Component {
     createPost(formData).
       then(closeModal()).
         then(history.push("/"));
-    
-    window.onscroll = function () {};
   }
 
   handleFile(e) {
@@ -109,19 +125,12 @@ class PostCreate extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.entities.users[state.session.id]
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     createPost: (post) => dispatch(createPost(post)),
     closeModal: () => dispatch(closeModal()),
-    clearErrors: () => dispatch(clearErrors()),
-    fetchPosts: () => dispatch(fetchPosts())
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostCreate));
+export default withRouter(connect(null, mapDispatchToProps)(PostCreate));

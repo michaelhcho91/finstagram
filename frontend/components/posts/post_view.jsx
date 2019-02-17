@@ -25,9 +25,18 @@ class PostView extends React.Component {
     this.likePost = this.likePost.bind(this);
     this.unlikePost = this.unlikePost.bind(this);
     this.doubleClick = this.doubleClick.bind(this);
+    this.escToClose = this.escToClose.bind(this);
   }
 
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.escToClose);
+  }
+  
   componentDidMount() {
+    this.escToClose();
+  }
+
+  escToClose() {
     const {
       closeModal
     } = this.props;

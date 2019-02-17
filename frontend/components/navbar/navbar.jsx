@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ModalContainer from "../modal/modal_container";
 
 class Navbar extends React.Component {  
@@ -21,10 +21,16 @@ class Navbar extends React.Component {
     this.clearSearch = this.clearSearch.bind(this);
     this.transition = this.transition.bind(this);
     this.goToUser = this.goToUser.bind(this);
+    this.escToClose = this.escToClose.bind(this);
   }
 
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.escToClose);
+  }
+  
   componentDidMount() {
     this.props.fetchUsers();
+    this.escToClose();
 
     this.setState({
       currentScrollHeight: window.scrollY
@@ -41,11 +47,11 @@ class Navbar extends React.Component {
       
       this.transition();
     };
+  }
 
+  escToClose() {
     document.addEventListener("keydown", (e) => {
       if (e.keyCode === 27) {
-        e.preventDefault();
-        document.getElementById("search-input").blur();
         this.clearSearch();
       }
     });
@@ -62,10 +68,7 @@ class Navbar extends React.Component {
   clearSearch() {
     const input = document.getElementById("search-input");
     input.value = "";
-    
-    this.setState({
-      searchValue: ""
-    });
+    input.blur();
   }
   
   goToUser(user) {
@@ -166,7 +169,6 @@ class Navbar extends React.Component {
             <li className={search}>
               <input id="search-input"
                      onChange={this.update("searchValue")}
-                    //  onBlur={this.clearSearch}
                      type="text"
                      placeholder="                    Search" />
 

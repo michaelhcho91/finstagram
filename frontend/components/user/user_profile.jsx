@@ -33,10 +33,6 @@ class UserProfile extends React.Component {
   }
 
   handleClick() {
-    window.onscroll = function () {
-      window.scrollTo(0, 0);
-    };
-
     this.props.openModal("create", null);
   }
   
@@ -114,10 +110,10 @@ class UserProfile extends React.Component {
     }
     
     let logoutButton = <button className="logout-button" onClick={logout}>Logout</button>;
-    let uploadIcon = <img onMouseLeave={() => this.setState({uploadShow: "hide-upload"})} 
-                          onMouseEnter={() => this.setState({uploadShow: "show-upload"})} 
-                          className="icon-upload" 
-                          onClick={this.handleClick} 
+    let uploadIcon = <img onMouseLeave={() => this.setState({uploadShow: "hide-upload"})}
+                          onMouseEnter={() => this.setState({uploadShow: "show-upload"})}
+                          className="icon-upload"
+                          onClick={this.handleClick}
                           src={window.upload_icon} />;
     if (thisUser !== currentUser) {
       logoutButton = null;

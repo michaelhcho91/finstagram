@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
-import Footer from "../splash/footer";
+import { Link } from "react-router-dom";
 
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       email: "",
       name: "",

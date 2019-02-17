@@ -7,10 +7,6 @@ import PostIndexItemContainer from "./post_index_item_container";
 import NavbarContainer from "../navbar/navbar_container";
 
 class PostExplore extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     window.scrollTo(0, 0);
     

@@ -5,10 +5,6 @@ import UserIndexContainer from "../user/user_index_container";
 import NavbarContainer from "../navbar/navbar_container";
 
 class PostIndex extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  
   componentDidMount() {
     window.scrollTo(0, 0);
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../navbar/navbar";
+import NavbarContainer from "../navbar/navbar_container";
 
 class UserEdit extends React.Component {
   constructor(props) {
@@ -109,7 +109,7 @@ class UserEdit extends React.Component {
     
     return(
       <>
-        <Navbar />
+        <NavbarContainer />
       
         <form className="edit-form-container" onSubmit={this.handleSubmit}>
           <div className="edit-pic">
