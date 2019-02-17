@@ -69,6 +69,10 @@ class Navbar extends React.Component {
     const input = document.getElementById("search-input");
     input.value = "";
     input.blur();
+
+    this.setState({
+      searchValue: ""
+    });
   }
   
   goToUser(user) {
