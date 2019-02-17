@@ -41,6 +41,13 @@ class Navbar extends React.Component {
       
       this.transition();
     };
+
+    document.addEventListener("keydown", (e) => {
+      if (e.keyCode === 27) {
+        document.getElementById("search-input").blur();
+        this.clearSearch();
+      }
+    }, true);
   }
 
   update(field) {
