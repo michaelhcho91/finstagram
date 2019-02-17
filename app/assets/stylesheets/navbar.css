@@ -71,19 +71,18 @@
   text-decoration: none;
   color: #262626;
   font-weight: 300;
-  transition: all 0.2s ease-in-out;
+  visibility: visible;
 }
 
 .nav-divider {
   height: 28px;
   max-width: 1px;
   border-left: 1px solid #262626;
-  transition: all 0.2s ease-in-out;
+  visibility: visible;
 }
 
 .go-away {
   display: none;
-  transition: all 0.2s ease-in-out;
 }
 
 .nav-right-items {
@@ -101,10 +100,6 @@
 
 .icon-profile {
   margin-left: 1px;
-}
-
-.icon-github:hover {
-  cursor: pointer;
 }
 
 .nav-search {
@@ -138,13 +133,13 @@
 }
 
 .results-tall {
-  max-height: 200px;
+  max-height: 365px;
   overflow: auto;
 }
 
 .results-short {
   margin-left: 104px;
-  max-height: 200px;
+  max-height: 365px;
   overflow: auto;
 }
 
