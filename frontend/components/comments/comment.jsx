@@ -53,10 +53,7 @@ class Comment extends React.Component {
       deleteClass
     } = this.state;
 
-    let deletable;
-    if (comment.commenter_id === currentUser.id) {
-      deletable = "deletable";
-    } else deletable = "not-deletable";
+    const deletable = comment.commenter_id === currentUser.id ? "deletable" : "not-deletable";
     
     return(
       <>
@@ -65,12 +62,14 @@ class Comment extends React.Component {
             <Link onClick={this.handleClick} to={comment.username !== currentUser.username ? `/users/${comment.commenter_id}` : `/profile`}>
               {comment.username} 
             </Link>
+
             <span 
               onMouseEnter={this.deleteOrNot}
               onMouseLeave={() => this.setState({deleteClass: "hide-delete"})}
               onClick={this.removeComment}
               className={`comment-body ${deletable}`}> {comment.body}
             </span>
+            
             <span className={deleteClass}> Delete</span>
           </span>
         </li>

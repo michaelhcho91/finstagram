@@ -4,7 +4,7 @@ import { fetchPosts } from "../../actions/post_actions";
 import { fetchComments } from "../../actions/comment_actions";
 import { closeModal } from "../../actions/modal_actions";
 import PostIndexItemContainer from "./post_index_item_container";
-import Navbar from "../navbar/navbar";
+import NavbarContainer from "../navbar/navbar_container";
 
 class PostExplore extends React.Component {
   constructor(props) {
@@ -49,10 +49,13 @@ class PostExplore extends React.Component {
     
     return (
       <>
-        <Navbar />
+        <NavbarContainer />
       
         <section className="explore-container">
-          <h2 className="explore-text">Explore</h2>
+          <h2 className="explore-text">
+            Explore
+          </h2>
+
           <ul className="posts-list">
             {explorePosts}
           </ul>

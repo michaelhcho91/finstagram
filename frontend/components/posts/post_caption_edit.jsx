@@ -39,13 +39,18 @@ class PostCaptionEdit extends React.Component {
   }
   
   render() {
-    const { caption } = this.state;
+    const {
+      caption
+    } = this.state;
     
     return (
       <>
         <form className="caption-edit-form" onSubmit={this.handleSubmit}>
           <input id="caption-edit-input" className="caption-edit-input" onChange={this.update("caption")} value={caption} />
-          <button className="caption-edit-submit"><img src={window.submit_icon} /></button>
+          
+          <button className="caption-edit-submit">
+            <img src={window.submit_icon} />
+          </button>
         </form>
       </>
     )

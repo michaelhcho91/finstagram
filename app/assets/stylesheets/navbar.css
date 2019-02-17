@@ -145,7 +145,7 @@
 
 .search-li {
   z-index: 3;
-  background-color: #FAFAFA;
+  background-color: white;
   display: flex;
   border: 1px solid #EFEFEF;
   width: 184px;
@@ -154,7 +154,12 @@
   align-items: center;
 }
 
-.search-li a {
+.search-li:hover {
+  background-color: #FAFAFA;
+  cursor: pointer;
+}
+
+.search-li p {
   text-decoration: none;
   color: #262626;
   display: flex;

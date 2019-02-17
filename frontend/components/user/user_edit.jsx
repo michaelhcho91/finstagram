@@ -118,17 +118,27 @@ class UserEdit extends React.Component {
                 {preview}
               </label>
             </aside>
+
             <div>
-              <h1>{currentUser.username}</h1>
-              <label className="file-input-label" htmlFor="file-selector">Change Profile Photo</label>
+              <h1>
+                {currentUser.username}
+              </h1>
+
+              <label className="file-input-label" htmlFor="file-selector">
+                Change Profile Photo
+              </label>
+
               <input type="file" onChange={this.handleFile} id="file-selector" />
             </div>
           </div>
         
           <div className="edit-name">
             <aside className="edit-name-left">
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">
+                Name
+              </label>
             </aside>
+
             <div>
               <input type="text" id="name" onChange={this.update("name")} defaultValue={currentUser.name} />              
             </div>
@@ -136,8 +146,11 @@ class UserEdit extends React.Component {
 
           <div className="edit-username">
             <aside className="edit-username-left">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">
+                Username
+              </label>
             </aside>
+
             <div>
               <input type="text" id="username" onChange={this.update("username")} defaultValue={currentUser.username} />
             </div>
@@ -145,28 +158,39 @@ class UserEdit extends React.Component {
 
           <div className="edit-bio">
             <aside className="edit-bio-left">
-              <label htmlFor="bio">Bio</label>
+              <label htmlFor="bio">
+                Bio
+              </label>
             </aside>
+
             <div>
               <input type="text" id="bio" onChange={this.update("bio")} defaultValue={currentUser.bio} />
             </div>
           </div>
 
           <div className="edit-private">
-            <h2>Private Information</h2>
+            <h2>
+              Private Information
+            </h2>
           </div>
 
           <div className="edit-email">
             <aside className="edit-email-left">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">
+                Email
+              </label>
             </aside>
+
             <div>
               <input type="text" id="email" onChange={this.update("email")} defaultValue={currentUser.email} />
             </div>
           </div>
 
           <input className="edit-submit" type="submit" value="Submit" disabled={disabledOrNot} />
-          <span className={savedOrNot}>Saved!</span>
+          
+          <span className={savedOrNot}>
+            Saved!
+          </span>
         </form>
       </>
     )

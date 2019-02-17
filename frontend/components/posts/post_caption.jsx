@@ -37,16 +37,15 @@ class PostCaption extends React.Component {
       editClass
     } = this.state;
 
-    let captionUsername;
-    if (user) {
-      captionUsername = <Link onClick={this.exitModal} to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
-                          {user ? user.username : currentUser.username}
-                        </Link>;
-    }
+    const captionUsername = <Link onClick={this.exitModal} to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
+                              {user ? user.username : currentUser.username}
+                            </Link>;
 
     let captionSpan = null;
     if (post.caption) {
-      captionSpan = <span className="post-caption-user">{captionUsername} <span className="post-caption">{post.caption}</span></span>
+      captionSpan = <span className="post-caption-user">
+                      {captionUsername} <span className="post-caption">{post.caption}</span>
+                    </span>
     }
     
     let editButton = null;
@@ -63,7 +62,10 @@ class PostCaption extends React.Component {
       <>
         {captionSpan}
         {editButton}
-        <span className={editClass}>Edit Caption</span>
+        
+        <span className={editClass}>
+          Edit Caption
+        </span>
       </>
     )
   };

@@ -83,38 +83,61 @@ class SessionForm extends React.Component {
     if (formType === "Log In") {
       form = <>
               <form className="session-form login" onSubmit={this.handleSubmit}>
-                <h1 className="session-h1 login">Finstagram</h1>
+                <h1 className="session-h1 login">
+                  Finstagram
+                </h1>
 
                 <input required onChange={this.update("username")} type="text" placeholder="Username" value={username} />
                 <input onChange={this.update("password")} type="password" placeholder="Password" value={password} />
 
-                <button className="session-button" type="submit" disabled={!username} >{formType}</button>
-                <button className="session-button demo" onClick={this.demoLogin}>Demo</button>
+                <button className="session-button" type="submit" disabled={!username}>
+                  {formType}
+                </button>
+                <button className="session-button demo" onClick={this.demoLogin}>
+                  Demo
+                </button>
+
                 <ul>{errorsList}</ul>
               </form>
               <div className="session-redirect login" >
-                <span>Don't have an account? <Link className="session-link" to={`/signup`} >Sign Up</Link></span>
+                <span>
+                  Don't have an account? <Link className="session-link" to={`/signup`} >Sign Up</Link>
+                </span>
               </div>
             </>
     } else {
       form = <>
               <form className="session-form" onSubmit={this.handleSubmit}>
-                <h1 className="session-h1">Finstagram</h1>
-                <h2>Sign up to see photos from your friends.</h2>
+                <h1 className="session-h1">
+                  Finstagram
+                </h1>
+
+                <h2>
+                  Sign up to see photos from your friends.
+                </h2>
 
                 <input required onChange={this.update("email")} type="text" placeholder="Email" value={email} />
                 <input onChange={this.update("name")} type="text" placeholder="Full Name" value={name} />
                 <input required onChange={this.update("username")} type="text" placeholder="Username" value={username} />
                 <input required onChange={this.update("password")} type="password" placeholder="Password" value={password} />
 
-                <button className="session-button" type="submit" >{formType}</button>
-                <button className="session-button demo" onClick={this.demoLogin}>Demo</button>
+                <button className="session-button" type="submit">
+                  {formType}
+                </button>
+                <button className="session-button demo" onClick={this.demoLogin}>
+                  Demo
+                </button>
+
                 <ul>{errorsList}</ul>
 
-                <p>By signing up, you agree to our <strong>Terms</strong>, <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.</p>
+                <p>
+                  By signing up, you agree to our <strong>Terms</strong>, <strong>Data Policy</strong> and <strong>Cookies Policy</strong>.
+                </p>
               </form>
               <div className="session-redirect signup">
-                <span>Have an account? <Link className="session-link" to={`/login`}>Log In</Link></span>
+                <span>
+                  Have an account? <Link className="session-link" to={`/login`}>Log In</Link>
+                </span>
               </div>
             </>
     }

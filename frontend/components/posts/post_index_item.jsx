@@ -151,15 +151,15 @@ class PostIndexItem extends React.Component {
 
     const createdAt = timeSince(post.created_at);
     
-    let postHeader;
-    if (user) {
-      postHeader = <>
-                    <img className="post-profile-pic" src={user.photoUrl} />
-                    <Link to={user !== currentUser ? `/users/${user.id}` : `/profile`} >
-                      <span className="profile-link">{user.username}</span>
-                    </Link>
-                  </>
-    } else postHeader = null;
+    const postHeader = <>
+      <Link to={user !== currentUser ? `/users/${user.id}` : `/profile`} >
+        <img className="post-profile-pic" src={user.photoUrl} />
+      </Link>
+      
+      <Link to={user !== currentUser ? `/users/${user.id}` : `/profile`} >
+        <span className="profile-link">{user.username}</span>
+      </Link>
+    </>
 
     let followButton;
     if (currentUser && user) {
@@ -185,19 +185,20 @@ class PostIndexItem extends React.Component {
                                  closeModal={closeModal} />
     }
 
-    let deleteButton;
+    let deleteButton = null;
     if (post.posterId === currentUser.id) {
-      deleteButton = <button className="delete-icon" onClick={this.handleDelete}><img src={window.delete_icon} /></button>
-    } else deleteButton = null;
+      deleteButton = <button className="delete-icon" onClick={this.handleDelete}>
+        <img src={window.delete_icon} />
+      </button>
+    }
 
     let likeCount = post.likerIds.length;
-    let likeOrLikes = "likes";
-    if (likeCount === 1) likeOrLikes = "like";
+    let likeOrLikes = likeCount === 1 ? "like" : "likes";
     if (likeCount === 0) {
+      likeOrLikes = null;
       likeCount = <span>
                     Be the first to <span onClick={this.likePost} className="like-this">like this</span>
                   </span>;
-      likeOrLikes = null;
     }
     
     let heartIcon;
@@ -233,13 +234,18 @@ class PostIndexItem extends React.Component {
                 <span>
                   {heartIcon}
                 </span>
+                
                 <span>
-                  <label className="post-comment-icon" htmlFor={`comment-${post.id}`} ><img src={window.comment_icon} /></label>
+                  <label className="post-comment-icon" htmlFor={`comment-${post.id}`} >
+                    <img src={window.comment_icon} />
+                  </label>
                 </span>
+
                 <span>
                   {deleteButton}
                 </span>
               </section>
+
               <section className="post-likes">
                 {likeCount} {likeOrLikes}
               </section>
@@ -247,6 +253,7 @@ class PostIndexItem extends React.Component {
 
             <div>
               {postCaption}
+
               <ul className="post-comments-list">
                 {commentsList}
               </ul>
@@ -257,8 +264,10 @@ class PostIndexItem extends React.Component {
             <section className="post-comment-form-container">
               <div>
                 <form onSubmit={this.handleSubmit} className="post-comment-form" id={`comment-form-${post.id}`}>
-                  <input onChange={this.update("body")} id={`comment-${post.id}`} placeholder="Add a comment..."></input>
-                  <button className="submit-comment-icon" onClick={this.handleSubmit} disabled={!body}><img src={window.submit_icon} /></button>
+                  <input onChange={this.update("body")} id={`comment-${post.id}`} placeholder="Add a comment..." />
+                  <button className="submit-comment-icon" onClick={this.handleSubmit} disabled={!body}>
+                    <img src={window.submit_icon} />
+                  </button>
                 </form>
               </div>
             </section>

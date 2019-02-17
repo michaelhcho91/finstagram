@@ -26,7 +26,19 @@ class PostView extends React.Component {
     this.unlikePost = this.unlikePost.bind(this);
     this.doubleClick = this.doubleClick.bind(this);
   }
-  
+
+  componentDidMount() {
+    const {
+      closeModal
+    } = this.props;
+
+    document.addEventListener("keydown", (e) => {
+      if (e.keyCode === 27) {
+        closeModal();
+      }
+    });
+  }
+
   handleDelete() {
     const {
       deletePost,
@@ -137,27 +149,27 @@ class PostView extends React.Component {
                                  closeModal={closeModal} />
     }
 
-    let postHeader;
-    if (user) {
-      postHeader = <>
-        <img className="post-view-profile-pic" src={user.photoUrl} />
-        <div onClick={() => closeModal()} className="post-view-user">{user.username}</div>
-      </>
-    } else postHeader = null;
+    const postHeader = <>
+      <img onClick={() => closeModal()} className="post-view-profile-pic" src={user.photoUrl} />
+      <div onClick={() => closeModal()} className="post-view-user">
+        {user.username}
+      </div>
+    </>
 
     let deleteButton;
     if (post.posterId === currentUser.id) {
-      deleteButton = <button className="view-delete-icon" onClick={this.handleDelete}><img src={window.delete_icon} /></button>
-    } else deleteButton = null;
+      deleteButton = <button className="view-delete-icon" onClick={this.handleDelete}>
+                       <img src={window.delete_icon} />
+                     </button>
+    }
 
     let likeCount = post.likerIds.length;
-    let likeOrLikes = "likes";
-    if (likeCount === 1) likeOrLikes = "like";
+    let likeOrLikes = likeCount === 1 ? "like" : "likes";
     if (likeCount === 0) {
+      likeOrLikes = null;
       likeCount = <span>
                     Be the first to <span onClick={this.likePost} className="like-this">like this</span>
                   </span>;
-      likeOrLikes = null;
     }
     
     let heartIcon;
@@ -194,6 +206,7 @@ class PostView extends React.Component {
             <div className="post-view-below-header">
               <div className="post-view-space">
                 {postCaption}
+
                 <ul className="post-view-comments-list">
                   {commentsList}
                 </ul>
@@ -204,24 +217,34 @@ class PostView extends React.Component {
                   <span>
                     {heartIcon}
                   </span>
+
                   <span>
-                    <label className="post-view-comment-icon" htmlFor={`view-comment-${post.posterId}`} ><img src={window.comment_icon} /></label>
+                    <label className="post-view-comment-icon" htmlFor={`view-comment-${post.posterId}`} >
+                      <img src={window.comment_icon} />
+                    </label>
                   </span>
+
                   <span>
                     {deleteButton}
                   </span>
                 </section>
+
                 <section className="post-likes">{likeCount} {likeOrLikes}</section>
               </div>
             </div>
 
-            <div className="post-view-time">{createdAt}</div>
+            <div className="post-view-time">
+              {createdAt}
+            </div>
 
             <section className="post-view-comment-form-container">
               <div>
                 <form onSubmit={this.handleSubmit} className="post-view-comment-form" id={`comment-form-${post.id}`}>
-                  <input onChange={this.update("body")} id={`view-comment-${post.posterId}`} placeholder="Add a comment..."></input>
-                  <button className="submit-comment-icon" onClick={this.handleSubmit} disabled={!body}><img src={window.submit_icon} /></button>
+                  <input onChange={this.update("body")} id={`view-comment-${post.posterId}`} placeholder="Add a comment..." />
+                  
+                  <button className="submit-comment-icon" onClick={this.handleSubmit} disabled={!body}>
+                    <img src={window.submit_icon} />
+                  </button>
                 </form>
               </div>
             </section>

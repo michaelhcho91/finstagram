@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../navbar/navbar";
+import NavbarContainer from "../navbar/navbar_container";
 import UserProfileItem from "./user_profile_item";
 
 class UserProfile extends React.Component {
@@ -79,30 +79,20 @@ class UserProfile extends React.Component {
       uploadShow
     } = this.state;
     
-    let thisUser;
-    if (user) {
-      thisUser = user;
-    } else thisUser = currentUser;
+    let thisUser = user ? user : currentUser;
     
-    let postsList;
-    let myPosts;
-    if (posts) {
-      myPosts = posts.filter(post => post.posterId === thisUser.id);
-      postsList = myPosts.map( (post, idx) => {
-        return <UserProfileItem post={post} 
-                                key={idx}
-                                openModal={openModal}
-                                thisUser={thisUser} />
-      });
-    }
+    const myPosts = posts.filter(post => post.posterId === thisUser.id);
+    let postsList = myPosts.map( (post, idx) => {
+      return <UserProfileItem post={post} 
+                              key={idx}
+                              openModal={openModal}
+                              thisUser={thisUser} />
+    });
 
-    if (postsList.length === 0) {
-      postsList = <article className="temp-post-list" />
-    }
+    postsList = postsList.length === 0 ? <article className="temp-post-list" /> : postsList;
 
     const postCount = myPosts.length;
-    let postOrPosts = "posts";
-    if (postCount === 1) postOrPosts = "post";
+    let postOrPosts = postCount === 1 ? "post" : "posts";
     
     let followingCount = null;
     if (thisUser.followingIds) {
@@ -112,8 +102,7 @@ class UserProfile extends React.Component {
     if (thisUser.followerIds) {
       followerCount = thisUser.followerIds.length;
     }
-    let followerOrFollowers = "followers";
-    if (followerCount === 1) followerOrFollowers = "follower";
+    let followerOrFollowers = followerCount === 1 ? "follower" : "followers";
     
     let followButton;
     if (currentUser && user) {
@@ -124,8 +113,12 @@ class UserProfile extends React.Component {
       }
     }
     
-    let uploadIcon = <img onMouseLeave={() => this.setState({uploadShow: "hide-upload"})} onMouseEnter={() => this.setState({uploadShow: "show-upload"})} className="icon-upload" onClick={this.handleClick} src={window.upload_icon} />;
     let logoutButton = <button className="logout-button" onClick={logout}>Logout</button>;
+    let uploadIcon = <img onMouseLeave={() => this.setState({uploadShow: "hide-upload"})} 
+                          onMouseEnter={() => this.setState({uploadShow: "show-upload"})} 
+                          className="icon-upload" 
+                          onClick={this.handleClick} 
+                          src={window.upload_icon} />;
     if (thisUser !== currentUser) {
       logoutButton = null;
       uploadIcon = null;
@@ -140,7 +133,7 @@ class UserProfile extends React.Component {
 
     return (
       <>
-        <Navbar />
+        <NavbarContainer />
       
         <main className="user-profile-container">
           <div className="user-profile">
@@ -151,7 +144,9 @@ class UserProfile extends React.Component {
 
               <section className="profile-info">
                 <div className="username-cog">
-                  <h1>{thisUser.username}</h1>
+                  <h1>
+                    {thisUser.username}
+                  </h1>
 
                   <div>
                     {logoutButton}
@@ -168,9 +163,14 @@ class UserProfile extends React.Component {
                     <li>{followingCount} following</li>
                   </ul>
                   <div>
-                    <h1 className="profile-name">{thisUser.name}</h1>
+                    <h1 className="profile-name">
+                      {thisUser.name}
+                    </h1>
+                    
                     <div className="profile-bio">
-                      <span>{thisUser.bio}</span>
+                      <span>
+                        {thisUser.bio}
+                      </span>
                     </div>
                   </div>
                 </div>

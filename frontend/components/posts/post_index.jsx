@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import PostIndexItemContainer from "./post_index_item_container";
 import UserIndexContainer from "../user/user_index_container";
-import Navbar from "../navbar/navbar";
+import NavbarContainer from "../navbar/navbar_container";
 
 class PostIndex extends React.Component {
   constructor(props) {
@@ -52,7 +52,7 @@ class PostIndex extends React.Component {
     
     return (
       <>
-        <Navbar />
+        <NavbarContainer />
         {notFollowing}
 
         <section className="post-index-section">

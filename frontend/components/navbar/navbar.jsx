@@ -1,8 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import ModalContainer from "../modal/modal_container";
-import { fetchUsers } from "../../actions/user_actions";
 
 class Navbar extends React.Component {  
   constructor(props) {
@@ -22,6 +20,7 @@ class Navbar extends React.Component {
     this.matchUsers = this.matchUsers.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
     this.transition = this.transition.bind(this);
+    this.goToUser = this.goToUser.bind(this);
   }
 
   componentDidMount() {
@@ -33,6 +32,7 @@ class Navbar extends React.Component {
 
     window.onscroll = () => {
       const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
+      
       if (this.state.currentScrollHeight !== newScrollHeight) {
         this.setState({
           currentScrollHeight: newScrollHeight
@@ -44,12 +44,13 @@ class Navbar extends React.Component {
 
     document.addEventListener("keydown", (e) => {
       if (e.keyCode === 27) {
+        e.preventDefault();
         document.getElementById("search-input").blur();
         this.clearSearch();
       }
-    }, true);
+    });
   }
-
+  
   update(field) {
     return (e) => {
       this.setState({
@@ -67,6 +68,11 @@ class Navbar extends React.Component {
     });
   }
   
+  goToUser(user) {
+    this.clearSearch();
+    this.props.history.push(`/users/${user.id}`);
+  }
+  
   matchUsers(searchValue) {
     const {
       users
@@ -77,16 +83,21 @@ class Navbar extends React.Component {
       users.forEach((user, idx) => {
         if (user.username.toLowerCase().includes(searchValue.toLowerCase()) ||
           user.name.toLowerCase().includes(searchValue.toLowerCase())) {
+            
           searchResults.push(
-            <li key={idx} className="search-li">
+            <li onClick={() => this.goToUser(user)} key={idx} className="search-li">
               <aside className="search-photo-container">
-                <img className="search-photo"src={user.photoUrl} />
+                <img className="search-photo" src={user.photoUrl} />
               </aside>
+
               <div>
-                <Link onClick={this.clearSearch} to={`/users/${user.id}`}>
+                <p>
                   {user.username}
-                </Link>
-                <span className="search-name">{user.name}</span>
+                </p>
+
+                <span className="search-name">
+                  {user.name}
+                </span>
               </div>
             </li>
           );
@@ -94,8 +105,7 @@ class Navbar extends React.Component {
       });
     }
 
-    if (searchResults.length === 0) return null;
-    return searchResults;
+    return searchResults.length === 0 ? null : searchResults;
   }
 
   transition() {
@@ -138,9 +148,19 @@ class Navbar extends React.Component {
         <div className={container}>
           <ul className="nav-list">
             <li className="nav-left-items">
-              <div><Link to={"/feed"} className="icon-feed"><img src={window.feed_icon} /></Link></div>
-              <div className={leftDivider}></div>
-              <div><Link to={"/feed"} className={leftLogo}>Finstagram</Link></div>
+              <div>
+                <Link to={"/feed"} className="icon-feed">
+                  <img src={window.feed_icon} />
+                </Link>
+              </div>
+
+              <div className={leftDivider} />
+              
+              <div>
+                <Link to={"/feed"} className={leftLogo}>
+                  Finstagram
+                </Link>
+              </div>
             </li>
             
             <li className={search}>
@@ -149,15 +169,24 @@ class Navbar extends React.Component {
                     //  onBlur={this.clearSearch}
                      type="text"
                      placeholder="                    Search" />
+
               <ul className={results}>
                 {this.matchUsers(searchValue)}
               </ul>
             </li>
             
             <li className="nav-right-items">
-              <Link to={"/explore"} className="icon-explore"><img src={window.explore_icon} /></Link>
-              <a href="https://github.com/michaelhcho91/finstagram" target="_blank"><img className="icon-github" src={window.github_icon} /></a>
-              <Link to={"/profile"} className="icon-profile"><img src={window.profile_icon} /></Link>
+              <Link to={"/explore"} className="icon-explore">
+                <img src={window.explore_icon} />
+              </Link>
+
+              <a href="https://github.com/michaelhcho91/finstagram" target="_blank">
+                <img className="icon-github" src={window.github_icon} />
+              </a>
+
+              <Link to={"/profile"} className="icon-profile">
+                <img src={window.profile_icon} />
+              </Link>
             </li>
           </ul>
         </div>
@@ -166,16 +195,4 @@ class Navbar extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    users: Object.values(state.entities.users)
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsers: () => dispatch(fetchUsers())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default Navbar;
