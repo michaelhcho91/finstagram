@@ -30,7 +30,7 @@ class Navbar extends React.Component {
   
   componentDidMount() {
     this.props.fetchUsers();
-    this.escToClose();
+    document.addEventListener("keydown", this.escToClose);
 
     this.setState({
       currentScrollHeight: window.scrollY
@@ -49,12 +49,10 @@ class Navbar extends React.Component {
     };
   }
 
-  escToClose() {
-    document.addEventListener("keydown", (e) => {
-      if (e.keyCode === 27) {
-        this.clearSearch();
-      }
-    });
+  escToClose(e) {
+    if (e.keyCode === 27) {
+      this.clearSearch();
+    }
   }
   
   update(field) {

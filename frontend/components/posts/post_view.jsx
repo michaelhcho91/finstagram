@@ -33,19 +33,17 @@ class PostView extends React.Component {
   }
   
   componentDidMount() {
-    this.escToClose();
+    document.addEventListener("keydown", this.escToClose);
   }
 
-  escToClose() {
+  escToClose(e) {
     const {
       closeModal
     } = this.props;
 
-    document.addEventListener("keydown", (e) => {
-      if (e.keyCode === 27) {
-        closeModal();
-      }
-    });
+    if (e.keyCode === 27) {
+      closeModal();
+    }
   }
 
   handleDelete() {
