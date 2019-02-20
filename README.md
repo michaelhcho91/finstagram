@@ -70,7 +70,7 @@ if (comment.commenter_id === currentUser.id) {
 
 # Technologies
 
-Development technologies for Finstagram include React/Redux for the frontend, Ruby on Rails/PostgreSQL for the backend, and Amazon Web Services S3 for file storage.
+Development technologies for `Finstagram` include React/Redux for the frontend, Ruby on Rails/PostgreSQL for the backend, and Amazon Web Services S3 for file storage.
 
 # Future Implementations
 

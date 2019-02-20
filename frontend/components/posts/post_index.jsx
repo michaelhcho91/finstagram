@@ -18,7 +18,7 @@ class PostIndex extends React.Component {
     fetchPosts();
     fetchComments();
   }
-  
+
   render() {
     const {
       posts,
