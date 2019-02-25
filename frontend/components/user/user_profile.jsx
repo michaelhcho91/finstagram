@@ -11,9 +11,11 @@ class UserProfile extends React.Component {
       uploadShow: "hide-upload"
     };
 
-    this.handleClick = this.handleClick.bind(this);
+    this.newPost = this.newPost.bind(this);
     this.followUser = this.followUser.bind(this);
     this.unfollowUser = this.unfollowUser.bind(this);
+    this.followerList = this.followerList.bind(this);
+    this.followingList = this.followingList.bind(this);
   }
   
   componentDidMount() {
@@ -32,8 +34,36 @@ class UserProfile extends React.Component {
     }
   }
 
-  handleClick() {
+  newPost() {
     this.props.openModal("create", null);
+  }
+  
+  followerList() {
+    const {
+      user,
+      currentUser,
+      openModal
+    } = this.props;
+
+    const thisUser = user ? user : currentUser;
+
+    openModal("followers", {
+      thisUser
+    });
+  }
+
+  followingList() {
+    const {
+      user,
+      currentUser,
+      openModal
+    } = this.props;
+
+    const thisUser = user ? user : currentUser;
+
+    openModal("following", {
+      thisUser
+    });
   }
   
   followUser() {
@@ -75,7 +105,7 @@ class UserProfile extends React.Component {
       uploadShow
     } = this.state;
     
-    let thisUser = user ? user : currentUser;
+    const thisUser = user ? user : currentUser;
     
     const myPosts = posts.filter(post => post.posterId === thisUser.id);
     let postsList = myPosts.map( (post, idx) => {
@@ -88,17 +118,10 @@ class UserProfile extends React.Component {
     postsList = postsList.length === 0 ? <article className="temp-post-list" /> : postsList;
 
     const postCount = myPosts.length;
-    let postOrPosts = postCount === 1 ? "post" : "posts";
-    
-    let followingCount = null;
-    if (thisUser.followingIds) {
-      followingCount = thisUser.followingIds.length;
-    }
-    let followerCount = null;
-    if (thisUser.followerIds) {
-      followerCount = thisUser.followerIds.length;
-    }
-    let followerOrFollowers = followerCount === 1 ? "follower" : "followers";
+    const postOrPosts = postCount === 1 ? "post" : "posts";
+    const followerCount = thisUser.followerIds.length;
+    const followingCount = thisUser.followingIds.length;
+    const followerOrFollowers = followerCount === 1 ? "follower" : "followers";
     
     let followButton;
     if (currentUser && user) {
@@ -113,7 +136,7 @@ class UserProfile extends React.Component {
     let uploadIcon = <img onMouseLeave={() => this.setState({uploadShow: "hide-upload"})}
                           onMouseEnter={() => this.setState({uploadShow: "show-upload"})}
                           className="icon-upload"
-                          onClick={this.handleClick}
+                          onClick={this.newPost}
                           src={window.upload_icon} />;
     if (thisUser !== currentUser) {
       logoutButton = null;
@@ -155,9 +178,10 @@ class UserProfile extends React.Component {
                 <div>
                   <ul className="user-post-follow-list">
                     <li>{postCount} {postOrPosts}</li>
-                    <li>{followerCount} {followerOrFollowers}</li>
-                    <li>{followingCount} following</li>
+                    <li className="follower-number" onClick={this.followerList}>{followerCount} {followerOrFollowers}</li>
+                    <li className="following-number" onClick={this.followingList}>{followingCount} following</li>
                   </ul>
+
                   <div>
                     <h1 className="profile-name">
                       {thisUser.name}

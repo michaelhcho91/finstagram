@@ -1,22 +1,45 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const UserIndexItem = ({ user }) => {
-  return (
-    <>
-      <li className="following-item">
-        <Link to={`/users/${user.id}`}>
-          <img src={user.photoUrl} />
-        </Link>
+class UserIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
 
-        <h2>
-          <Link to={`/users/${user.id}`}>
-            {user.username}
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.closeModal();
+  }
+  
+  render() {
+    const {
+      user,
+      currentUser
+    } = this.props;
+
+    return (
+      <>
+        <li className="following-item">
+          <Link onClick={this.handleClick} to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
+            <img src={user.photoUrl} />
           </Link>
-        </h2>
-      </li>
-    </>
-  )
-};
+  
+          <div className="user-name">
+            <h2>
+              <Link onClick={this.handleClick} to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
+                {user.username}
+              </Link>
+            </h2>
+            
+            <h3>
+              {user.name}
+            </h3>
+          </div>
+        </li>
+      </>
+    )
+  }
+}
 
 export default UserIndexItem;

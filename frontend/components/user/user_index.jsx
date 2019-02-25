@@ -1,16 +1,16 @@
 import React from "react";
-import UserIndexItem from "./user_index_item";
+import UserIndexItemContainer from "./user_index_item_container";
 import { Link } from "react-router-dom";
 
 class UserIndex extends React.Component {
   render() {
     const {
       users,
-      currentUser
+      currentUser,
     } = this.props;
     
     const usersList = users.filter(user => currentUser.followingIds.includes(user.id)).map( (user, idx) => {
-      return <UserIndexItem key={idx} user={user} />
+      return <UserIndexItemContainer key={idx} user={user} />
     });
     
     return (
@@ -36,7 +36,7 @@ class UserIndex extends React.Component {
             </div>
           </div>
         
-          <ul className="following-list">
+          <ul className="index-list">
             <span>Following</span>
             {usersList}
           </ul>
