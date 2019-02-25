@@ -7,6 +7,14 @@ const Footer = () => {
         <nav className="footer-nav" >
           <ul className="footer-list" >
             <li>
+              <a href="https://michaelhcho.com/" target="_blank">Portfolio</a>
+            </li>
+
+            <li>
+              <a href="https://angel.co/michael-cho-16?public_profile=1" target="_blank">AngelList</a>
+            </li>
+            
+            <li>
               <a href="https://github.com/michaelhcho91" target="_blank">Github</a>
             </li>
 
