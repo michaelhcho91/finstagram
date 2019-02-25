@@ -6,8 +6,28 @@ import UserIndexItemContainer from "../user/user_index_item_container";
 class FollowerList extends React.Component {
   constructor(props) {
     super(props);
+
+    this.escToClose = this.escToClose.bind(this);
   }
 
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.escToClose);
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.escToClose);
+  }
+
+  escToClose(e) {
+    const {
+      closeModal
+    } = this.props;
+
+    if (e.keyCode === 27) {
+      closeModal();
+    }
+  }
+  
   render() {
     const {
       users,
