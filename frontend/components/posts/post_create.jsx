@@ -115,9 +115,9 @@ class PostCreate extends React.Component {
           <button className="post-create-submit" disabled={!photoFile} type="submit">
             Share
           </button>
-        </form>
 
-        {preview}
+          {preview}
+        </form>
       </div>
     )
   }
