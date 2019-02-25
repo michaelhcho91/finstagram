@@ -16,22 +16,23 @@
 }
 
 .following-list {
-  width: 250px;
   height: 400px;
   background: #FFF;
   border-radius: 12px;
   border: none;
-  padding: 30px;
 }
 
 .following-list h1 {
-  height: 43px;
-  width: 250px;
+  width: 200px;
   font-weight: 500;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #DBDBDB;
   text-align: center;
+  padding: 20px 30px 20px 30px;
 }
 
 .following-list-list {
+  height: 310px;
+  width: 230px;
   overflow: auto;
+  padding: 0 0 30px 30px;
 }
