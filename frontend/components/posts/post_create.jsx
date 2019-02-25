@@ -91,12 +91,10 @@ class PostCreate extends React.Component {
       photoFile
     } = this.state;
 
-    let preview;
+    let preview = null;
     if (photoUrl) {
       preview = <img className="post-preview" src={photoUrl} />
-    } else {
-      preview = <div className="post-preview" />
-    };
+    }
     
     return (
       <div className="post-create-container">

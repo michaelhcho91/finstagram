@@ -23,7 +23,9 @@
 
 .post-preview {
   max-height: 404px;
+  margin-top: 10px;
   padding: 10px;
+  background: black;
 }
 
 .post-file-input {
