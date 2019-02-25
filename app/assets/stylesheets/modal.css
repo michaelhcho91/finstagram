@@ -21,8 +21,7 @@
   background: #FFF;
   border-radius: 12px;
   border: none;
-  padding: 20px;
-  overflow: auto;
+  padding: 30px;
 }
 
 .following-list h1 {
@@ -31,4 +30,8 @@
   font-weight: 500;
   border-bottom: 1px solid black;
   text-align: center;
+}
+
+.following-list-list {
+  overflow: auto;
 }

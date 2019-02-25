@@ -25,7 +25,7 @@ class FollowerList extends React.Component {
             <h1>Followers</h1>
           </section>
 
-          <section>
+          <section className="following-list-list">
             <ul>
               {followers}
             </ul>
