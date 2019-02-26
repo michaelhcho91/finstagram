@@ -14,6 +14,6 @@
       json.commentIds post.comments.pluck(:id)
     else
       json.commentIds []
-    end    
+    end
   end
 end
