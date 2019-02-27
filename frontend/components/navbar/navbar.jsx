@@ -72,11 +72,12 @@ class Navbar extends React.Component {
   
   goToUser(user) {
     const {
+      currentUser,
       history
     } = this.props;
     
     this.clearSearch();
-    history.push(`/users/${user.id}`);
+    history.push(user !== currentUser ? `/users/${user.id}` : `/profile`);
   }
   
   matchUsers(searchValue) {
