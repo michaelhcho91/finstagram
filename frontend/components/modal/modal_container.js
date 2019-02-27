@@ -4,8 +4,8 @@ import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state) => {
   return {
-    modal: state.ui.modal,
-    captionEditting: state.ui.captionEditting
+    captionEditting: state.ui.captionEditting,
+    modal: state.ui.modal
   };
 };
 

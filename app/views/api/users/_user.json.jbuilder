@@ -1,8 +1,5 @@
 json.extract! user, :id, :username, :name, :email, :bio
-
-if user.photo.attached?
-  json.photoUrl url_for(user.photo)
-end
+json.photoUrl url_for(user.photo)
 
 if user.followers
   json.followerIds user.followers.pluck(:id)

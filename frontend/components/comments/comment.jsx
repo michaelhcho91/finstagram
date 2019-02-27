@@ -9,11 +9,32 @@ class Comment extends React.Component {
       deleteClass: "hide-delete"
     };
     
-    this.removeComment = this.removeComment.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.deleteOrNot = this.deleteOrNot.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.removeComment = this.removeComment.bind(this);
   }
-  
+
+  deleteOrNot() {
+    const {
+      currentUser,
+      comment
+    } = this.props;
+
+    if (currentUser.id === comment.commenter_id) {
+      this.setState({
+        deleteClass: "show-delete"
+      });
+    }
+  }
+
+  handleClick() {
+    const {
+      closeModal
+    } = this.props;
+    
+    closeModal();
+  }
+
   removeComment() {
     const {
       comment,
@@ -26,23 +47,6 @@ class Comment extends React.Component {
     }
   }
 
-  deleteOrNot() {
-    const {
-      currentUser,
-      comment
-    } = this.props;
-    
-    if (currentUser.id === comment.commenter_id) {
-      this.setState({
-        deleteClass: "show-delete"
-      });
-    }
-  }
-  
-  handleClick() {
-    this.props.closeModal();
-  }
-  
   render() {
     const {
       comment,

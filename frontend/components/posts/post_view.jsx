@@ -4,10 +4,10 @@ import PostCaption from "../posts/post_caption";
 import PostCaptionEdit from "../posts/post_caption_edit";
 import CommentContainer from "../comments/comment_container";
 import { connect } from "react-redux";
-import { openEditting, closeEditting, deletePost } from "../../actions/post_actions";
+import { closeModal } from "../../actions/modal_actions";
+import { deletePost } from "../../actions/post_actions";
 import { createLike, deleteLike } from "../../actions/like_actions";
 import { createComment, deleteComment } from "../../actions/comment_actions";
-import { closeModal } from "../../actions/modal_actions";
 
 class PostView extends React.Component {
   constructor(props) {
@@ -16,24 +16,37 @@ class PostView extends React.Component {
     this.state = {
       body: "",
       commenter_id: this.props.currentUser.id,
-      post_id: this.props.post.id,
-      likeHeart: "like-heart-none"
+      likeHeart: "like-heart-none",
+      post_id: this.props.post.id
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.likePost = this.likePost.bind(this);
-    this.unlikePost = this.unlikePost.bind(this);
     this.doubleClick = this.doubleClick.bind(this);
     this.escToClose = this.escToClose.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.likePost = this.likePost.bind(this);
+    this.unlikePost = this.unlikePost.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.escToClose);
   }
 
   componentWillUnmount() {
     document.removeEventListener("keydown", this.escToClose);
   }
-  
-  componentDidMount() {
-    document.addEventListener("keydown", this.escToClose);
+
+  doubleClick() {
+    const {
+      currentUser,
+      post
+    } = this.props;
+
+    if (post.likerIds.includes(currentUser.id)) {
+      return this.unlikePost();
+    } else {
+      return this.likePost();
+    }
   }
 
   escToClose(e) {
@@ -48,9 +61,9 @@ class PostView extends React.Component {
 
   handleDelete() {
     const {
+      closeModal,
       deletePost,
-      post,
-      closeModal
+      post
     } = this.props;
     
     deletePost(post.id).then(closeModal());
@@ -73,19 +86,11 @@ class PostView extends React.Component {
     form.reset();
   }
   
-  update(field) {
-    return (e) => {
-      this.setState({
-        [field]: e.currentTarget.value
-      });
-    };
-  }
-  
   likePost() {
     const {
-      post,
+      createLike,
       currentUser,
-      createLike
+      post
     } = this.props;
 
     createLike({
@@ -106,9 +111,9 @@ class PostView extends React.Component {
 
   unlikePost() {
     const {
-      post,
       currentUser,
-      deleteLike
+      deleteLike,
+      post
     } = this.props;
 
     deleteLike({
@@ -117,43 +122,31 @@ class PostView extends React.Component {
     });
   }
 
-  doubleClick() {
-    const {
-      post,
-      currentUser
-    } = this.props;
-
-    if (post.likerIds.includes(currentUser.id)) {
-      return this.unlikePost();
-    } else {
-      return this.likePost();
-    }
+  update(field) {
+    return (e) => {
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+    };
   }
-  
+
   render() {
     const {
-      post,
+      captionEditting,
+      closeModal,
       comments,
       currentUser,
-      captionEditting,
-      closeEditting,
-      openEditting,
-      user,
-      closeModal
+      post,
+      user
     } = this.props;
     
     const createdAt = timeSince(post.created_at);
 
     let postCaption;
     if (captionEditting === post.id) {
-      postCaption = <PostCaptionEdit post={post}
-                                     closeEditting={closeEditting} />
+      postCaption = <PostCaptionEdit post={post} />
     } else {
-      postCaption = <PostCaption user={user}
-                                 currentUser={currentUser}
-                                 post={post}
-                                 openEditting={openEditting}
-                                 closeModal={closeModal} />
+      postCaption = <PostCaption post={post} user={user} />
     }
 
     const postHeader = <>
@@ -264,24 +257,22 @@ class PostView extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.entities.users[state.session.id],
     captionEditting: state.ui.captionEditting,
-    post: state.entities.posts[ownProps.postId],
     comments: Object.values(state.entities.comments),
+    currentUser: state.entities.users[state.session.id],
+    post: state.entities.posts[ownProps.postId],
     user: state.entities.users[ownProps.userId]
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    openEditting: (postId) => dispatch(openEditting(postId)),
-    closeEditting: () => dispatch(closeEditting()),
-    deletePost: (postId) => dispatch(deletePost(postId)),
-    createLike: (like) => dispatch(createLike(like)),
-    deleteLike: (like) => dispatch(deleteLike(like)),
+    closeModal: () => dispatch(closeModal()),
     createComment: (comment) => dispatch(createComment(comment)),
+    createLike: (like) => dispatch(createLike(like)),
     deleteComment: (commentId) => dispatch(deleteComment(commentId)),
-    closeModal: () => dispatch(closeModal())
+    deleteLike: (like) => dispatch(deleteLike(like)),
+    deletePost: (postId) => dispatch(deletePost(postId))
   };
 };
 

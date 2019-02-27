@@ -10,34 +10,49 @@ class UserEdit extends React.Component {
     } = this.props;
     
     this.state = {
-      name: currentUser.name,
-      username: currentUser.username,
       bio: currentUser.bio,
+      disabledOrNot: true,
       email: currentUser.email,
+      name: currentUser.name,
       photoFile: null,
       photoUrl: currentUser.photoUrl,
       savedOrNot: "edit-unsaved",
-      disabledOrNot: true
+      username: currentUser.username
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleFile(e) {
+    const file = e.currentTarget.files[0];
+    const fileReader = new FileReader();
+
+    fileReader.onloadend = () => {
+      this.setState({
+        disabledOrNot: false,
+        photoFile: file,
+        photoUrl: fileReader.result
+      });
+    };
+
+    if (file) fileReader.readAsDataURL(file);
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
     const {
-      name,
-      username,
       bio,
       email,
-      photoFile
+      name,
+      photoFile,
+      username
     } = this.state;
 
     const {
-      updateUser,
-      currentUser
+      currentUser,
+      updateUser
     } = this.props;
 
     const formData = new FormData();
@@ -65,21 +80,6 @@ class UserEdit extends React.Component {
     }, 1600);
   }
   
-  handleFile(e) {
-    const file = e.currentTarget.files[0];
-    const fileReader = new FileReader();
-
-    fileReader.onloadend = () => {
-      this.setState({
-        photoFile: file,
-        photoUrl: fileReader.result,
-        disabledOrNot: false
-      });
-    };
-
-    if (file) fileReader.readAsDataURL(file);
-  }
-  
   update(field) {
     return (e) => {
       this.setState({
@@ -95,9 +95,9 @@ class UserEdit extends React.Component {
     } = this.props;
 
     const {
+      disabledOrNot,
       photoUrl,
-      savedOrNot,
-      disabledOrNot
+      savedOrNot
     } = this.state;
     
     let preview;

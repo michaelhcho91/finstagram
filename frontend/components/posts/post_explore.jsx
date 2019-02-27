@@ -11,22 +11,22 @@ class PostExplore extends React.Component {
     window.scrollTo(0, 0);
     
     const {
-      fetchPosts,
+      closeModal,
       fetchComments,
-      closeModal
+      fetchPosts
     } = this.props;
 
     closeModal();
-    fetchPosts();
     fetchComments();
+    fetchPosts();
   }
   
   render() {
     const {
-      users,
-      posts,
       comments,
-      currentUser
+      currentUser,
+      posts,
+      users
     } = this.props;
 
     let explorePosts = posts.filter(post => !currentUser.followingIds.includes(post.posterId) && currentUser.id !== post.posterId).map( (post, idx) => {
@@ -36,8 +36,7 @@ class PostExplore extends React.Component {
         return <PostIndexItemContainer key={idx}
                                        post={post}
                                        user={users[post.posterId]}
-                                       postComments={postComments}
-                                       currentUser={currentUser} />
+                                       postComments={postComments} />
       }
     });
 
@@ -65,18 +64,18 @@ class PostExplore extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts: Object.values(state.entities.posts).reverse(),
-    users: state.entities.users,
     comments: Object.values(state.entities.comments),
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    posts: Object.values(state.entities.posts).reverse(),
+    users: state.entities.users
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPosts: () => dispatch(fetchPosts()),
+    closeModal: () => dispatch(closeModal()),
     fetchComments: () => dispatch(fetchComments()),
-    closeModal: () => dispatch(closeModal())
+    fetchPosts: () => dispatch(fetchPosts())
   };
 };
 

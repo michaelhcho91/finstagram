@@ -15,21 +15,25 @@ class PostCreate extends React.Component {
       photoUrl: null
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleFile = this.handleFile.bind(this);
     this.escToClose = this.escToClose.bind(this);
+    this.handleFile = this.handleFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillUnmount() {
-    this.props.clearErrors();
-
-    document.removeEventListener("keydown", this.escToClose);
-  }
-  
   componentDidMount() {
     document.addEventListener("keydown", this.escToClose);
   }
 
+  componentWillUnmount() {
+    const {
+      clearErrors
+    } = this.props;
+    
+    clearErrors();
+
+    document.removeEventListener("keydown", this.escToClose);
+  }
+  
   escToClose(e) {
     const {
       closeModal
@@ -38,37 +42,6 @@ class PostCreate extends React.Component {
     if (e.keyCode === 27) {
       closeModal();
     }
-  }
-  
-  update(field) {
-    return (e) => {
-      this.setState({
-        [field]: e.currentTarget.value
-      });
-    };
-  }
-  
-  handleSubmit(e) {
-    e.preventDefault();
-    
-    const {
-      caption,
-      photoFile
-    } = this.state;
-
-    const {
-      createPost,
-      closeModal,
-      history
-    } = this.props;
-    
-    const formData = new FormData();
-    formData.append("post[caption]", caption);
-    if (photoFile) formData.append("post[photo]", photoFile);
-
-    createPost(formData).
-      then(closeModal()).
-        then(history.push("/"));
   }
 
   handleFile(e) {
@@ -84,11 +57,42 @@ class PostCreate extends React.Component {
 
     if (file) fileReader.readAsDataURL(file);
   }
-  
+
+  handleSubmit(e) {
+    e.preventDefault();
+    
+    const {
+      caption,
+      photoFile
+    } = this.state;
+
+    const {
+      history,
+      closeModal,
+      createPost
+    } = this.props;
+    
+    const formData = new FormData();
+    formData.append("post[caption]", caption);
+    if (photoFile) formData.append("post[photo]", photoFile);
+
+    createPost(formData).
+      then(closeModal()).
+        then(history.push("/"));
+  }
+
+  update(field) {
+    return (e) => {
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+    };
+  }
+
   render() {
     const {
-      photoUrl,
-      photoFile
+      photoFile,
+      photoUrl
     } = this.state;
 
     let preview = null;
@@ -123,9 +127,9 @@ class PostCreate extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createPost: (post) => dispatch(createPost(post)),
+    clearErrors: () => dispatch(clearErrors()),
     closeModal: () => dispatch(closeModal()),
-    clearErrors: () => dispatch(clearErrors())
+    createPost: (post) => dispatch(createPost(post))
   };
 };
 

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import React from "react";
-import { updatePost } from "../../actions/post_actions";
+import { updatePost, closeEditting } from "../../actions/post_actions";
 import { merge } from "lodash";
 
 class PostCaptionEdit extends React.Component {
@@ -18,6 +18,18 @@ class PostCaptionEdit extends React.Component {
     document.getElementById("caption-edit-input").focus();
   }
   
+  handleSubmit(e) {
+    e.preventDefault();
+    const {
+      closeEditting,
+      post,
+      updatePost
+    } = this.props;
+
+    updatePost(merge({}, post, this.state)).
+      then(closeEditting());
+  }
+
   update(field) {
     return (e) => {
       this.setState({
@@ -26,18 +38,6 @@ class PostCaptionEdit extends React.Component {
     };
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const {
-      updatePost,
-      post,
-      closeEditting
-    } = this.props;
-
-    updatePost(merge({}, post, this.state)).
-      then(closeEditting());
-  }
-  
   render() {
     const {
       caption
@@ -59,6 +59,7 @@ class PostCaptionEdit extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    closeEditting: () => dispatch(closeEditting()),
     updatePost: (post) => dispatch(updatePost(post))
   };
 };

@@ -9,22 +9,22 @@ class PostIndex extends React.Component {
     window.scrollTo(0, 0);
 
     const {
-      fetchPosts,
+      closeModal,
       fetchComments,
-      closeModal
+      fetchPosts
     } = this.props;
 
     closeModal();
-    fetchPosts();
     fetchComments();
+    fetchPosts();
   }
 
   render() {
     const {
-      posts,
-      users,
       comments,
-      currentUser
+      currentUser,
+      posts,
+      users
     } = this.props;
     
     let postsList;
@@ -35,8 +35,7 @@ class PostIndex extends React.Component {
         return <PostIndexItemContainer key={idx}
                                        post={post}
                                        user={users[post.posterId]}
-                                       postComments={postComments}
-                                       currentUser={currentUser} />
+                                       postComments={postComments} />
       }
     });
 

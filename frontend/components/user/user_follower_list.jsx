@@ -10,12 +10,12 @@ class FollowerList extends React.Component {
     this.escToClose = this.escToClose.bind(this);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.escToClose);
-  }
-
   componentDidMount() {
     document.addEventListener("keydown", this.escToClose);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.escToClose);
   }
 
   escToClose(e) {
@@ -30,11 +30,11 @@ class FollowerList extends React.Component {
   
   render() {
     const {
-      users,
-      thisUser
+      thisUser,
+      users
     } = this.props;
 
-    const followers = users.filter(user => thisUser.followerIds.includes(user.id)).map((user, idx) => {
+    const followers = users.filter(user => thisUser.followerIds.includes(user.id)).map( (user, idx) => {
       return <UserIndexItemContainer className="modal-item" key={idx} user={user} />;
     });
 

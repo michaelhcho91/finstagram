@@ -42,20 +42,25 @@
   color: #999;
 }
 
-.index-list {
-  list-style: none;
+.index-list-container {
   border: 1px solid #E6E6E6;
   border-radius: 4px;
   height: 440px;
   padding: 17px;
   background-color: white;
+}
+
+.index-list {
+  list-style: none;
+  height: 420px;
   overflow: auto;
 }
 
-.index-list span {
+.index-list-container span {
   color: #999;
   font-weight: 400;
   font-size: 14px;
+  line-height: 14px;
 }
 
 .following-item {

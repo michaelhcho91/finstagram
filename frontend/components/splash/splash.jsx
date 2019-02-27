@@ -7,12 +7,12 @@ class Splash extends React.Component {
     this.state = {
       email: "",
       name: "",
-      username: "",
-      password: ""
+      password: "",
+      username: ""
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   componentDidMount() {
@@ -20,7 +20,11 @@ class Splash extends React.Component {
   }
   
   componentWillUnmount() {
-    this.props.clearErrors();
+    const {
+      clearErrors
+    } = this.props;
+    
+    clearErrors();
   }
 
   demoLogin(e) {
@@ -36,14 +40,6 @@ class Splash extends React.Component {
     });
   }
 
-  update(field) {
-    return (e) => {
-      this.setState({
-        [field]: e.currentTarget.value
-      });
-    };
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     
@@ -53,7 +49,15 @@ class Splash extends React.Component {
     
     processForm(this.state);
   }
-  
+
+  update(field) {
+    return (e) => {
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+    };
+  }
+
   render() {
     const {
       currentUser,

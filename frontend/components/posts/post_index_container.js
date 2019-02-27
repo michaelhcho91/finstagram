@@ -6,18 +6,18 @@ import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state) => {
   return {
-    posts: Object.values(state.entities.posts).reverse(),
-    users: state.entities.users,
     comments: Object.values(state.entities.comments),
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    posts: Object.values(state.entities.posts).reverse(),
+    users: state.entities.users
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPosts: () => dispatch(fetchPosts()),
+    closeModal: () => dispatch(closeModal()),
     fetchComments: () => dispatch(fetchComments()),
-    closeModal: () => dispatch(closeModal())
+    fetchPosts: () => dispatch(fetchPosts())
   };
 };
 

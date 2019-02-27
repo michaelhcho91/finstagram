@@ -14,13 +14,13 @@ class PostIndexItem extends React.Component {
       likeHeart: "like-heart-none"
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.likePost = this.likePost.bind(this);
-    this.unlikePost = this.unlikePost.bind(this);
     this.doubleClick = this.doubleClick.bind(this);
     this.followUser = this.followUser.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.likePost = this.likePost.bind(this);
     this.unfollowUser = this.unfollowUser.bind(this);
+    this.unlikePost = this.unlikePost.bind(this);
   }
 
   handleDelete() {
@@ -37,8 +37,8 @@ class PostIndexItem extends React.Component {
     
     const {
       createComment,
-      post,
-      currentUser
+      currentUser,
+      post
     } = this.props;
 
     createComment({
@@ -65,8 +65,8 @@ class PostIndexItem extends React.Component {
   likePost() {
     const {
       createLike,
-      post,
-      currentUser
+      currentUser,
+      post
     } = this.props;
 
     createLike({
@@ -87,9 +87,9 @@ class PostIndexItem extends React.Component {
   
   unlikePost() {
     const {
+      currentUser,
       deleteLike,
-      post,
-      currentUser
+      post
     } = this.props;
 
     deleteLike({
@@ -100,8 +100,8 @@ class PostIndexItem extends React.Component {
 
   doubleClick() {
     const {
-      post,
-      currentUser
+      currentUser,
+      post
     } = this.props;
 
     if (post.likerIds.includes(currentUser.id)) {
@@ -114,8 +114,8 @@ class PostIndexItem extends React.Component {
   followUser() {
     const {
       createFollow,
-      user,
-      currentUser
+      currentUser,
+      user
     } = this.props;
 
     createFollow({
@@ -126,9 +126,9 @@ class PostIndexItem extends React.Component {
 
   unfollowUser() {
     const {
+      currentUser,
       deleteFollow,
-      user,
-      currentUser
+      user
     } = this.props;
 
     deleteFollow({
@@ -139,14 +139,11 @@ class PostIndexItem extends React.Component {
 
   render() {
     const {
-      user,
+      captionEditting,
+      currentUser,
       post,
       postComments,
-      currentUser,
-      captionEditting,
-      closeEditting,
-      openEditting,
-      closeModal
+      user
     } = this.props;
 
     const createdAt = timeSince(post.created_at);
@@ -174,15 +171,9 @@ class PostIndexItem extends React.Component {
 
     let postCaption;
     if (captionEditting === post.id) {
-      postCaption = <PostCaptionEdit post={post}
-                                     user={user}
-                                     closeEditting={closeEditting} />
+      postCaption = <PostCaptionEdit post={post} />
     } else {
-      postCaption = <PostCaption user={user}
-                                 currentUser={currentUser} 
-                                 post={post} 
-                                 openEditting={openEditting} 
-                                 closeModal={closeModal} />
+      postCaption = <PostCaption post={post} user={user} />
     }
 
     let deleteButton = null;

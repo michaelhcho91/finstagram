@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { openEditting } from "../../actions/post_actions";
+import { closeModal } from "../../actions/modal_actions";
 
 class PostCaption extends React.Component {
   constructor(props) {
@@ -71,4 +74,17 @@ class PostCaption extends React.Component {
   };
 }
 
-export default PostCaption;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.entities.users[state.session.id]
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    openEditting: (postId) => dispatch(openEditting(postId)),
+    closeModal: () => dispatch(closeModal())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostCaption);

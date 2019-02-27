@@ -11,38 +11,34 @@ class UserProfile extends React.Component {
       uploadShow: "hide-upload"
     };
 
-    this.newPost = this.newPost.bind(this);
-    this.followUser = this.followUser.bind(this);
-    this.unfollowUser = this.unfollowUser.bind(this);
     this.followerList = this.followerList.bind(this);
     this.followingList = this.followingList.bind(this);
+    this.followUser = this.followUser.bind(this);
+    this.newPost = this.newPost.bind(this);
+    this.unfollowUser = this.unfollowUser.bind(this);
   }
   
   componentDidMount() {
     window.scrollTo(0, 0);
 
     const {
-      fetchPosts,
       fetchComments,
+      fetchPosts,
       fetchUser
     } = this.props;
     
-    fetchPosts();
     fetchComments();
+    fetchPosts();
     if (this.props.match.params.userId) {
       fetchUser(this.props.match.params.userId);
     }
   }
 
-  newPost() {
-    this.props.openModal("create", null);
-  }
-  
   followerList() {
     const {
-      user,
       currentUser,
-      openModal
+      openModal,
+      user
     } = this.props;
 
     const thisUser = user ? user : currentUser;
@@ -54,9 +50,9 @@ class UserProfile extends React.Component {
 
   followingList() {
     const {
-      user,
       currentUser,
-      openModal
+      openModal,
+      user
     } = this.props;
 
     const thisUser = user ? user : currentUser;
@@ -69,8 +65,8 @@ class UserProfile extends React.Component {
   followUser() {
     const {
       createFollow,
-      user,
-      currentUser
+      currentUser,
+      user
     } = this.props;
 
     createFollow({
@@ -79,11 +75,19 @@ class UserProfile extends React.Component {
     });
   }
 
+  newPost() {
+    const {
+      openModal
+    } = this.props;
+    
+    openModal("create", null);
+  }
+
   unfollowUser() {
     const {
+      currentUser,
       deleteFollow,
-      user,
-      currentUser
+      user
     } = this.props;
 
     deleteFollow({
@@ -94,10 +98,9 @@ class UserProfile extends React.Component {
   
   render() {
     const {
-      posts,
       currentUser,
-      openModal,
       logout,
+      posts,
       user
     } = this.props;
 
@@ -111,7 +114,6 @@ class UserProfile extends React.Component {
     let postsList = myPosts.map( (post, idx) => {
       return <UserProfileItem post={post} 
                               key={idx}
-                              openModal={openModal}
                               thisUser={thisUser} />
     });
 
@@ -133,8 +135,8 @@ class UserProfile extends React.Component {
     }
     
     let logoutButton = <button className="logout-button" onClick={logout}>Logout</button>;
-    let uploadIcon = <img onMouseLeave={() => this.setState({uploadShow: "hide-upload"})}
-                          onMouseEnter={() => this.setState({uploadShow: "show-upload"})}
+    let uploadIcon = <img onMouseLeave={() => this.setState({ uploadShow: "hide-upload" })}
+                          onMouseEnter={() => this.setState({ uploadShow: "show-upload" })}
                           className="icon-upload"
                           onClick={this.newPost}
                           src={window.upload_icon} />;
@@ -145,7 +147,9 @@ class UserProfile extends React.Component {
       followButton = null;
     }
 
-    let profilePic = <Link to={"profile/edit"}><img src={thisUser.photoUrl} /></Link>;
+    let profilePic = <Link to={"profile/edit"}>
+                      <img src={thisUser.photoUrl} />
+                    </Link>;
     if (thisUser !== currentUser) {
       profilePic = <img src={thisUser.photoUrl} />
     }

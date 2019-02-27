@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
+import { openModal } from "../../actions/modal_actions";
 
 class UserProfileItem extends React.Component {
   constructor(props) {
@@ -9,8 +11,8 @@ class UserProfileItem extends React.Component {
 
   handleClick() {
     const {
-      post,
       openModal,
+      post,
       thisUser
     } = this.props;
     
@@ -35,4 +37,10 @@ class UserProfileItem extends React.Component {
   }
 }
 
-export default UserProfileItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    openModal: (type, options) => dispatch(openModal(type, options))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(UserProfileItem);

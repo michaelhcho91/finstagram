@@ -5,15 +5,15 @@ import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.entities.users[state.session.id],
-    comment: state.entities.comments[ownProps.commentId]
+    comment: state.entities.comments[ownProps.commentId],
+    currentUser: state.entities.users[state.session.id]
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteComment: (comment) => dispatch(deleteComment(comment)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    deleteComment: (comment) => dispatch(deleteComment(comment))
   };
 };
 

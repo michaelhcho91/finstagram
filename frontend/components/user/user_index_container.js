@@ -1,19 +1,11 @@
 import { connect } from "react-redux";
 import UserIndex from "./user_index";
-import { fetchUsers } from "../../actions/user_actions";
-import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state) => {
   return {
-    users: Object.values(state.entities.users).sort(),
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    users: Object.values(state.entities.users).sort()
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsers: () => dispatch(fetchUsers())
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(UserIndex);
+export default connect(mapStateToProps, null)(UserIndex);

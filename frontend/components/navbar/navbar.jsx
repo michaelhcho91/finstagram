@@ -7,29 +7,30 @@ class Navbar extends React.Component {
     super(props);
 
     this.state = {
-      searchValue: "",
-      whichNav: "nav-tall",
       container: "nav-tall-container",
-      leftLogo: "nav-logo",
+      currentScrollHeight: null,
       leftDivider: "nav-divider",
-      search: "nav-search",
+      leftLogo: "nav-logo",
       results: "results-tall",
-      currentScrollHeight: null
+      search: "nav-search",
+      searchValue: "",
+      whichNav: "nav-tall"
     };
 
-    this.matchUsers = this.matchUsers.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
-    this.transition = this.transition.bind(this);
-    this.goToUser = this.goToUser.bind(this);
     this.escToClose = this.escToClose.bind(this);
+    this.goToUser = this.goToUser.bind(this);
+    this.matchUsers = this.matchUsers.bind(this);
+    this.transition = this.transition.bind(this);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.escToClose);
-  }
-  
   componentDidMount() {
-    this.props.fetchUsers();
+    const {
+      fetchUsers
+    } = this.props;
+
+    fetchUsers();
+    
     document.addEventListener("keydown", this.escToClose);
 
     this.setState({
@@ -38,29 +39,19 @@ class Navbar extends React.Component {
 
     window.onscroll = () => {
       const newScrollHeight = Math.ceil(window.scrollY / 50) * 50;
-      
+
       if (this.state.currentScrollHeight !== newScrollHeight) {
         this.setState({
           currentScrollHeight: newScrollHeight
         });
       }
-      
+
       this.transition();
     };
   }
 
-  escToClose(e) {
-    if (e.keyCode === 27) {
-      this.clearSearch();
-    }
-  }
-  
-  update(field) {
-    return (e) => {
-      this.setState({
-        [field]: e.currentTarget.value
-      });
-    };
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.escToClose);
   }
 
   clearSearch() {
@@ -72,10 +63,20 @@ class Navbar extends React.Component {
       searchValue: ""
     });
   }
+
+  escToClose(e) {
+    if (e.keyCode === 27) {
+      this.clearSearch();
+    }
+  }
   
   goToUser(user) {
+    const {
+      history
+    } = this.props;
+    
     this.clearSearch();
-    this.props.history.push(`/users/${user.id}`);
+    history.push(`/users/${user.id}`);
   }
   
   matchUsers(searchValue) {
@@ -116,34 +117,42 @@ class Navbar extends React.Component {
   transition() {
     if (this.state.currentScrollHeight <= 90) {
       this.setState({
-        whichNav: "nav-tall",
         container: "nav-tall-container",
-        leftLogo: "nav-logo",
         leftDivider: "nav-divider",
+        leftLogo: "nav-logo",
+        results: "results-tall",
         search: "nav-search",
-        results: "results-tall"
+        whichNav: "nav-tall"
       });
     } else {
       this.setState({
-        whichNav: "nav-short",
         container: "nav-short-container",
-        leftLogo: "go-away",
         leftDivider: "go-away",
+        leftLogo: "go-away",
+        results: "results-short",
         search: "nav-search-short",
-        results: "results-short"
+        whichNav: "nav-short"
       });
     }
   }
-  
+
+  update(field) {
+    return (e) => {
+      this.setState({
+        [field]: e.currentTarget.value
+      });
+    };
+  }
+
   render() {
     const {
-      searchValue,
-      whichNav,
       container,
-      leftLogo,
       leftDivider,
+      leftLogo,
+      results,
       search,
-      results
+      searchValue,
+      whichNav
     } = this.state;
     
     return (
