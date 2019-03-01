@@ -25,9 +25,11 @@ class UserIndexItem extends React.Component {
     return (
       <>
         <li className="following-item">
-          <Link onClick={this.handleClick} to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
-            <img src={user.photoUrl} />
-          </Link>
+          <div className="following-item-pic">
+            <Link onClick={this.handleClick} to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
+              <img src={user.photoUrl} />
+            </Link>
+          </div>
   
           <div className="user-name">
             <h2>
