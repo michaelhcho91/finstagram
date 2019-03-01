@@ -171,6 +171,7 @@
 
 .search-photo {
   border-radius: 100%;
+  object-fit: cover;
   width: 42px;
   height: 42px;
 }
