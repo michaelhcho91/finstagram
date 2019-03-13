@@ -1,5 +1,9 @@
 import { merge } from "lodash";
-import { RECEIVE_POST, RECEIVE_ERRORS, CLEAR_ERRORS } from "../actions/post_actions";
+import {
+  RECEIVE_POST,
+  RECEIVE_ERRORS,
+  CLEAR_ERRORS
+} from "../actions/post_actions";
 
 const postsErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);

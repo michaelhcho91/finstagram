@@ -6,8 +6,14 @@ import CommentContainer from "../comments/comment_container";
 import { connect } from "react-redux";
 import { closeModal } from "../../actions/modal_actions";
 import { deletePost } from "../../actions/post_actions";
-import { createLike, deleteLike } from "../../actions/like_actions";
-import { createComment, deleteComment } from "../../actions/comment_actions";
+import {
+  createLike,
+  deleteLike
+} from "../../actions/like_actions";
+import {
+  createComment,
+  deleteComment
+} from "../../actions/comment_actions";
 
 class PostView extends React.Component {
   constructor(props) {
@@ -50,9 +56,7 @@ class PostView extends React.Component {
   }
 
   escToClose(e) {
-    const {
-      closeModal
-    } = this.props;
+    const { closeModal } = this.props;
 
     if (e.keyCode === 27) {
       closeModal();

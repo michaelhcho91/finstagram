@@ -1,9 +1,18 @@
 import { connect } from "react-redux";
 import PostIndexItem from "./post_index_item";
 import { deletePost } from "../../actions/post_actions";
-import { createLike, deleteLike } from "../../actions/like_actions";
-import { createComment, deleteComment } from "../../actions/comment_actions";
-import { createFollow, deleteFollow } from "../../actions/follow_actions";
+import {
+  createLike,
+  deleteLike
+} from "../../actions/like_actions";
+import {
+  createComment,
+  deleteComment
+} from "../../actions/comment_actions";
+import {
+  createFollow,
+  deleteFollow
+} from "../../actions/follow_actions";
 
 const mapStateToProps = (state) => {
   return {

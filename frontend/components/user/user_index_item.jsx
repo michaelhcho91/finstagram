@@ -9,9 +9,7 @@ class UserIndexItem extends React.Component {
   }
 
   handleClick() {
-    const {
-      closeModal
-    } = this.props;
+    const { closeModal } = this.props;
     
     closeModal();
   }

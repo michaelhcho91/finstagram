@@ -1,7 +1,17 @@
 import { merge } from "lodash";
-import { RECEIVE_POSTS, REMOVE_POST, RECEIVE_POST } from "../actions/post_actions";
-import { RECEIVE_COMMENT, REMOVE_COMMENT } from "../actions/comment_actions";
-import { RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
+import {
+  RECEIVE_POSTS,
+  REMOVE_POST,
+  RECEIVE_POST
+} from "../actions/post_actions";
+import {
+  RECEIVE_COMMENT,
+  REMOVE_COMMENT
+} from "../actions/comment_actions";
+import {
+  RECEIVE_LIKE,
+  REMOVE_LIKE
+} from "../actions/like_actions";
 
 const postsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);

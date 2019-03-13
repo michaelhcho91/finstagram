@@ -28,9 +28,7 @@ class Comment extends React.Component {
   }
 
   handleClick() {
-    const {
-      closeModal
-    } = this.props;
+    const { closeModal } = this.props;
     
     closeModal();
   }
@@ -53,9 +51,7 @@ class Comment extends React.Component {
       currentUser
     } = this.props;
 
-    const {
-      deleteClass
-    } = this.state;
+    const { deleteClass } = this.state;
 
     const deletable = comment.commenter_id === currentUser.id ? "deletable" : "not-deletable";
     

@@ -5,7 +5,10 @@ import { logout } from "../../actions/session_actions";
 import { fetchUser } from "../../actions/user_actions";
 import { openModal } from "../../actions/modal_actions";
 import { fetchComments } from "../../actions/comment_actions";
-import { createFollow, deleteFollow } from "../../actions/follow_actions";
+import {
+  createFollow,
+  deleteFollow
+} from "../../actions/follow_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {

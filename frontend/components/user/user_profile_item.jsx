@@ -23,9 +23,7 @@ class UserProfileItem extends React.Component {
   }
 
   render() {
-    const {
-      post
-    } = this.props;
+    const { post } = this.props;
     
     return(
       <>

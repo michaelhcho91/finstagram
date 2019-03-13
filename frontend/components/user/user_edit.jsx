@@ -5,9 +5,7 @@ class UserEdit extends React.Component {
   constructor(props) {
     super(props);
 
-    const {
-      currentUser
-    } = this.props;
+    const { currentUser } = this.props;
     
     this.state = {
       bio: currentUser.bio,
@@ -90,9 +88,7 @@ class UserEdit extends React.Component {
   }
   
   render() {
-    const {
-      currentUser
-    } = this.props;
+    const { currentUser } = this.props;
 
     const {
       disabledOrNot,

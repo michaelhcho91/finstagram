@@ -1,6 +1,9 @@
 import { connect } from "react-redux";
 import React from "react";
-import { updatePost, closeEditting } from "../../actions/post_actions";
+import {
+  updatePost,
+  closeEditting
+} from "../../actions/post_actions";
 import { merge } from "lodash";
 
 class PostCaptionEdit extends React.Component {
@@ -39,9 +42,7 @@ class PostCaptionEdit extends React.Component {
   }
 
   render() {
-    const {
-      caption
-    } = this.state;
+    const { caption } = this.state;
     
     return (
       <>

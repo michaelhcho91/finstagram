@@ -25,9 +25,7 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    const {
-      fetchUsers
-    } = this.props;
+    const { fetchUsers } = this.props;
 
     fetchUsers();
     

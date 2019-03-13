@@ -26,7 +26,9 @@ class PostCaption extends React.Component {
   }
   
   exitModal() {
-    this.props.closeModal();
+    const { closeModal } = this.props;
+    
+    closeModal();
   }
   
   render() {
@@ -36,9 +38,7 @@ class PostCaption extends React.Component {
       user
     } = this.props;
 
-    const {
-      editClass
-    } = this.state;
+    const { editClass } = this.state;
 
     const captionUsername = <Link onClick={this.exitModal} to={user !== currentUser ? `/users/${user.id}` : `/profile`}>
                               {user ? user.username : currentUser.username}

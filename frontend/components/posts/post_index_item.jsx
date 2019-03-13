@@ -203,9 +203,7 @@ class PostIndexItem extends React.Component {
       return <CommentContainer key={idx} commentId={comment.id} />
     })
     
-    const {
-      body
-    } = this.state;
+    const { body } = this.state;
     
     return (
       <li>

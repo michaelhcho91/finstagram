@@ -21,9 +21,7 @@ class SessionForm extends React.Component {
   }
   
   componentWillUnmount() {
-    const {
-      clearErrors
-    } = this.props;
+    const { clearErrors } = this.props;
     
     clearErrors();
   }
@@ -31,9 +29,7 @@ class SessionForm extends React.Component {
   demoLogin(e) {
     e.preventDefault();
 
-    const {
-      login
-    } = this.props;
+    const { login } = this.props;
     
     login({
       username: "demo",
@@ -44,9 +40,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     
-    const {
-      processForm
-    } = this.props;
+    const { processForm } = this.props;
     
     processForm(this.state);
   }

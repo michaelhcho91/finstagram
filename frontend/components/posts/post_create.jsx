@@ -25,9 +25,7 @@ class PostCreate extends React.Component {
   }
 
   componentWillUnmount() {
-    const {
-      clearErrors
-    } = this.props;
+    const { clearErrors } = this.props;
     
     clearErrors();
 
@@ -35,9 +33,7 @@ class PostCreate extends React.Component {
   }
   
   escToClose(e) {
-    const {
-      closeModal
-    } = this.props;
+    const { closeModal } = this.props;
     
     if (e.keyCode === 27) {
       closeModal();

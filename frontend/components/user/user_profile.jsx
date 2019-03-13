@@ -76,9 +76,7 @@ class UserProfile extends React.Component {
   }
 
   newPost() {
-    const {
-      openModal
-    } = this.props;
+    const { openModal } = this.props;
     
     openModal("create", null);
   }
@@ -104,9 +102,7 @@ class UserProfile extends React.Component {
       user
     } = this.props;
 
-    const {
-      uploadShow
-    } = this.state;
+    const { uploadShow } = this.state;
     
     const thisUser = user ? user : currentUser;
     

@@ -1,5 +1,12 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import {
+  Route,
+  Switch
+} from "react-router-dom";
+import {
+  AuthRoute,
+  ProtectedRoute
+} from "../util/route_util";
 import SplashContainer from "./splash/splash_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
@@ -7,7 +14,6 @@ import PostIndexContainer from "./posts/post_index_container";
 import UserProfileContainer from "./user/user_profile_container";
 import UserEditContainer from "./user/user_edit_container";
 import PostExploreContainer from "./posts/post_explore";
-import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import Footer from "./splash/footer";
 
 const App = () => {

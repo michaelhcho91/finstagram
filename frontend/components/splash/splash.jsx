@@ -1,5 +1,8 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import {
+  Link,
+  Redirect
+} from "react-router-dom";
 
 class Splash extends React.Component {
   constructor(props) {
@@ -20,9 +23,7 @@ class Splash extends React.Component {
   }
   
   componentWillUnmount() {
-    const {
-      clearErrors
-    } = this.props;
+    const { clearErrors } = this.props;
     
     clearErrors();
   }
@@ -30,9 +31,7 @@ class Splash extends React.Component {
   demoLogin(e) {
     e.preventDefault();
 
-    const {
-      login
-    } = this.props;
+    const { login } = this.props;
     
     login({
       username: "demo",
@@ -43,9 +42,7 @@ class Splash extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     
-    const {
-      processForm
-    } = this.props;
+    const { processForm } = this.props;
     
     processForm(this.state);
   }

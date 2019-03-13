@@ -1,4 +1,7 @@
-import { OPEN_EDITTING, CLOSE_EDITTING } from "../actions/post_actions";
+import {
+  OPEN_EDITTING,
+  CLOSE_EDITTING
+} from "../actions/post_actions";
 
 const captionEdittingReducer = (oldState = null, action) => {
   Object.freeze(oldState);
