@@ -181,7 +181,7 @@ class Navbar extends React.Component {
               <input id="search-input"
                      onChange={this.update("searchValue")}
                      type="text"
-                     placeholder="                    Search" />
+                     placeholder="               Search Users" />
 
               <ul className={results}>
                 {this.matchUsers(searchValue)}
