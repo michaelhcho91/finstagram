@@ -87,8 +87,7 @@ class Navbar extends React.Component {
     let searchResults = [];
     if (searchValue) {
       users.forEach( (user, idx) => {
-        if ((user.username.toLowerCase().includes(searchValue.toLowerCase()) ||
-          user.name.toLowerCase().includes(searchValue.toLowerCase())) && user !== currentUser) {
+        if (user.username.toLowerCase().includes(searchValue.toLowerCase())) {
             
           searchResults.push(
             <li onClick={() => this.goToUser(user)} key={idx} className="search-li">
@@ -181,7 +180,7 @@ class Navbar extends React.Component {
               <input id="search-input"
                      onChange={this.update("searchValue")}
                      type="text"
-                     placeholder="               Search Users" />
+                     placeholder="              Search Users" />
 
               <ul className={results}>
                 {this.matchUsers(searchValue)}
