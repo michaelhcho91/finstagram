@@ -148,7 +148,7 @@ class UserEdit extends React.Component {
             </aside>
 
             <div>
-              <input type="text" id="username" onChange={this.update("username")} defaultValue={currentUser.username} />
+              <input type="text" id="username" onChange={this.update("username")} defaultValue={currentUser.username} disabled={currentUser.username === "demo"} />
             </div>
           </div>
 
