@@ -133,6 +133,7 @@ img {
   height: 40px;
   display: flex;
   align-items: center;
+  margin-left: -1px;
 }
 
 .heart-icon {
