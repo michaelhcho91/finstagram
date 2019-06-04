@@ -131,6 +131,7 @@ img {
 .post-icon-container {
   padding-top: 8px;
   height: 40px;
+  width: 590px;
   display: flex;
   align-items: center;
   margin-left: -1px;
@@ -158,7 +159,7 @@ img {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  margin-left: 480px;
+  margin-left: 500px;
 }
 
 .post-comment-icon:hover {
