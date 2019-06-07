@@ -8,6 +8,23 @@
   top: 27px;
 }
 
+@media (max-width: 930px) {
+  .user-index-container {
+    display: none;
+  }
+
+  .post-index-section {
+    margin: 0 auto;
+    width: 100vw;
+  }
+}
+
+@media only screen and (max-device-width: 500px) {
+  .user-index-container {
+    display: none;
+  }
+}
+
 .user-index-header {
   max-height: 62px;
   display: flex;
