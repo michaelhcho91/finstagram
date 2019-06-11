@@ -6,6 +6,10 @@ Finstagram is a fullstack single-page social media web application based on [Ins
 
 ![](./readme_images/splash-ss.png)
 
+# Technologies
+
+Development technologies for `Finstagram` include React and Redux for the frontend, Ruby on Rails and PostgreSQL for the backend, and Amazon Web Services S3 for file storage.
+
 # Feature highlights
 
 ## Feed
@@ -67,10 +71,6 @@ if (comment.commenter_id === currentUser.id) {
   deleteComment(comment);
 }
 ```
-
-# Technologies
-
-Development technologies for `Finstagram` include React/Redux for the frontend, Ruby on Rails/PostgreSQL for the backend, and Amazon Web Services S3 for file storage.
 
 # Future Implementations
 
