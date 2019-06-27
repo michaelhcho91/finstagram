@@ -153,6 +153,19 @@ class Navbar extends React.Component {
       searchValue,
       whichNav
     } = this.state;
+
+    let searchResults;
+    if ((this.matchUsers(searchValue) === null) && (searchValue.length > 0)) {
+      searchResults = <li className="search-li">
+        <div className="no-results-container">
+          <span className="no-results">
+            No results.
+          </span>
+        </div>
+      </li>
+    } else {
+      searchResults = this.matchUsers(searchValue);
+    }
     
     return (
       <nav className={whichNav}>
@@ -183,7 +196,7 @@ class Navbar extends React.Component {
                      placeholder="              Search Users" />
 
               <ul className={results}>
-                {this.matchUsers(searchValue)}
+                {searchResults}
               </ul>
             </li>
             

@@ -180,3 +180,13 @@
   font-size: 12px;
   color: #999;
 }
+
+.no-results-container {
+  margin: 0 auto;
+}
+
+.no-results {
+  font-size: 14px;
+  color: #999;
+  margin: 0 auto;
+}
