@@ -136,9 +136,14 @@ class UserProfile extends React.Component {
                           className="icon-upload"
                           onClick={this.newPost}
                           src={window.upload_icon} />;
+    let editButton = <Link to={"profile/edit"}>
+      <button className="edit-button">Edit Profile</button>
+    </Link>
+
     if (thisUser !== currentUser) {
       logoutButton = null;
       uploadIcon = null;
+      editButton = null;
     } else if (thisUser === currentUser) {
       followButton = null;
     }
@@ -168,6 +173,7 @@ class UserProfile extends React.Component {
                   </h1>
 
                   <div>
+                    {editButton}
                     {logoutButton}
                     {followButton}
                     {uploadIcon}

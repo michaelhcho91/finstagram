@@ -65,13 +65,25 @@
 }
 
 .icon-upload {
-  margin-left: 20px;
+  margin-left: 10px;
   margin-bottom: -7px;
   width: 25px;
 }
 
 .icon-upload:hover {
   cursor: pointer;
+}
+
+.edit-button {
+  background-color: transparent;
+  color: #262626;
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 5px 10px;
 }
 
 .logout-button {
@@ -84,6 +96,7 @@
   font-size: 14px;
   line-height: 18px;
   padding: 5px 10px;
+  margin-left: 10px;
 }
 
 .follow-button {
